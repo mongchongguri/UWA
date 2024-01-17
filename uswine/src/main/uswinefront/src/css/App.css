@@ -1,0 +1,11 @@
+* {
+  padding:0;
+  margin: 0;
+  list-style: none;
+  box-sizing: content-box;
+}
+
+#contents{
+  padding: 30px 0;
+  background-color: #fbf9f8;
+}
