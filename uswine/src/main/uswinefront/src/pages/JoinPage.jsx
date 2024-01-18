@@ -63,7 +63,7 @@ export default function JoinPage(){
                     />
                 </div>
                 <div id="inputNickNameBlock">
-                    <Form.Label htmlFor="inputJoinNickName">닉네임 :</Form.Label>
+                    <Form.Label htmlFor="inputJoinNickName">닉네임</Form.Label>
                     <Form.Control
                         type="text"
                         id="inputJoinNickName"
@@ -72,7 +72,7 @@ export default function JoinPage(){
                     />
                 </div>
                 <div id="inputAddressBlock">
-                    <Form.Label htmlFor="inputJoinAdress">주소 :</Form.Label>
+                    <Form.Label htmlFor="inputJoinAdress">주소</Form.Label>
                     <Form.Control
                         type="text"
                         id="inputJoinAddress"
