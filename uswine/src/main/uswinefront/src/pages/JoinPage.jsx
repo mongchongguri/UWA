@@ -1,6 +1,7 @@
 import { useState } from "react"
+import { Button, Form } from "react-bootstrap";
 import axios from 'axios'
-import '../css/join.css'
+import '../css/join/join.css'
 import PopupPostCode from "./Popup"
 
 export default function JoinPage(){
@@ -26,7 +27,7 @@ export default function JoinPage(){
         }
     
         try {
-            const response = await axios.post('http://localhost:8080/api/join', {
+            const response = await axios.post('http://localhost:8080/api/user/join', {
                 email: email,
                 password: password,
                 nickname: nickname,
@@ -40,56 +41,70 @@ export default function JoinPage(){
         }
     }
     return(
-        <div className="container my-3">
+        <div id="joinBlock">
+            <h1>회원가입</h1>
             <div>
-                <table className="table">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <label>이메일 :</label>
-                                <input type = "email" name="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>비밀번호 :</label>
-                                <input type = "password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>닉네임 :</label>
-                                <input type="text" name="name" value={nickname} onChange={(e)=>setNickName(e.target.value)} />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>주소 :</label>
-                                <input type="text" name="address" value={address} onChange={(e)=>setAddress(e.target.value)} />
-                            </td>
-                            <td>
-                                <button onClick={openPostCode} >우편번호 검색</button>
-                                <div id='popupDom'>
-                                    {isPopupOpen && (
-                                        <PopupPostCode setAddress={setAddress} onClose={closePostCode} />
-                                    )}
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>휴대전화</label>
-                                <input type="number" name="phone" value={phone} onChange={(e)=>setPhone(e.target.value)} 
-                                placeholder="-를 빼고 입력해주세요" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type = "button" name="join" onClick={handleSubmit} value="submit" />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div id="inputIdBlock">
+                    <Form.Label htmlFor="inputJoinId">이메일</Form.Label>
+                    <Form.Control
+                        type="email"
+                        id="inputJoinId"
+                        name="email"
+                        onChange={(e)=>setEmail(e.target.value)}
+                    />
+                </div>
+                <div id="inputPasswordBlock">
+                    <Form.Label htmlFor="inputJoinPassword">비밀번호</Form.Label>
+                    <Form.Control
+                        type="password"
+                        id="inputJoinPassword"
+                        name="password"
+                        onChange={(e)=>setPassword(e.target.value)}
+                    />
+                </div>
+                <div id="inputNickNameBlock">
+                    <Form.Label htmlFor="inputJoinNickName">닉네임 :</Form.Label>
+                    <Form.Control
+                        type="text"
+                        id="inputJoinNickName"
+                        name="NickName"
+                        onChange={(e)=>setNickName(e.target.value)}
+                    />
+                </div>
+                <div id="inputAddressBlock">
+                    <Form.Label htmlFor="inputJoinAdress">주소 :</Form.Label>
+                    <Form.Control
+                        type="text"
+                        id="inputJoinAddress"
+                        name="Address"
+                        value={address}
+                        onChange={(e)=>setAddress(e.target.value)}
+                    />
+                    <div id="FindAddressBtnBlock">
+                        <Button variant="light" onClick={openPostCode} >
+                            우편번호 검색
+                        </Button>
+                        <div id='popupDom'>
+                            {isPopupOpen && (
+                                <PopupPostCode setAddress={setAddress} onClose={closePostCode} />
+                            )}
+                        </div>
+                    </div>
+                </div>
+                <div id="inputPhoneBlock">
+                    <Form.Label htmlFor="inputJoinPhone">휴대전화</Form.Label>
+                    <Form.Control
+                        type="text"
+                        id="inputJoinPhone"
+                        name="Phone"
+                        onChange={(e)=>setPhone(e.target.value)}
+                    />
+                </div>
+                <div id="JoinBtnBlock">
+                    <Button variant="light" name="join" onClick={handleSubmit} >
+                        회원가입
+                    </Button>
+                </div>
             </div>
         </div>
     )

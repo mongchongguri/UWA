@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: content-box;
+  }
+  
+  
+  #joinBlock {
+    width: 500px;
+    margin: 150px auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 30px;
+  }
+  
+  #joinBlock > h1 {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+  }
+  
+  
+  #inputIdBlock > label {
+    font-weight: 600;
+  }
+  
+  #inputJoinId {
+    width: 438px;
+  }
+  
+  
+  #inputPasswordBlock > label {
+    font-weight: 600;
+  }
+
+  #inputJoinPassword {
+    width: 438px;
+  }
+
+  #inputNickNameBlock > label {
+    font-weight: 600;
+  }
+  
+  #inputJoinNickName {
+    width: 438px;
+  }
+
+  #inputAddressBlock > label {
+    font-weight: 600;
+  }
+  
+  #inputJoinAddress {
+    width: 438px;
+  }
+
+  #inputPhoneBlock > label {
+    font-weight: 600;
+  }
+  
+  #inputJoinPhone {
+    width: 438px;
+  }
+  
+  
+  #FindAddressBtnBlock{
+    height: 20px;
+    margin-top: 15px;
+    margin-bottom: 50px;
+  }
+  
+  #FindAddressBtnBlock > button {
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  #JoinBtnBlock{
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;;
+  }
+  
+  #JoinBtnBlock > button {
+    width: 170px;
+    font-weight: 800;
+  }
+  
+  
+  
+  
+  
+  
