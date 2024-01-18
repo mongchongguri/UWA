@@ -6,9 +6,9 @@ import PopupPostCode from "./Popup"
 export default function JoinPage(){
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
-    const [name,setName] = useState('')
+    const [nickname,setNickName] = useState('')
     const [address,setAddress] = useState('')
-    const [phone_number,setPhone_Number] = useState('')
+    const [phone,setPhone] = useState('')
     const [isPopupOpen, setIsPopupOpen] = useState(false)
 
     function openPostCode(){
@@ -20,18 +20,18 @@ export default function JoinPage(){
     }
 
     async function handleSubmit() {
-        setPhone_Number(phone_number.replace(/\D/g, ''))
-        if(phone_number === 10 || phone_number ===11){
-            setPhone_Number(phone_number.replace(/(\d{3})(\d{3,4})(\d{3,4})/, '$1-$2-$3'))
+        setPhone(phone.replace(/\D/g, ''))
+        if(phone === 10 || phone ===11){
+            setPhone(phone.replace(/(\d{3})(\d{3,4})(\d{3,4})/, '$1-$2-$3'))
         }
     
         try {
             const response = await axios.post('http://localhost:8080/api/join', {
                 email: email,
                 password: password,
-                name: name,
+                nickname: nickname,
                 address: address,
-                phone_number: phone_number
+                phone: phone
             });
     
             console.log('Server response:', response.data);
@@ -58,8 +58,8 @@ export default function JoinPage(){
                         </tr>
                         <tr>
                             <td>
-                                <label>이름 :</label>
-                                <input type="text" name="name" value={name} onChange={(e)=>setName(e.target.value)} />
+                                <label>닉네임 :</label>
+                                <input type="text" name="name" value={nickname} onChange={(e)=>setNickName(e.target.value)} />
                             </td>
                         </tr>
                         <tr>
@@ -78,8 +78,8 @@ export default function JoinPage(){
                         </tr>
                         <tr>
                             <td>
-                                <label>전화번호 :</label>
-                                <input type="number" name="phone_number" value={phone_number} onChange={(e)=>setPhone_Number(e.target.value)} 
+                                <label>휴대전화</label>
+                                <input type="number" name="phone" value={phone} onChange={(e)=>setPhone(e.target.value)} 
                                 placeholder="-를 빼고 입력해주세요" />
                             </td>
                         </tr>
