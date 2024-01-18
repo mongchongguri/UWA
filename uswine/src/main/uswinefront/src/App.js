@@ -2,9 +2,10 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import Header from "./components/command/Header";
 import LoginPage from "./pages/LoginPage";
-import Footer from "./components/command/Footer";
 import JoinPage from "./pages/JoinPage";
+import Footer from "./components/command/Footer";
 import "./css/App.css";
+import "./css/font.css";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
           <Route path="/join" element={<JoinPage />} />
         </Routes>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

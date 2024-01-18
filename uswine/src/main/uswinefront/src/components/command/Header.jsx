@@ -4,7 +4,7 @@ import "../../css/header.css";
 import logo from "../../css/imgs/logo.png";
 
 const Header = () => {
-  const navigate = useNavigate();
+  let navigate = useNavigate();
 
   const goToLogin = () => {
     navigate("/login");
@@ -23,23 +23,28 @@ const Header = () => {
           </Link>
         </div>
         <div id="headerBtnBlock">
-          <Link id="loginBtn">로그인</Link>
+          <Link id="loginBtn" to="/login">
+            로그인
+          </Link>
           <Link id="joinBtn">회원가입</Link>
         </div>
       </div>
       <div id="headerBottom">
         <ul id="headerMenu">
           <li>
-            <Link>Menu1</Link>
+            <Link to="/">전체 와인</Link>
           </li>
           <li>
-            <Link>Menu2</Link>
+            <Link>판매중인 와인</Link>
           </li>
           <li>
-            <Link>Menu3</Link>
+            <Link>자유게시판</Link>
           </li>
           <li>
-            <Link>Menu4</Link>
+            <Link>이벤트</Link>
+          </li>
+          <li>
+            <Link>공지사항</Link>
           </li>
         </ul>
       </div>

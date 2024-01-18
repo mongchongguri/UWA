@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: content-box;
+  font-family: "SUITE-Regular";
 }
 
 header {
@@ -48,7 +49,7 @@ header {
   font-weight: 600;
 }
 
-#headerBottom{
+#headerBottom {
   height: 50px;
 }
 
@@ -71,22 +72,3 @@ header {
   color: black;
   font-size: 1.1rem;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
