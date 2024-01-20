@@ -1,18 +1,13 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../../css/header.css";
 import logo from "../../css/imgs/logo.png";
 
 const Header = () => {
   let navigate = useNavigate();
+  let location = useLocation();
 
-  const goToLogin = () => {
-    navigate("/login");
-  };
-
-  const goToHome = () => {
-    navigate("/");
-  };
+  let currentPath = location.pathname;
 
   return (
     <header>
@@ -32,7 +27,9 @@ const Header = () => {
       <div id="headerBottom">
         <ul id="headerMenu">
           <li>
-            <Link to="/">전체 와인</Link>
+            <Link to="/" className={currentPath == "/" ? "selectMenu" : null}>
+              전체 와인
+            </Link>
           </li>
           <li>
             <Link>판매중인 와인</Link>

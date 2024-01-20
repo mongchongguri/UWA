@@ -12,9 +12,11 @@ import java.util.List;
 public class WineListService {
     private final WineListRepository wineListRepository;
 
+    public List<WineEntity> getList(int page) {
+        return this.wineListRepository.findBy(PageRequest.of(page,20)).collectList().block();
+    }
 
-    public List<WineEntity> getList() {
-//        return this.wineListRepository.findAll().collectList().block();
-        return this.wineListRepository.findBy(PageRequest.of(0,20)).collectList().block();
+    public long getTotal() {
+        return this.wineListRepository.count().block();
     }
 }

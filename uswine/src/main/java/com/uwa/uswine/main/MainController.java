@@ -1,12 +1,11 @@
 package com.uwa.uswine.main;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @RestController
@@ -17,7 +16,10 @@ public class MainController {
     private final WineListService wineListService;
 
     @PostMapping("wine")
-    public List<WineEntity> wineList() {
-        return this.wineListService.getList();
+    public Map<String,Object> wineList(@RequestBody Map<String,Integer> page) {
+        Map<String,Object> wineMap = new HashMap<>();
+        wineMap.put("totalPage",this.wineListService.getTotal());
+        wineMap.put("wineList",this.wineListService.getList(page.get("page")));
+        return wineMap;
     }
 }

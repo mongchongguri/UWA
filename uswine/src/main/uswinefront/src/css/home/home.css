@@ -1,13 +1,22 @@
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* .container CSS */
 .container {
   display: flex;
 }
-/* tag_container CSS */
+
+/* .tag_container CSS */
 .tag_container {
   width: 25%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 1%;
+  z-index: 1;
 }
 
 /* Search Box CSS */
@@ -48,37 +57,66 @@
   display: flex;
   flex-wrap: wrap;
 }
+
 .tag_wine_container ul li {
-  margin-right: 10px;
-  margin-bottom: 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
   border: 1.5px solid #ead196;
   border-radius: 10px;
   background-color: white;
   padding: 5px 10px 5px 10px;
+  font-size: 15px;
 }
 
+/* selectTag CSS */
+.selectTag {
+  background: #ead196 !important;
+}
 /* wine_container CSS */
 .wine_container {
   width: 70%;
   display: flex;
   padding: 10px;
+  overflow: hidden;
 }
 
-.wine_container ul {
+.wine_container div {
+  white-space: nowrap;
+}
+
+.wine_view {
+  width: 100%;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.wine_list_prev,
+.wine_list_current,
+.wine_list_next {
+  width: 100%;
   list-style: none;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-start;
+  transform: translateX(-100%);
+}
+
+.slide_animation {
+  transition: transform 0.5s;
 }
 
 .wine_container ul li {
-  display: flex;
+  flex-grow: 1;
   flex-basis: calc(25% - 10px);
   margin-right: 10px;
   margin-bottom: 10px;
   border-radius: 10px;
   background-color: white;
-  padding: 5px 10px 5px 10px;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  min-width: calc(25% - 10px);
+  white-space: normal;
 }
 
 /* wine_list_card Layout CSS */
@@ -89,6 +127,7 @@
   align-items: center;
   background-color: white;
   padding: 10px;
+  height: 100%;
 }
 
 .wine_list_card hr {
@@ -105,6 +144,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  white-space: normal !important;
 }
 .wine_name {
   font-size: 16px;
@@ -122,10 +162,74 @@
 .wine_info {
   margin-top: 10px;
   font-size: 13px;
+  white-space: normal !important;
 }
 
 .wine_info span b {
   background-color: #ead196;
   border-radius: 5px;
   padding: 5px;
+}
+
+/*controller CSS*/
+.page_controller {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  bottom: 5%;
+  right: 3%;
+}
+
+.page_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  width: 80px;
+  height: 40px;
+  margin-top: 10px;
+  border-radius: 10px;
+  opacity: 0.7;
+  background-color: white;
+  padding: 5px;
+}
+
+.page_input {
+  width: 30px;
+  text-align: center;
+  outline: none;
+  border: none;
+}
+
+.error_page {
+  background-color: #7d0a0a;
+  color: white;
+}
+.page_up,
+.next_page,
+.prev_page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  width: 60px;
+  height: 60px;
+  opacity: 0.7;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* animation CSS */
+.left {
+  transform: translateX(0%);
+}
+.right {
+  transform: translateX(-200%);
+}
+
+.hidden {
+  display: none;
 }
