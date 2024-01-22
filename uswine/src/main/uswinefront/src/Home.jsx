@@ -12,10 +12,12 @@ function Home() {
   let [totalPage, setTotalPage] = useState("");
   let [wineList, setWineList] = useState([]);
 
+  let [searchWine, setSearchWine] = useState("");
   let [tagWine, setTagWine] = useState([]);
   let [tagWineAroma, setTagWineAroma] = useState([]);
 
   let [currentPage, setCurrentPage] = useState(1);
+  let [searchBtn, setSearchBtn] = useState(0);
 
   const wineTagList = [
     "레드",
@@ -169,25 +171,53 @@ function Home() {
   }
 
   useEffect(() => {
-    console.log(tagWine);
-    axios
-      .post("/api/main/wine", {
-        page: currentPage - 1,
-      })
-      .then((response) => {
-        setWineList(response.data.wineList);
-        setTotalPage(Math.ceil(response.data.totalPage / 20));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [currentPage]);
+    if (searchBtn > 0) {
+      axios
+        .post("/api/main/wine", {
+          page: currentPage - 1,
+          searchWine: searchWine,
+          tagWine: tagWine,
+          tagWineAroma: tagWineAroma,
+        })
+        .then((response) => {
+          setWineList(response.data.wineList);
+          setTotalPage(Math.ceil(response.data.totalPage));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      axios
+        .post("/api/main/wine", {
+          page: currentPage - 1,
+        })
+        .then((response) => {
+          setWineList(response.data.wineList);
+          setTotalPage(response.data.totalPage);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [currentPage, searchBtn]);
+
   return (
     <div className="container">
       <div className="tag_container">
         <div className="search">
-          <input className="search-txt" type="text" placeholder="Search..." />
-          <button className="search-btn">
+          <input
+            className="search-txt"
+            type="text"
+            placeholder="Search..."
+            onChange={(e) => setSearchWine(e.target.value)}
+          />
+          <button
+            className="search-btn"
+            onClick={() => {
+              setCurrentPage(1);
+              setSearchBtn(searchBtn + 1);
+            }}
+          >
             <FontAwesomeIcon
               icon={faMagnifyingGlass}
               size="1x"

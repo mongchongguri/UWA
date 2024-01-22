@@ -107,7 +107,6 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .wine_container ul li {
-  flex-grow: 1;
   flex-basis: calc(25% - 10px);
   margin-right: 10px;
   margin-bottom: 10px;

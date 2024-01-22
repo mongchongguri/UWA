@@ -4,7 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -12,11 +14,34 @@ import java.util.List;
 public class WineListService {
     private final WineListRepository wineListRepository;
 
-    public List<WineEntity> getList(int page) {
-        return this.wineListRepository.findBy(PageRequest.of(page,20)).collectList().block();
+    public List<WineEntity> findAll(SearchWineDTO wineDTO) {
+        return this.wineListRepository.findBy(PageRequest.of(wineDTO.getPage(),20)).collectList().block();
+    };
+    public long countAll() {
+        return (this.wineListRepository.count().block() / 20 +1);
     }
-
-    public long getTotal() {
-        return this.wineListRepository.count().block();
+    public List<WineEntity> findWine(SearchWineDTO wineDTO) {
+        return this.wineListRepository.findByWine(wineDTO.getSearchWine(),wineDTO.getTagWineAroma(),wineDTO.getTagWine(),PageRequest.of(wineDTO.getPage(),20)).collectList().block();
+    }
+    public long pageWine(SearchWineDTO wineDTO) {
+        return ( this.wineListRepository.countByWine(wineDTO.getSearchWine(),wineDTO.getTagWineAroma(),wineDTO.getTagWine()).block() / 20 + 1);
+    }
+    public List<WineEntity> findWineName(SearchWineDTO wineDTO) {
+        return this.wineListRepository.findByWineName(wineDTO.getSearchWine(),wineDTO.getTagWineAroma(),wineDTO.getTagWine(),PageRequest.of(wineDTO.getPage(),20)).collectList().block();
+    }
+    public long pageWineName(SearchWineDTO wineDTO) {
+        return ( this.wineListRepository.countByWineName(wineDTO.getSearchWine(),wineDTO.getTagWineAroma(),wineDTO.getTagWine()).block() / 20 + 1);
+    }
+    public List<WineEntity> findWineNameAroma(SearchWineDTO wineDTO){
+        return this.wineListRepository.findByWineNameAroma(wineDTO.getSearchWine(),wineDTO.getTagWineAroma(),wineDTO.getTagWine(),PageRequest.of(wineDTO.getPage(),20)).collectList().block();
+    }
+    public long pageWineNameAroma(SearchWineDTO wineDTO) {
+        return ( this.wineListRepository.countByWineNameAroma(wineDTO.getSearchWine(),wineDTO.getTagWineAroma(),wineDTO.getTagWine()).block() / 20 + 1);
+    }
+    public List<WineEntity> findWineNameWineInfo(SearchWineDTO wineDTO) {
+        return this.wineListRepository.findByWineNameWineInfo(wineDTO.getSearchWine(),wineDTO.getTagWineAroma(),wineDTO.getTagWine(),PageRequest.of(wineDTO.getPage(),20)).collectList().block();
+    }
+    public long pageWineNameWineInfo(SearchWineDTO wineDTO) {
+        return ( this.wineListRepository.countByWineNameWineInfo(wineDTO.getSearchWine(),wineDTO.getTagWineAroma(),wineDTO.getTagWine()).block() / 20 + 1);
     }
 }
