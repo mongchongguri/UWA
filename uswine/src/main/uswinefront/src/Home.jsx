@@ -8,15 +8,21 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 function Home() {
-  let [totalPage, setTotalPage] = useState("");
+  let navigate = useNavigate();
+
   let [wineList, setWineList] = useState([]);
 
   let [searchWine, setSearchWine] = useState("");
   let [tagWine, setTagWine] = useState([]);
   let [tagWineAroma, setTagWineAroma] = useState([]);
 
+  let [totalPage, setTotalPage] = useState("");
   let [currentPage, setCurrentPage] = useState(1);
+  let [totalWine, setTotalWine] = useState("");
+
   let [searchBtn, setSearchBtn] = useState(0);
 
   const wineTagList = [
@@ -170,6 +176,9 @@ function Home() {
     }
   }
 
+  function wineDetailsNav(Id) {
+    navigate(`wine/${Id}`);
+  }
   useEffect(() => {
     if (searchBtn > 0) {
       axios
@@ -181,7 +190,8 @@ function Home() {
         })
         .then((response) => {
           setWineList(response.data.wineList);
-          setTotalPage(Math.ceil(response.data.totalPage));
+          setTotalWine(response.data.totalPage);
+          setTotalPage(Math.ceil(response.data.totalPage / 20));
         })
         .catch((error) => {
           console.log(error);
@@ -193,7 +203,8 @@ function Home() {
         })
         .then((response) => {
           setWineList(response.data.wineList);
-          setTotalPage(response.data.totalPage);
+          setTotalWine(response.data.totalPage);
+          setTotalPage(Math.ceil(response.data.totalPage / 20));
         })
         .catch((error) => {
           console.log(error);
@@ -252,6 +263,7 @@ function Home() {
       </div>
       <div className="wine_container">
         <div>
+          <div className="total_wine_count">( {totalWine} 병 )</div>
           <div className="wine_view">
             <ul className="wine_list_prev">
               {wineList.map(function (wine, i) {
@@ -284,7 +296,12 @@ function Home() {
             <ul className="wine_list_current">
               {wineList.map(function (wine, i) {
                 return (
-                  <li key={i}>
+                  <li
+                    key={i}
+                    onClick={() => {
+                      wineDetailsNav(wine.id);
+                    }}
+                  >
                     <div className="wine_list_card">
                       <div className="wine_names">
                         <span className="wine_name">{wine.wine_name}</span>

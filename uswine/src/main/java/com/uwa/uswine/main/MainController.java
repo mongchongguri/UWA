@@ -18,7 +18,7 @@ import java.util.Map;
 public class MainController {
 
     private final WineListService wineListService;
-    private final WineListRepository wineListRepository;
+
     @PostMapping("wine")
     public Map<String,Object> wineList(@RequestBody SearchWineDTO wineDTO) {
         Map<String,Object> wineMap = new HashMap<>();
