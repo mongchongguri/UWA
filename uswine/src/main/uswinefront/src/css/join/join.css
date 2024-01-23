@@ -49,6 +49,10 @@
   #numCheck::placeholder{
     color: #999;
   }
+  #numInputButton{
+    display: flex;
+    margin-right: auto;
+  }
   
   #frontResident{
     width: 205.5px;
@@ -61,7 +65,7 @@
   #backResident{
     width: 32px;
     margin-left: 26px;
-    margin-right: 6px;
+    margin-right: 10px;
   }
   #backResident::placeholder{
     color: #999;
@@ -137,27 +141,25 @@
   #openPopup{
     margin-left: 17.5px;
     width: 170px;
-    font-weight: 800;
   }
   
 
   #inputResidentBlock {
     display: flex;
     flex-direction: column; /* 수직 방향으로 정렬 */
-    align-items: flex-end; /* 아이템들을 오른쪽으로 정렬 */
+    align-items: flex-start; /* 아이템들을 오른쪽으로 정렬 */
     margin-bottom: 20px;
   }
   #checkEmailButton {
     width: 170px;
-    font-weight: 800;
-    margin-left: 40px;
+    margin-left: auto;
   }
   
   #checkResidentButton {
     margin-top: 10px; /* 버튼과 인풋박스 사이에 여백을 조절하는 부분 */
     width: 170px;
-    font-weight: 800;
     margin-right: 2px;
+    margin-left: auto;
   }
   #inputResident {
       display: flex;
@@ -184,14 +186,13 @@
   
   #JoinBtnBlock > button {
     width: 170px;
-    font-weight: 800;
   }
 
   #numCheckBlock{
+    width: 100%;
     display: flex;
     align-items: center;
     margin-top: 10px;
-    margin-left: 10px;
   }
   #numCheckButton{
     margin-left: 10px;

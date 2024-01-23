@@ -84,9 +84,9 @@ export default function JoinPage(){
                         
                         console.log('Server response:', response.data);
                         if(response.data === "join successful"){
-                            window.location.href='/LoginPage';
+                            window.location.href='/login';
                         }else{
-                            window.location.href='/JoinPage';
+                            window.location.href='/join';
                         }
                     } catch (error) {
                         console.error('Error:', error);
