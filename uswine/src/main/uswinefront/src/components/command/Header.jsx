@@ -21,7 +21,7 @@ const Header = () => {
           <Link id="loginBtn" to="/login">
             로그인
           </Link>
-          <Link id="joinBtn">회원가입</Link>
+          <Link id="joinBtn" to="/join">회원가입</Link>
         </div>
       </div>
       <div id="headerBottom">

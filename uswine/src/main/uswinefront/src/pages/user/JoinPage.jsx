@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Button, Form } from "react-bootstrap";
 import axios from 'axios'
-import '../css/join/join.css'
+import '../../css/join/join.css'
 import PopupPostCode from "./Popup"
 
 export default function JoinPage(){
@@ -117,7 +117,7 @@ export default function JoinPage(){
                     />
                         <div id="numCheckBlock">
                         {openEmailCheck && (
-                            <>
+                            <div id="numInputButton">
                                 <Form.Control
                                     type="text"
                                     id="numCheck"
@@ -126,8 +126,8 @@ export default function JoinPage(){
                                     onChange={(e)=>setInputNum(e.target.value)}
                                 />
                                 <Button id="numCheckButton" variant="light" onClick={()=>checkNumber(inputNum)}>인증</Button>
-                            </>
-                         )} 
+                            </div>
+                        )}
                             <Button id="checkEmailButton" variant="light" onClick={sendEmail} >
                                 인증번호 발송
                             </Button>
@@ -152,6 +152,7 @@ export default function JoinPage(){
                             type="password"
                             id="backResident"
                             name="backresident"
+                            value={backResident}
                             maxLength={1}
                             onChange={(e)=>{
                                 const inputValue = e.target.value.slice(0,1)
