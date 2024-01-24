@@ -1,20 +1,13 @@
 package com.uwa.uswine.user.config;
 
-import com.uwa.uswine.user.jwt.JWTUtil;
-import com.uwa.uswine.user.jwt.JwtTokenFilter;
-import com.uwa.uswine.user.jwt.LoginFilter;
-import com.uwa.uswine.user.repository.UserRepository;
-import com.uwa.uswine.user.service.CustomUserDetailsService;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import java.util.Collections;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -24,7 +17,11 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
-import java.util.Collections;
+import com.uwa.uswine.user.jwt.JWTUtil;
+import com.uwa.uswine.user.jwt.JwtTokenFilter;
+import com.uwa.uswine.user.jwt.LoginFilter;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @Configuration
 @EnableWebSecurity
@@ -102,10 +99,10 @@ public class SecurityConfig {
 
         http
                 .authorizeHttpRequests((auth)-> {
-                    auth.requestMatchers(new AntPathRequestMatcher("http://localhost:3000/**")).permitAll();
-                    auth.requestMatchers("http://localhost:3000/login/**","http://localhost:3000/join/**").permitAll();
-                    auth.requestMatchers("http://localhost:3000/admin/**").hasAnyRole("ADMIN");
-                    auth.anyRequest().authenticated();
+//                    auth.requestMatchers(new AntPathRequestMatcher("http://localhost:3000/**")).permitAll();
+//                    auth.requestMatchers("http://localhost:3000/login/**","http://localhost:3000/user/**").permitAll();
+//                    auth.requestMatchers("http://localhost:3000/admin/**").hasAnyRole("ADMIN");
+                    auth.anyRequest().permitAll();
                 });
 
         http

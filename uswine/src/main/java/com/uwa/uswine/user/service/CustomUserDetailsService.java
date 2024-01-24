@@ -1,13 +1,13 @@
 package com.uwa.uswine.user.service;
 
-import com.uwa.uswine.user.dto.CustomUserDetails;
-import com.uwa.uswine.user.entity.UserEntity;
-import com.uwa.uswine.user.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import com.uwa.uswine.user.dto.CustomUserDetails;
+import com.uwa.uswine.user.entity.UserEntity;
+import com.uwa.uswine.user.repository.UserRepository;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {

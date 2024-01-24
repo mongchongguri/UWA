@@ -1,12 +1,12 @@
 package com.uwa.uswine.user.dto;
 
-import com.uwa.uswine.user.entity.UserEntity;
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.swing.text.html.parser.Entity;
-import java.util.ArrayList;
-import java.util.Collection;
+import com.uwa.uswine.user.entity.UserEntity;
 
 public class CustomUserDetails implements UserDetails {
 

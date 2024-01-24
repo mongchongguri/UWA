@@ -1,11 +1,8 @@
 package com.uwa.uswine.user.jwt;
 
-import com.uwa.uswine.user.dto.CustomUserDetails;
-import com.uwa.uswine.user.entity.Role;
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jdk.swing.interop.SwingInterOpUtils;
+import java.util.Collection;
+import java.util.Iterator;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -13,10 +10,11 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import com.uwa.uswine.user.dto.CustomUserDetails;
+
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 //로그인 검증을 위한 커스텀 UsernamePasswordAuthentication 필터
 public class LoginFilter extends UsernamePasswordAuthenticationFilter {
