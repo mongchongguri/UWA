@@ -14,7 +14,7 @@ const Header = () => {
       <div id="headerTop">
         <div id="logo">
           <Link>
-            <img src={logo} />
+            <img src={logo} alt=""/>
           </Link>
         </div>
         <div id="headerBtnBlock">
@@ -27,7 +27,7 @@ const Header = () => {
       <div id="headerBottom">
         <ul id="headerMenu">
           <li>
-            <Link to="/" className={currentPath == "/" ? "selectMenu" : null}>
+            <Link to="/" className={currentPath === "/" ? "selectMenu" : null}>
               전체 와인
             </Link>
           </li>

@@ -17,7 +17,7 @@ import com.uwa.uswine.user.service.JoinService;
 
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
 	
 	@Autowired

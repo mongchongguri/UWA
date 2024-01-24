@@ -5,6 +5,7 @@ import Home from "./Home";
 import UserList from "./pages/admin/UserList";
 import LoginPage from "./pages/user/LoginPage";
 import JoinPage from "./pages/user/JoinPage";
+import WineDetailsPage from "./pages/Home/WinePage/WineDetailsPage";
 import "./css/App.css";
 import "./css/font.css";
 
@@ -16,6 +17,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="login" element={<LoginPage />} />
             <Route path="join" element={<JoinPage />} />
+            <Route path="wine/:id" element={<WineDetailsPage />} />
           </Route>
           <Route path="/Admin" element={<Admin />} >
             <Route path="userList" element={<UserList/>} />

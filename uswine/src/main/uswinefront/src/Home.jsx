@@ -7,8 +7,8 @@ import {
   faAngleRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { AuthApi } from "./AuthApi";
 
 function Home() {
   let navigate = useNavigate();
@@ -95,7 +95,7 @@ function Home() {
     "백합",
   ];
   function prevAnimation() {
-    if (currentPage != 1) {
+    if (currentPage !== 1) {
       setCurrentPage(currentPage - 1);
       var wineContainer = document.querySelector(".wine_list_current");
       var PrevwineContainer = document.querySelector(".wine_list_prev");
@@ -180,8 +180,9 @@ function Home() {
     navigate(`wine/${Id}`);
   }
   useEffect(() => {
+    
     if (searchBtn > 0) {
-      axios
+      AuthApi
         .post("/api/main/wine", {
           page: currentPage - 1,
           searchWine: searchWine,
@@ -197,7 +198,7 @@ function Home() {
           console.log(error);
         });
     } else {
-      axios
+      AuthApi
         .post("/api/main/wine", {
           page: currentPage - 1,
         })
@@ -278,7 +279,7 @@ function Home() {
                         </span>
                       </div>
 
-                      <img src={wine.wine_image} />
+                      <img src={wine.wine_image} alt=""/>
 
                       <div className="wine_info">
                         <span>
@@ -311,7 +312,7 @@ function Home() {
                         </span>
                       </div>
 
-                      <img src={wine.wine_image} />
+                      <img src={wine.wine_image} alt=""/>
 
                       <div className="wine_info">
                         <span>
@@ -339,7 +340,7 @@ function Home() {
                         </span>
                       </div>
 
-                      <img src={wine.wine_image} />
+                      <img src={wine.wine_image} alt=""/>
 
                       <div className="wine_info">
                         <span>
@@ -377,7 +378,7 @@ function Home() {
             defaultValue={currentPage}
             key={currentPage}
             onKeyUp={(e) => {
-              if (e.key == "Enter") {
+              if (e.key === "Enter") {
                 const page = e.target.value;
                 if (page >= 1 && page <= 1014) {
                   document

@@ -69,7 +69,7 @@ public class SecurityConfig {
                         configuration.setMaxAge(3600L);
 
                         configuration.setExposedHeaders(Collections.singletonList("Authorization"));
-
+                        
                         return configuration;
                     }
                 })));
@@ -99,12 +99,13 @@ public class SecurityConfig {
 
         http
                 .authorizeHttpRequests((auth)-> {
-//                    auth.requestMatchers(new AntPathRequestMatcher("http://localhost:3000/**")).permitAll();
-//                    auth.requestMatchers("http://localhost:3000/login/**","http://localhost:3000/user/**").permitAll();
-//                    auth.requestMatchers("http://localhost:3000/admin/**").hasAnyRole("ADMIN");
-                    auth.anyRequest().permitAll();
+                    auth.requestMatchers("/login","/join","/api/main/**","/api/wine/**").permitAll();
+//                    auth.requestMatchers("/api/main/**","/api/wine/**").hasRole("ADMIN");
+                    auth.anyRequest().authenticated();
                 });
 
+        http	
+        		.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
         http
                 .addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration),jwtUtil), UsernamePasswordAuthenticationFilter.class);
 

@@ -74,7 +74,7 @@ export default function JoinPage(){
             if(residentCheck ==='true'){
                 if(password === passwordCheck){
                     try {
-                        const response = await axios.post('http://localhost:8080/api/user/join', {
+                        const response = await axios.post('/api/user/join', {
                             email: email,
                             password: password,
                             nickname: nickname,

@@ -1,7 +1,7 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../../../css/home/WineDetailsPage.css";
+import { AuthApi } from "../../../AuthApi";
 
 function WineDetailsPage() {
   let { id } = useParams();
@@ -9,8 +9,8 @@ function WineDetailsPage() {
   let [wineDetail, setWineDetail] = useState([]);
 
   useEffect(() => {
-    axios
-      .post("http://localhost:8080/api/wine/idx", {
+    AuthApi
+      .post("/api/wine/idx", {
         Id: id,
       })
       .then((response) => {

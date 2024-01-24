@@ -9,14 +9,17 @@ import com.uwa.uswine.user.dto.CustomUserDetails;
 import com.uwa.uswine.user.entity.UserEntity;
 import com.uwa.uswine.user.repository.UserRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-    public CustomUserDetailsService(UserRepository userRepository){
-            this.userRepository = userRepository;
-    }
+//    public CustomUserDetailsService(UserRepository userRepository){
+//            this.userRepository = userRepository;
+//    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
