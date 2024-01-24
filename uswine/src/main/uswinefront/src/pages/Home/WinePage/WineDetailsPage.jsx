@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../../../css/home/WineDetailsPage.css";
-import { AuthApi } from "../../../AuthApi";
+import  AuthApi  from "../../../AuthApi";
 
 function WineDetailsPage() {
   let { id } = useParams();
@@ -9,10 +9,9 @@ function WineDetailsPage() {
   let [wineDetail, setWineDetail] = useState([]);
 
   useEffect(() => {
-    AuthApi
-      .post("/api/wine/idx", {
-        Id: id,
-      })
+    AuthApi("/api/wine/idx",{
+      Id: id,
+    })
       .then((response) => {
         console.log(response.data);
         setWineDetail(response.data);

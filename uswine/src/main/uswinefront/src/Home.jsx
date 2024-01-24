@@ -8,8 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
-import { AuthApi } from "./AuthApi";
-
+import AuthApi from "./AuthApi";
 function Home() {
   let navigate = useNavigate();
 
@@ -182,13 +181,12 @@ function Home() {
   useEffect(() => {
     
     if (searchBtn > 0) {
-      AuthApi
-        .post("/api/main/wine", {
-          page: currentPage - 1,
-          searchWine: searchWine,
-          tagWine: tagWine,
-          tagWineAroma: tagWineAroma,
-        })
+      AuthApi("/api/main/wine",{
+        page: currentPage - 1,
+        searchWine: searchWine,
+        tagWine: tagWine,
+        tagWineAroma: tagWineAroma,
+      })
         .then((response) => {
           setWineList(response.data.wineList);
           setTotalWine(response.data.totalPage);
@@ -198,10 +196,9 @@ function Home() {
           console.log(error);
         });
     } else {
-      AuthApi
-        .post("/api/main/wine", {
-          page: currentPage - 1,
-        })
+      AuthApi("/api/main/wine",{
+        page: currentPage - 1,
+      })
         .then((response) => {
           setWineList(response.data.wineList);
           setTotalWine(response.data.totalPage);
