@@ -11,14 +11,10 @@ function WineDetailsPage() {
   useEffect(() => {
     AuthApi("/api/wine/idx",{
       Id: id,
-    })
-      .then((response) => {
-        console.log(response.data);
-        setWineDetail(response.data);
+    }).then((data) => {
+        console.log(data);
+        setWineDetail(data);
       })
-      .catch((error) => {
-        console.log(error);
-      });
   }, [id]);
 
   return (

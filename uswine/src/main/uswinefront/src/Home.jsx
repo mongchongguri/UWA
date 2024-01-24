@@ -186,27 +186,22 @@ function Home() {
         searchWine: searchWine,
         tagWine: tagWine,
         tagWineAroma: tagWineAroma,
+      }).then((data)=>{
+        setWineList(data.wineList);
+        setTotalWine(data.totalPage);
+        setTotalPage(Math.ceil(data.totalPage / 20));
       })
-        .then((response) => {
-          setWineList(response.data.wineList);
-          setTotalWine(response.data.totalPage);
-          setTotalPage(Math.ceil(response.data.totalPage / 20));
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+
     } else {
       AuthApi("/api/main/wine",{
         page: currentPage - 1,
+      }).then((data) => {
+        setWineList(data.wineList);
+        setTotalWine(data.totalPage);
+        setTotalPage(Math.ceil(data.totalPage / 20));
       })
-        .then((response) => {
-          setWineList(response.data.wineList);
-          setTotalWine(response.data.totalPage);
-          setTotalPage(Math.ceil(response.data.totalPage / 20));
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      
+
     }
   }, [currentPage, searchBtn]);
 

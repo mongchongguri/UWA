@@ -19,7 +19,7 @@ function App() {
             <Route path="join" element={<JoinPage />} />
             <Route path="wine/:id" element={<WineDetailsPage />} />
           </Route>
-          <Route path="/Admin" element={<Admin />} >
+          <Route path="/admin" element={<Admin />} >
             <Route path="userList" element={<UserList/>} />
           </Route>
         </Routes>

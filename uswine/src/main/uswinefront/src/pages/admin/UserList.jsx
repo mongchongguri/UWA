@@ -3,6 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import axios from 'axios'
 import '../../css/admin/UserList.css'
 import UserListBody from "./UserListBody";
+import AuthApi from "../../AuthApi";
 export default function UserList(){
     const [serchType,setSerchType] = useState('id')
     const [serchWord,setSerchWord] = useState('')
@@ -20,23 +21,18 @@ export default function UserList(){
 
     // 페이지 로드시 유저 리스트 가져오기
     useEffect(() => {
-        async function userListLoad(){
-            try {
-                const response = await axios.post('http://localhost:8080/api/user/List',{
-                    serchType:"",
-                    serchWord:"",
-                    serchGroup:""
-                });
-                
-                console.log('Server response:', response.data);
-                setUserList(response.data)
-                setIds(response.data.map(user => user.id))
-                
-            } catch (error) {
-                console.error('Error:', error);
+        AuthApi('/api/user/List',{
+            serchType:"",
+            serchWord:"",
+            serchGroup:""
+        }).then((data)=>{
+            console.log('Server response:', data);
+            if(data !== 0) {
+                setUserList(data)
+                setIds(data.map(user => user.id))
             }
-        }
-        userListLoad()
+            
+        })
     },[])
 
     // user 체크
