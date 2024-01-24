@@ -1,4 +1,4 @@
-package com.uwa.uswine.wine.wineDetails;
+package com.uwa.uswine.main.wineDetails;
 
 import java.util.Map;
 
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.uwa.uswine.wine.main.WineEntity;
+import com.uwa.uswine.main.wine.WineEntity;
 
 import lombok.RequiredArgsConstructor;
 

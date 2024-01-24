@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../../../css/home/WineDetailsPage.css";
-import  AuthApi  from "../../../AuthApi";
+import AuthApi from "../../../AuthApi";
 
 function WineDetailsPage() {
   let { id } = useParams();
@@ -9,12 +9,11 @@ function WineDetailsPage() {
   let [wineDetail, setWineDetail] = useState([]);
 
   useEffect(() => {
-    AuthApi("/api/wine/idx",{
+    AuthApi("/api/wine/idx", {
       Id: id,
     }).then((data) => {
-        console.log(data);
-        setWineDetail(data);
-      })
+      setWineDetail(data);
+    });
   }, [id]);
 
   return (
@@ -34,7 +33,7 @@ function WineDetailComponent({ wineDetail }) {
   return (
     <>
       <div className="wine_detail_img">
-        <img src={wineDetail.wine_image} alt=""/>
+        <img src={wineDetail.wine_image} alt="" />
       </div>
       <div className="wine_details_info">
         <ul className="wine_detail_list">

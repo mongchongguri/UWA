@@ -1,9 +1,9 @@
-package com.uwa.uswine.wine.wineDetails;
+package com.uwa.uswine.main.wineDetails;
 
 import org.springframework.stereotype.Service;
 
-import com.uwa.uswine.wine.main.WineEntity;
-import com.uwa.uswine.wine.main.WineListRepository;
+import com.uwa.uswine.main.wine.WineEntity;
+import com.uwa.uswine.main.wine.WineListRepository;
 
 import lombok.RequiredArgsConstructor;
 

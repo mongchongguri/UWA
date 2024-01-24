@@ -14,20 +14,22 @@ const Header = () => {
       <div id="headerTop">
         <div id="logo">
           <Link>
-            <img src={logo} alt=""/>
+            <img src={logo} />
           </Link>
         </div>
         <div id="headerBtnBlock">
           <Link id="loginBtn" to="/login">
             로그인
           </Link>
-          <Link id="joinBtn" to="/join">회원가입</Link>
+          <Link id="joinBtn" to="/join">
+            회원가입
+          </Link>
         </div>
       </div>
       <div id="headerBottom">
         <ul id="headerMenu">
           <li>
-            <Link to="/" className={currentPath === "/" ? "selectMenu" : null}>
+            <Link to="/" className={currentPath == "/" ? "selectMenu" : null}>
               전체 와인
             </Link>
           </li>
@@ -35,7 +37,12 @@ const Header = () => {
             <Link>판매중인 와인</Link>
           </li>
           <li>
-            <Link>자유게시판</Link>
+            <Link
+              to="/board"
+              className={currentPath.startsWith("/board") ? "selectMenu" : null}
+            >
+              자유게시판
+            </Link>
           </li>
           <li>
             <Link>이벤트</Link>

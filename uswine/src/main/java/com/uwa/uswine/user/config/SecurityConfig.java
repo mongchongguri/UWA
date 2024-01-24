@@ -99,7 +99,7 @@ public class SecurityConfig {
 
         http
                 .authorizeHttpRequests((auth)-> {
-                    auth.requestMatchers("/login","/join","/api/main/**","/api/wine/**").permitAll();
+                    auth.requestMatchers("/login","/join","/api/main/**","/api/wine/**","/api/board/**").permitAll();
 //                    auth.requestMatchers("/api/main/**","/api/wine/**").hasRole("ADMIN");
                     auth.anyRequest().authenticated();
                 });

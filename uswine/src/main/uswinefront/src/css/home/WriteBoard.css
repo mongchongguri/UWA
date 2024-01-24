@@ -1,0 +1,48 @@
+.write_container {
+  padding: 30px 10%;
+}
+
+.board_container {
+  background-color: white;
+  border-radius: 10px;
+  padding: 50px;
+}
+
+#board_title {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  font-size: 18px;
+  border-bottom: 1px solid #999;
+  outline: none;
+}
+
+#Quill_editor {
+  padding: 30px 0px;
+  width: 100%;
+  height: 600px;
+}
+
+.write_controller {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  bottom: 5%;
+  right: 3%;
+}
+
+.write_save,
+.write_cancel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  width: 60px;
+  height: 60px;
+  opacity: 0.7;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+}

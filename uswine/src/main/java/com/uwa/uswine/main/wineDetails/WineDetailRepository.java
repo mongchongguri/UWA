@@ -1,9 +1,9 @@
-package com.uwa.uswine.wine.wineDetails;
+package com.uwa.uswine.main.wineDetails;
 
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
 
-import com.uwa.uswine.wine.main.WineEntity;
+import com.uwa.uswine.main.wine.WineEntity;
 
 import reactor.core.publisher.Mono;
 

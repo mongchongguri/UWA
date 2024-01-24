@@ -1,4 +1,4 @@
-package com.uwa.uswine.wine.main;
+package com.uwa.uswine.main.wine;
 
 import java.util.List;
 
