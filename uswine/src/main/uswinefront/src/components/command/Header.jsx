@@ -35,12 +35,7 @@ const Header = () => {
             <Link>판매중인 와인</Link>
           </li>
           <li>
-            <Link
-                to="/board"
-                className={currentPath == "/board" ? "selectMenu" : null}
-            >
-              자유게시판
-            </Link>
+            <Link>자유게시판</Link>
           </li>
           <li>
             <Link>이벤트</Link>
