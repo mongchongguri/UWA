@@ -1,15 +1,89 @@
-import { useState } from "react"
+import { useState,useEffect } from "react"
 import { Button, Form } from "react-bootstrap";
 import axios from 'axios'
 import '../../css/admin/UserList.css'
+import UserListBody from "./UserListBody";
 export default function UserList(){
     const [serchType,setSerchType] = useState('id')
     const [serchWord,setSerchWord] = useState('')
     const [serchGroup,setSerchGroup] = useState('all')
+
     const [startDate,setStartDate] = useState(new Date())
     const [endDate,setEndDate] = useState(new Date())
+
     const [countSerchUser,setCountSerchUser] = useState('')
 
+    const [userCheck,setUserCheck] = useState({})
+    
+    const [userList,setUserList] = useState([])
+    const [ids,setIds]=useState([])
+
+    // 페이지 로드시 유저 리스트 가져오기
+    useEffect(() => {
+        async function userListLoad(){
+            try {
+                const response = await axios.post('http://localhost:8080/api/user/List',{
+                    serchType:"",
+                    serchWord:"",
+                    serchGroup:""
+                });
+                
+                console.log('Server response:', response.data);
+                setUserList(response.data)
+                setIds(response.data.map(user => user.id))
+                
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+        userListLoad()
+    },[])
+
+    // user 체크
+    function addUserCheck(id,prevUserCheck){
+        return {
+            ...prevUserCheck,
+            [id]:true
+        }
+    }
+    function removeUserCheck(id,prevUserCheck){
+        const updatedUserCheck = {...prevUserCheck}
+        delete updatedUserCheck[id]
+        return updatedUserCheck
+    }
+    function handleUserCheck(id){
+        setUserCheck((prevUserCheck)=>{
+            if(prevUserCheck[id]){
+                return removeUserCheck(id,prevUserCheck)
+            }else{
+                return addUserCheck(id,prevUserCheck)
+            }
+        })
+    }
+
+    // 유저 전체 체크
+    function checkAll(ids){
+        console.log("전체선택")
+        setUserCheck((prevUserCheck) => {
+            const allChecked = document.getElementById('idCheck').checked;
+    
+            return allUserCheck(prevUserCheck, allChecked, ids);
+        });
+    }
+    function allUserCheck(prevUserCheck,allChecked,ids){
+        const updatedUserCheck = {}
+        ids.forEach((id)=>{
+            updatedUserCheck[id] = true
+        })
+        if(allChecked){
+            return updatedUserCheck
+        }else{
+            return {}
+        }
+
+    }
+
+    // 리스트 정렬 버튼
     function handleButtonActive(button,desc){
         document.querySelectorAll('.sortButton').forEach((btn) => {
             btn.classList.remove('active')
@@ -35,14 +109,28 @@ export default function UserList(){
         }
     }
 
-    function handleSerchUser(){
+    // 검색버튼
+    async function handleSerchUser(){
         console.log("검색요청: type="+serchType+", word"+serchWord)
+        try {
+            const response = await axios.post('http://localhost:8080/api/user/List',{
+                serchType:serchType,
+                serchWord:serchWord,
+                serchGroup:serchGroup
+            });
+            
+            console.log('Server response:', response.data);
+            setUserList(response.data)
+            setIds(response.data.map(user => user.id))
+            
+        } catch (error) {
+            console.error('Error:', error);
+        }
     }
+    // 선택된 유저 삭제
     function handleDeleteUser(){
-        console.log("유저 삭제 : " )
-    }
-    function checkAll(){
-        console.log("전체선택")
+        console.log("유저 삭제")
+        console.log(userCheck)
     }
 
     return(
@@ -108,7 +196,7 @@ export default function UserList(){
                         type="checkbox"
                         id="checkAll"
                         name="checkall"
-                        onChange={checkAll}
+                        onChange={()=>checkAll({ids})}
                     />
                     아이디
                     <div id="idSortBlock">
@@ -140,6 +228,9 @@ export default function UserList(){
                         className="sortButton" onClick={()=>{handleButtonActive('lastupdate','desc')}}>
                         </button>
                     </div>
+                </div>
+                <div id="userListBody">
+                    <UserListBody userList={userList}/>
                 </div>
             </div>
         </div>

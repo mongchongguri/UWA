@@ -10,7 +10,7 @@ function WineDetailsPage() {
 
   useEffect(() => {
     axios
-      .post("/api/wine/idx", {
+      .post("http://localhost:8080/api/wine/idx", {
         Id: id,
       })
       .then((response) => {
@@ -20,12 +20,12 @@ function WineDetailsPage() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [id]);
 
   return (
     <div className="wine_detail_container">
       <div className="wine_detail_component">
-        {wineDetail.length == 0 ? (
+        {wineDetail.length === 0 ? (
           <p>정보가 없는 와인입니다.</p>
         ) : (
           <WineDetailComponent wineDetail={wineDetail} />
@@ -39,7 +39,7 @@ function WineDetailComponent({ wineDetail }) {
   return (
     <>
       <div className="wine_detail_img">
-        <img src={wineDetail.wine_image} />
+        <img src={wineDetail.wine_image} alt=""/>
       </div>
       <div className="wine_details_info">
         <ul className="wine_detail_list">
@@ -80,7 +80,7 @@ function WineDetailComponent({ wineDetail }) {
             <div className="wine_detail_aroma">아로마</div>
             <ul className="wine_aroma_list">
               {wineDetail.wine_aroma.map((aroma, i) => {
-                if (i + 1 == wineDetail.wine_aroma.length) {
+                if (i + 1 === wineDetail.wine_aroma.length) {
                   return <li>{aroma}</li>;
                 } else {
                   return (
