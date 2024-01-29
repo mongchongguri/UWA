@@ -1,9 +1,8 @@
-package com.uwa.uswine.user.jwt;
+package com.uwa.uswine.jwt;
 
 import java.util.Collection;
 import java.util.Iterator;
 
-import jakarta.servlet.http.Cookie;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -47,8 +46,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
 
         String username = customUserDetails.getUsername();
-        String nickname = customUserDetails.getNickname();
-
+        String nickname =customUserDetails.getNickName();
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         Iterator<? extends GrantedAuthority> iterator = authorities.iterator();
         GrantedAuthority auth = iterator.next();
@@ -69,15 +67,14 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 //
 //        }
 
+        System.out.println(role);
+
         if (role != null) {
             // Do something with the role
-            token = jwtUtil.createJwt(username, role, nickname, 60 * 60 * 10L);
+            token = jwtUtil.createJwt(username, role,nickname, 60 * 60 * 10000L);
         }
-
         System.out.println("SuccessfulLogin: " + token);
-
-        response.addHeader("Authorization", "Bearer "+token);
-
+        response.addHeader("Authorization", "Bearer " + token);
     }
 
     @Override

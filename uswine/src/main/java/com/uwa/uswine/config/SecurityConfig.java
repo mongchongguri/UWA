@@ -1,3 +1,5 @@
+package com.uwa.uswine.config;
+
 package com.uwa.uswine.user.config;
 
 import java.util.Collections;

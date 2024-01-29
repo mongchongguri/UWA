@@ -1,4 +1,4 @@
-package com.uwa.uswine.user.jwt;
+package com.uwa.uswine.jwt;
 
 import java.io.IOException;
 
@@ -39,6 +39,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 
     private String getTokenFromRequest(HttpServletRequest request) {
         String bearerToken = request.getHeader("Authorization");
+        System.out.println(bearerToken);
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
             return bearerToken.substring(7);
         }
