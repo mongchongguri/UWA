@@ -33,12 +33,15 @@ header {
 }
 
 #headerBtnBlock {
-  width: 300px;
-  height: 150px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   text-align: center;
+  margin-right: 30px;
+}
+
+#headerBtnBlock div {
+  margin-right: 50px;
 }
 
 #headerBtnBlock > a {
@@ -50,8 +53,17 @@ header {
   font-weight: 600;
 }
 
+#header_login_btn {
+  white-space: nowrap;
+}
+#header_login_btn span:nth-child(1) {
+  margin-right: 15px;
+}
 #headerNicknameBlock {
-  font-weight: 900;
+  margin-right: 20px !important;
+  color: #666;
+  font-size: 15px;
+  font-weight: 500;
 }
 
 #headerBottom {
@@ -78,18 +90,19 @@ header {
   font-size: 1.1rem;
 }
 
-.selectMenu {
+.header_selectMenu {
   background-color: #f3edea;
   padding: 10px 20px 20px 20px;
   border-radius: 10px;
 }
 
+.header_icon {
+  color: #c8beae;
+}
+.header_font {
+  font-size: 14px;
+}
 #logoutBtn {
   border: none;
   background-color: #fff;
-}
-.selectMenu {
-  background-color: #f3edea;
-  padding: 10px 20px 20px 20px;
-  border-radius: 10px;
 }
