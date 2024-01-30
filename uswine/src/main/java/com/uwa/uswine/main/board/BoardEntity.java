@@ -10,6 +10,7 @@ import java.util.Date;
 @Entity
 @Getter
 @Setter
+@ToString
 public class BoardEntity {
     @Id @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long id;

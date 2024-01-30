@@ -12,10 +12,12 @@ import java.util.Date;
 @AllArgsConstructor
 @ToString
 public class BoardDTO {
+    private Long id;
     private String nickname;
     private String title;
     private String content;
     private Date writedate;
+    private long recommend;
 
     public BoardEntity toEntity() {
         BoardEntity boardEntity = new BoardEntity();

@@ -19,6 +19,7 @@ function FreeBoard() {
   let [totalPages, setTotalPages] = useState(1);
   let [boardCount, setBoardCount] = useState();
 
+  let [initBoardList, setInitBoardList] = useState([]);
   let [freeBoardList, setFreeBoardList] = useState([]);
   let [viewBoardCount, setViewBoardCount] = useState(10);
   let [searchType, setSearchType] = useState(0);
@@ -39,13 +40,34 @@ function FreeBoard() {
       searchType: searchType,
       searchKeyword: keyword,
     }).then((data) => {
-      console.log(data);
       setBoardCount(data.totalElements);
       setTotalPages(data.totalPages);
-      setFreeBoardList(data.content);
-      setTotalPages(data.totalPages);
+      setInitBoardList(data.content);
     });
   }, [currentPage, searchbtn, viewBoardCount]);
+
+  useEffect(() => {
+    async function fetchData() {
+      let recommendList = [...initBoardList];
+      const init = initBoardList.map(async (board, i) => {
+        const data = await AuthApi("/api/board/countRecommend", {
+          boardIdx: board.id,
+        });
+        const comment = await AuthApi("/api/comment/countComment", {
+          boardIdx: board.id,
+        });
+        const recomment = await AuthApi("/api/comment/countReComment", {
+          boardIdx: board.id,
+        });
+        recommendList[i].recommend = data;
+        recommendList[i].comment = comment + recomment;
+      });
+
+      await Promise.all(init);
+      setFreeBoardList(recommendList);
+    }
+    fetchData();
+  }, [initBoardList]);
 
   function prevPageHandler() {
     if (currentPage > 1) {
@@ -117,6 +139,7 @@ function FreeBoard() {
         <ul className="board_list_container">
           <li>
             <ul className="board_info_container">
+              <li className="board_info_title"></li>
               <li className="board_info_title" style={{ color: "#666" }}>
                 제목
               </li>
@@ -141,11 +164,21 @@ function FreeBoard() {
             {freeBoardList !== undefined
               ? freeBoardList.map(function (board, i) {
                   return (
-                    <ul className="board_info_container" key={i}>
-                      <li>{board.title}</li>
+                    <ul className="board_info_container board_list" key={i}>
+                      <li>{board.id}</li>
+                      <li
+                        onClick={() => {
+                          navigate(`/board/${board.id}`);
+                        }}
+                      >
+                        {board.title}{" "}
+                        <span className="board_comment_count">
+                          {board.comment}
+                        </span>
+                      </li>
                       <li>{board.nickname}</li>
                       <li>{DateFormat(board.writedate)}</li>
-                      <li>0</li>
+                      <li>{board.recommend}</li>
                     </ul>
                   );
                 })
@@ -188,7 +221,6 @@ function FreeBoard() {
               if (e.key === "Enter") {
                 const page = e.target.value;
                 if (page >= 1 && page <= totalPages) {
-                  console.log("true");
                   document
                     .querySelector(".page_box")
                     .classList.remove("error_page");

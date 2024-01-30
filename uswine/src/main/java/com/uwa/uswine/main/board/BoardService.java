@@ -5,11 +5,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -21,7 +21,7 @@ public class BoardService {
             boardRepository.save(board);
             return 1;
         } catch (Exception e) {
-            return -1;
+            return 0;
         }
     }
 
@@ -40,5 +40,9 @@ public class BoardService {
             case 3: return boardRepository.findByNicknameContaining(boardPageDTO.getSearchKeyword(),pageable);
             default: return null;
         }
+    }
+
+    public Optional<BoardEntity> getBoardDetail(Long id) {
+        return boardRepository.findById(id);
     }
 }

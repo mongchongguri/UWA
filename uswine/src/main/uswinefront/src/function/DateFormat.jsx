@@ -13,7 +13,7 @@ function DateFormat(dateTimeString) {
   );
   return formattedDate.replace(
     /(\d{2})\/(\d{2})\/(\d{2}), (\d{2}):(\d{2})/,
-    "$3.$2.$1 $4:$5"
+    "$3.$1.$2 $4:$5"
   );
 }
 

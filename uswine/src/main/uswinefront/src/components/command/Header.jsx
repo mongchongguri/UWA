@@ -13,6 +13,10 @@ import {
   faNoteSticky,
   faBook,
   faAddressCard,
+  faWineGlass,
+  faDollarSign,
+  faUsers,
+  faChartSimple,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { jwtDecode } from "jwt-decode";
@@ -161,70 +165,114 @@ const Header = () => {
           </li>
         </ul>
       </div>
-      <div ref={boxRef} className="main_side_bar">
-        <div className="side_bar_menu_logo">
-          <img src={logo} />
-        </div>
-        <div className="side_bar_user_info">
-          <div>{jwtDecode(token)["nickname"]}</div> |
-          <div>
-            {jwtDecode(token)["role"] == "ROLE_USER"
-              ? "사용자"
-              : jwtDecode(token)["role"] == "ROLE_SELLER"
-              ? "판매자"
-              : "관리자"}
-          </div>
-        </div>
-        <div>
-          <ul className="side_bar_menu_container">
-            <li className="side_bar_menu_title">마이페이지</li>
-            <li>
-              <hr></hr>
-            </li>
-            <li className="side_bar_menu_list">
-              <FontAwesomeIcon icon={faStar} className="side_bar_menu_icon" />
-              즐겨찾기
-            </li>
-            <li className="side_bar_menu_list">
-              <FontAwesomeIcon icon={faUser} className="side_bar_menu_icon" />
-              정보 수정
-            </li>
-            <li className="side_bar_menu_list">
-              <FontAwesomeIcon
-                icon={faNoteSticky}
-                className="side_bar_menu_icon"
-              />
-              게시글 관리
-            </li>
-            <li className="side_bar_menu_list">
-              <FontAwesomeIcon icon={faBook} className="side_bar_menu_icon" />
-              다이어리
-            </li>
-            <Link
-              to="mypage/regist"
-              className={
-                currentPath.startsWith("/mypage/regist")
-                  ? "side_menu_list_select"
-                  : null
-              }
-            >
-              <li className="side_bar_menu_list">
-                <FontAwesomeIcon
-                  icon={faAddressCard}
-                  className="side_bar_menu_icon"
-                />
-                판매자 요청
-              </li>
-            </Link>
-            <li className="side_bar_menu_title">판매자</li>
-            <li>
-              <hr></hr>
-            </li>
-          </ul>
-        </div>
-      </div>
+      {token != "" ? (
+        <SideBar boxRef={boxRef} token={token} currentPath={currentPath} />
+      ) : null}
     </header>
   );
 };
+
+function SideBar({ boxRef, token, currentPath }) {
+  return (
+    <div ref={boxRef} className="main_side_bar">
+      <div className="side_bar_menu_logo">
+        <img src={logo} />
+      </div>
+      <div className="side_bar_user_info">
+        <div>{jwtDecode(token)["nickname"]}</div> |
+        <div>
+          {jwtDecode(token)["role"] == "ROLE_USER"
+            ? "사용자"
+            : jwtDecode(token)["role"] == "ROLE_SELLER"
+            ? "판매자"
+            : "관리자"}
+        </div>
+      </div>
+      <div>
+        <ul className="side_bar_menu_container">
+          <li className="side_bar_menu_title">마이페이지</li>
+          <li>
+            <hr></hr>
+          </li>
+          <li className="side_bar_menu_list">
+            <FontAwesomeIcon icon={faStar} className="side_bar_menu_icon" />
+            즐겨찾기
+          </li>
+          <li className="side_bar_menu_list">
+            <FontAwesomeIcon icon={faUser} className="side_bar_menu_icon" />
+            정보 수정
+          </li>
+          <li className="side_bar_menu_list">
+            <FontAwesomeIcon
+              icon={faNoteSticky}
+              className="side_bar_menu_icon"
+            />
+            게시글 관리
+          </li>
+          <li className="side_bar_menu_list">
+            <FontAwesomeIcon icon={faBook} className="side_bar_menu_icon" />
+            다이어리
+          </li>
+          <Link
+            to="mypage/regist"
+            className={
+              currentPath.startsWith("/mypage/regist")
+                ? "side_menu_list_select"
+                : null
+            }
+          >
+            {jwtDecode(token)["role"] == "ROLE_USER" ? (
+              <>
+                <li className="side_bar_menu_list">
+                  <FontAwesomeIcon
+                    icon={faAddressCard}
+                    className="side_bar_menu_icon"
+                  />
+                  판매자 요청
+                </li>
+              </>
+            ) : null}
+          </Link>
+          {jwtDecode(token)["role"] == "ROLE_SELLER" ? (
+            <>
+              <li className="side_bar_menu_title">판매자 페이지</li>
+              <li>
+                <hr></hr>
+              </li>
+              <li className="side_bar_menu_list">
+                <FontAwesomeIcon
+                  icon={faWineGlass}
+                  className="side_bar_menu_icon"
+                />
+                와인 판매
+              </li>
+              <li className="side_bar_menu_list">
+                <FontAwesomeIcon
+                  icon={faDollarSign}
+                  className="side_bar_menu_icon"
+                />
+                판매 관리
+              </li>
+              <li className="side_bar_menu_list">
+                <FontAwesomeIcon
+                  icon={faUsers}
+                  className="side_bar_menu_icon"
+                />
+                고객 관리
+              </li>
+              <li className="side_bar_menu_list">
+                <FontAwesomeIcon
+                  icon={faChartSimple}
+                  className="side_bar_menu_icon"
+                />
+                판매 분석
+              </li>
+            </>
+          ) : null}
+        </ul>
+      </div>
+    </div>
+  );
+}
 
 export default Header;

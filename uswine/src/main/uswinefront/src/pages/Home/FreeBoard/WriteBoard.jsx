@@ -9,10 +9,21 @@ import AuthApi from "../../../AuthApi";
 import AWS from "aws-sdk";
 
 function WriteBoard() {
+  const token = localStorage.getItem("token") || "";
+  if (token == "") {
+    alert("권한이 없습니다.");
+    window.history.back();
+    return <></>;
+  } else {
+    const userinfo = jwtDecode(token);
+    return <WriteBoardComponent userinfo={userinfo} />;
+  }
+}
+
+function WriteBoardComponent({ userinfo }) {
   const quillRef = useRef(null);
 
-  const token = localStorage.getItem("token");
-  const nickname = jwtDecode(token).nickname;
+  const nickname = userinfo.nickname;
 
   let [title, setTitle] = useState();
   let [content, setContent] = useState();
@@ -66,15 +77,7 @@ function WriteBoard() {
           [{ header: [1, 2, 3, 4, 5, false] }],
           [{ align: [] }],
           [{ size: ["small", false, "large", "huge"] }],
-          [
-            "bold",
-            "underline",
-            "italic",
-            "underline",
-            "strike",
-            "blockquote",
-            "image",
-          ],
+          ["bold", "underline", "italic", "strike", "blockquote", "image"],
           [
             { list: "ordered" },
             { list: "bullet" },
