@@ -1,4 +1,4 @@
-package com.uwa.uswine.user.jwt;
+package com.uwa.uswine.jwt;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
@@ -35,8 +35,7 @@ public class JWTUtil {
 
         return Jwts.parser().verifyWith(secretKey).build().parseSignedClaims(token).getPayload().get("role", String.class);
     }
-
-    public String getNickname(String token) {
+    public String getNickName(String token) {
 
         return Jwts.parser().verifyWith(secretKey).build().parseSignedClaims(token).getPayload().get("nickname", String.class);
     }
@@ -46,7 +45,7 @@ public class JWTUtil {
         return Jwts.parser().verifyWith(secretKey).build().parseSignedClaims(token).getPayload().getExpiration().before(new Date());
     }
 
-    public String createJwt(String username, String role,String nickname, Long expiredMs) {
+    public String createJwt(String username, String role, String nickname,Long expiredMs) {
 
         System.out.println("ROLE: "+role);
 

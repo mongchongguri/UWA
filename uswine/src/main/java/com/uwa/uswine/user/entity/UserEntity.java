@@ -1,5 +1,8 @@
 package com.uwa.uswine.user.entity;
 
+
+
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -26,6 +29,8 @@ public class UserEntity {
     private String address;
     @Column(length = 50, nullable = false, unique = true)
     private String phone;
+    @Column(nullable=false)
+    private String joindate;
     @Enumerated(EnumType.STRING)
     private Role role;
 

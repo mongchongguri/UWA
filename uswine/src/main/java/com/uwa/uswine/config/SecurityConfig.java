@@ -1,4 +1,5 @@
-package com.uwa.uswine.user.config;
+package com.uwa.uswine.config;
+
 
 import java.util.Collections;
 
@@ -13,13 +14,12 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
-import com.uwa.uswine.user.jwt.JWTUtil;
-import com.uwa.uswine.user.jwt.JwtTokenFilter;
-import com.uwa.uswine.user.jwt.LoginFilter;
+import com.uwa.uswine.jwt.JWTUtil;
+import com.uwa.uswine.jwt.JwtTokenFilter;
+import com.uwa.uswine.jwt.LoginFilter;
 
 import jakarta.servlet.http.HttpServletRequest;
 

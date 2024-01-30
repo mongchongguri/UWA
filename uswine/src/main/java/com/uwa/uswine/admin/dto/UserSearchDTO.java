@@ -1,4 +1,4 @@
-package com.uwa.uswine.user.dto;
+package com.uwa.uswine.admin.dto;
 
 
 import lombok.AllArgsConstructor;
@@ -12,4 +12,8 @@ public class UserSearchDTO {
 	private String searchType;
 	private String searchWord;
 	private String searchGroup;
+	private String searchStartDate;
+	private String searchEndDate;
+	private int page;
+	private String searchDESC;
 }
