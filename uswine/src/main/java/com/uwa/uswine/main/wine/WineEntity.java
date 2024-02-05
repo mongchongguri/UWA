@@ -7,11 +7,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Document(collection = "winelist")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
