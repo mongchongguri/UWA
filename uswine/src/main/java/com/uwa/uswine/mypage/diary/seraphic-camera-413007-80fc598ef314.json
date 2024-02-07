@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "seraphic-camera-413007",
+  "private_key_id": "80fc598ef3142412c019ebfdb99cc4dd82b5a8a4",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCXDnSzm9GCgY64\ny0QGH5DLnKoD4x4OEe8ld1BlJd2ptlpQ8Q5zoAkiID/3rcuf3sU2hHsqWeFzvK3g\nknmvaUNlAlQrpWU5yAN7M4hpO9e7qD6OOrslfuWb4Nt/irzfpUf0pFar2WPuEnB3\nXNoFBdiXhSr5tmtkRYL5pN+r4jcdxV4kN/qp8no3si0sRPecCBxVzG6ZFeMK17Od\nhGY+p4biyhXfPEoWm9Oann6SDsI+3HX3TjFWh6ubO5CTKKcOH+qQm7N9+gHVoro6\nLYkT5cjbaCDXOLHLA6eENYoOwBK7ui3AlmTIZhIWLIJxzPPm4A0ae73andSZ4Yon\nYBdZqEu3AgMBAAECggEAByoRp+XqhGjC2gnhLCcs6QAa4i9QVBuB2HWPU+GW+n8i\nS0RIZElOImO3YcOVuXt8pm7KU3WXp00aGnrn/l7p0HpRTENxolFvTm8UKuWPM4b+\nj74owe9oUkHSansSi5e26qf56MTZPZSugXX40y2PtCc5Pnm3IANAYh9YCm3V7l/4\nEesIwW8YLIaK6yeV+g5QiKaKoLbpeK7WAzDKfNY4vPP0IKxKe6h32Hg1Hr61V868\nrmSJGCq/NVH758gbvW0QHRayCel9hBQxTlYG8bPaOD1SAoW4WjqHww1Hod9wtp5V\noorw4yDHhrxbYQKsQ55mhD3Fd2HSrRjJYJk162YRTQKBgQDGJmGYR5p/TeL6QQ12\nGgXC4hzSNM0J5zyMRnTp+xrsC/X8n7mTtSBBEX/Yn961uj9AoZkAm3IowQqQHjrK\nhAeA3B24V3D/8XKVKdBJBP6OJnrcWyFPAjYqZ4OZR/rwrZLJa7zztCWrz9c1ThSO\nw491Q5GkNcj87XCVigP6+ZcvKwKBgQDDKFW9bXud4K64fZ6tA+iFqmqUE7VXpQjO\n7rn0yZK30MixfzCelTmxNi/apvdBHKTxYIMVYPhsb8QrQxu+Fos6V/4hlELeAFim\nlt9B4Dz/UUjD+6G8i3AE3An35XF26hFluablE+I5dhp8mzqTWdT3uEC1nw8Q+ExI\nXjDJtaovpQKBgQCYA73/u38Vh0VIxDt1jYU5+4os4gEjRdk3rJ3pG5GN4ac3xbnz\nTZOPF8PDBvMu69G23cKpqpesGFzoL6je0OeIvlW2pK62TB+hu9BlFIXNvEupXehx\n2rp/UaauI4CqwB7Kk/MD7AKyiuMJq/stg249gjbria/GCsrCjn17P5vyvQKBgQCI\nd7gdEmYS7H7BO/atfcInVhfZHD7+3sTeD0mxxxL1vuXYWNyiyC7joMSt3Xug6Gre\n72I6nOiayz0eE3te3VzWm5l12bs4in1zYKUV57w/vZNomJlswwS+ITBHTQae5Obt\nf3kZT2IuVEwJPnMjfvnRj+KQHn3mm/qb0GHFa2dqkQKBgETEoSv+Epqtq0jZRzDG\ndgDhs7Qf+49S5Pxs5OuYR/8PMA+3XRN1MbS5Ks/t2fLWEG4d4Q5VpvxHSuEaOb+q\nYD4DjElk7If6DAYsMDbWSJEYs89A0accviYcISUIv8a/8+XSD4VLmbca/BAtO0Ez\nTuQZ2iQ1O1OXSNRsMsK+UYnu\n-----END PRIVATE KEY-----\n",
+  "client_email": "dpqbwl@seraphic-camera-413007.iam.gserviceaccount.com",
+  "client_id": "114194143490070503019",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dpqbwl%40seraphic-camera-413007.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

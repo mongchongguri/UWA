@@ -113,7 +113,7 @@ function NoticeWriteComponent() {
     });
   };
   return (
-    <div className="write_container">
+    <div className="admin_write_container">
       <div className="board_container">
         <input
           id="board_title"

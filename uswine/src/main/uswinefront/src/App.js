@@ -28,6 +28,7 @@ import AdminNotice from "./pages/admin/notice/AdminNotice";
 import NoticeWrite from "./pages/admin/notice/NoticeWrite";
 import AdminNoticeDetail from "./pages/admin/notice/AdminNoticeDetail";
 import UserList from "./pages/admin/userList/UserList"
+import Diary from "./pages/mypage/Diary/Diary";
 function App() {
   return (
     <div className="App">
@@ -51,6 +52,7 @@ function App() {
           <Route path="mypage/regist" element={<SellerRegistrationPage />} />
           <Route path="mypage/chat" element={<Chatting />} />
           <Route path="mypage/chat/room/:id?" element={<Chatting />} />
+          <Route path="mypage/diary" element={<Diary />} />
           {/* 판매자 페이지 */}
           <Route path="seller/wine" element={<SellerWine />} />
           <Route path="seller/management" element={<SalesManagement />} />

@@ -49,6 +49,7 @@ const Header = () => {
       })
       .catch((error) => {
         console.error(error);
+        navigate("/");
       });
   };
 
@@ -142,7 +143,7 @@ const Header = () => {
           <li>
             <Link
               to="/"
-              className={currentPath == "/" ? "header_selectMenu" : null}
+              className={currentPath == "/" || currentPath.startsWith("/wine") ? "header_selectMenu" : null}
             >
               전체 와인
             </Link>
@@ -240,10 +241,19 @@ function SideBar({ boxRef, token, currentPath }) {
             />
             게시글 관리
           </li>
+          <Link
+              to="mypage/diary"
+              className={
+                currentPath.startsWith("/mypage/diary")
+                    ? "side_menu_list_select"
+                    : null
+              }
+          >
           <li className="side_bar_menu_list">
             <FontAwesomeIcon icon={faBook} className="side_bar_menu_icon" />
             다이어리
           </li>
+          </Link>
           <Link
             to="mypage/chat"
             className={
