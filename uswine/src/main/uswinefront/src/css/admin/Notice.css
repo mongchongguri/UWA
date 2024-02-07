@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: content-box;
+  }
+  #noticeList{
+    position:absolute;
+    top:80px;
+    left:300px;
+    width: calc(100% - 400px);
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 30px;
+    margin: auto;
+  }
+  #noticeListHead{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    background-color: #000000;
+  }
+  #headColumn_notice{
+    color: #ffffff;
+  }
+  .headTitle{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+  }
+  .headWriteDate{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+  }
+  #noticeListFoot{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .notice_page_controller{
+    display: flex;
+    position:relative;
+    flex-direction: row;
+    /* margin-left: 100px; */
+  }
+  
+  .notice_page_box{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 7px;
+    margin-top: 7px;
+  }
+
+  #buttonArea_notice{
+    width: 100%;
+    display:flex;
+    justify-content: flex-end;
+  }
+
+  #notice_detail_Foot{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .notice_detail_page_controller{
+    display: flex;
+    position:relative;
+    flex-direction: row;
+    /* margin-left: 100px; */
+  }
+  
+  .notice_detail_page_box{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 7px;
+    margin-top: 7px;
+  }
+
+
+
+  .deleteNotice_button{
+    width: 70px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  #notice_writeButton{
+    width: 70px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+
+  .admin_notice_comment_count {
+    border: 1px solid #888;
+    color: #ff8080;
+    border-radius: 10px;
+    font-size: 12px;
+    margin-left: 10px;
+    padding: 0px 10px;
+    display: flex;
+    align-items: center;
+  }

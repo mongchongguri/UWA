@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: content-box;
+  }
+
+  #requestList{
+    position:absolute;
+    top:80px;
+    left:300px;
+    width: calc(100% - 400px);
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 30px;
+    margin: auto;
+  }
+
+  #requestListHead{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    background-color: #000000;
+  }
+
+  .headEmail{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+  }
+  .headPhone{
+    width: 12%;
+  }
+  .headBank{
+    width: 10%;
+    display: flex;
+    justify-content: center;
+  }
+  .headAccount{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+  }
+  #headColumn_request{
+    color: #ffffff;
+  }
+
+  #buttonArea_seller{
+    display: flex;
+    width: 15%;
+    justify-content: center;
+  }
+  #confirm{
+    margin-right: 18%;
+  }
+
+  #requestListFoot{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .seller_page_controller{
+    display: flex;
+    position:relative;
+    flex-direction: row;
+    /* margin-left: 100px; */
+  }
+  
+  .seller_page_box{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 7px;
+    margin-top: 7px;
+  }

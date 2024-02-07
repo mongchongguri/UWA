@@ -6,6 +6,7 @@ import com.uwa.uswine.main.board.dto.ReCommendDTO;
 import com.uwa.uswine.main.board.entity.BoardEntity;
 import com.uwa.uswine.main.board.service.BoardService;
 import com.uwa.uswine.main.board.service.ReCommendService;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;

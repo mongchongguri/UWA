@@ -4,6 +4,8 @@ import com.uwa.uswine.seller.management.entity.SellerEntity;
 import com.uwa.uswine.seller.management.repository.SalesManagementSellerRepository;
 import com.uwa.uswine.seller.management.repository.SalesManagementSqlRepository;
 import com.uwa.uswine.seller.sellWine.entity.SellWineSqlEntity;
+import com.uwa.uswine.user.repository.UserRepository;
+
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

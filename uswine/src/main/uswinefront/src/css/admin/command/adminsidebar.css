@@ -1,0 +1,88 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#adminSideBar{
+  position:fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 270px;
+  height: 100vh;
+  background-color: #272829;
+}
+
+#adminCompanyLogo{
+  width: 270px;
+  height: 200px;
+  line-height: 40px;
+  text-align: center;
+  background-color: #0a0a0b;
+  font-weight: 600;
+}
+
+#adminCompanyLogo > img{
+  width: 140px;
+  height: 170px;
+  margin-top: 15px;
+}
+
+
+#adminMenu {
+  width: 170px;
+  margin: 0 auto;
+  padding: 0px;
+  margin-top: 40px;
+}
+
+#adminMenuMainmenu {
+  width: 170px;
+  height: calc(100% - 200px);
+  padding: 0;
+}
+
+#adminMenuMainmenu > li{
+  font-size: 18px;
+  padding: 5px 0;
+}
+
+#adminMenuMainmenu > li > span{
+  display: inline-block;
+  width: 170px;
+  height: 50px;
+  line-height: 70px;
+  background-color:#272829;
+  color: #949494;
+  font-size: 13px;
+  font-weight: 800;
+  border-bottom: 0.2px solid white;
+}
+
+.adminMenuSubmenu{
+  padding: 0;
+  width: 170px;
+  font-size: 16px;
+}
+
+.adminMenuSubmenu > li {
+  width: 170px;
+  height: 40px;
+  line-height: 30px;
+  padding-left:5px;
+}
+
+.adminMenuSubmenu > li > a{
+  display: inline-block;
+  width: 170px;
+  text-decoration: none;
+  height: 40px;
+  line-height: 40px;
+  color: #949494;
+  background-color: #272829;
+  font-weight: 700;
+}
+
+
+

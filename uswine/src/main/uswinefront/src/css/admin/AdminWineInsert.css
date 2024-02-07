@@ -1,0 +1,103 @@
+
+#admin_wine_insert_container {
+    position:absolute;
+    top:80px;
+    left:300px;
+    width: calc(100% - 300px);
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 30px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+    #admin_wine_insert_img{
+        height: 100px;
+    }
+    #admin_wine_info_insert{
+        display: flex;
+        flex-direction: column;
+        width: 500px;
+    }
+    #admin_wine_info_insert span{
+        font-size: 13px;
+        display: flex;
+        margin-left: auto;
+    }
+    .admin_wine_info{
+        margin-bottom: 20px;
+    }
+    #input_wine_region{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+    #input_wine_region input{
+        margin-bottom:10px
+    }
+    #input_wine_taste input{
+        margin-bottom:10px;
+    }
+    #input_wine_degree{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+    #input_wine_degree input{
+        margin-bottom:10px;
+    }
+
+    #admin_wine_aroma_insert{
+        width: 500px;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    #admin_wine_aroma_insert span{
+        margin-right: 107px;
+    }
+    
+
+    #input_wine_taste{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+    #admin_wine_info_taste{
+        display: flex;
+        align-items: center;
+    }
+    #admin_wine_info_taste span{
+        font-size: 20px;
+        margin-left: 0;
+        margin-right : 55px;
+    }
+    #admin_wine_info_taste input{
+        margin-bottom: 0;
+        margin-left: 10px;
+        margin-right: 50px;
+        
+    }
+    #admin_wine_info_taste label{
+        font-size: 15px;
+        margin-left: 0;
+        display: flex;
+    }
+
+    .wine_insert_title{
+        margin-bottom: 50px;
+    }
+    #admin_wineImg_insert{
+        width: 500px;
+        margin-bottom: 20px;
+        display: flex;
+    }
+    #admin_wineImg_insert span{
+        margin-right: 10px;
+    }
+    #inputImg{
+        width: 68%;
+    }
+

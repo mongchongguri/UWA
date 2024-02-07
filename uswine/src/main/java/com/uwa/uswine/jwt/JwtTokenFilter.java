@@ -1,4 +1,4 @@
-package com.uwa.uswine.user.jwt;
+package com.uwa.uswine.jwt;
 
 import java.io.IOException;
 

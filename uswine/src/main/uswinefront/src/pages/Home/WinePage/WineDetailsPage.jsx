@@ -154,38 +154,30 @@ function WineSellInfoComponent({ wineDetail }) {
   }, []);
 
   useEffect(() => {
-    const container = document.querySelector("#map");
-    const options = {
-      center: new kakao.maps.LatLng(33.450701, 126.570667),
-      level: 3,
-    };
+    const script = document.createElement("script");
+    script.async = true;
+    script.src =
+      "//dapi.kakao.com/v2/maps/sdk.js?appkey=a912192bd381e7addd457d5ba6ddd1b1&libraries=services&autoload=false";
+    document.head.appendChild(script);
 
-    const map = new kakao.maps.Map(container, options);
-
-    const zoomControl = new kakao.maps.ZoomControl();
-    map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-
-    const imageSrc =
-      "https://mongchongguriforum.s3.ap-northeast-2.amazonaws.com/maker.png";
-    const imageSize = new kakao.maps.Size(64, 80);
-    const imageOption = { offset: new kakao.maps.Point(27, 69) };
-
-    const markerImage = new kakao.maps.MarkerImage(
-      imageSrc,
-      imageSize,
-      imageOption
-    );
-    const markerPosition = new kakao.maps.LatLng(33.450701, 126.570667);
-
-    const marker = new kakao.maps.Marker({
-      position: markerPosition,
-      image: markerImage,
+    script.addEventListener("load", () => {
+      if(kakao != undefined) {
+        kakao.maps.load(() => {
+          const container = document.getElementById("map");
+          const options = {
+            center: new kakao.maps.LatLng(33.450701, 126.570667),
+            level: 3,
+          };
+  
+          const map = new kakao.maps.Map(container, options);
+          var geocoder = new kakao.maps.services.Geocoder();
+          const zoomControl = new kakao.maps.ZoomControl();
+          map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+        });
+      }
     });
-
-    marker.setMap(map);
   }, []);
 
-  console.log(stores.length);
   return (
     <div className="wine_sell_info">
       <p style={{ fontSize: "20px", fontWeight: "900" }}>와인 판매처</p>

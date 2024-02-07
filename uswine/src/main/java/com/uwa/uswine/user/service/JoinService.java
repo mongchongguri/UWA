@@ -33,5 +33,13 @@ public class JoinService {
 		message.setText(mailDto.getMessage());
 		javaMailSender.send(message);
 	}
+
+	public int checkNickName(String nickname) {
+		UserEntity entity = userRepository.findByNickname(nickname);
+		if(entity==null) {
+			return -1;
+		}
+		return 1;
+	}
 	
 }

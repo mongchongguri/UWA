@@ -9,6 +9,7 @@ import java.util.List;
 @Repository
 public interface ChattingRoomRepository extends JpaRepository<ChattingRoomEntity,Long> {
     List<ChattingRoomEntity> findByUserEmailOrSellerEmail(String email1,String email2);
+    List<ChattingRoomEntity> findBySellerEmail(String email1);
     ChattingRoomEntity findBySellItemIdAndAndSellerEmailAndUserEmail(String item,String sellerEmail,String userEmail);
     ChattingRoomEntity findById(long room);
 }

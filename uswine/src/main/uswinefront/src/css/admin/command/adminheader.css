@@ -1,0 +1,90 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#adminHeader{
+  position: fixed;
+  z-index: 999;
+  background-color: white;;
+  top:0;
+  left: 270px;
+  width: calc(100% - 270px);
+  height: 80px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+}
+
+#adminHeaderTitle {
+  width: 300px;
+  height: 50px;
+  margin-top: 15px;
+  margin-left: 10px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+#adminHeaderTitle > div {
+  display: inline-block;
+  width: 105px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 18px;
+  font-weight: 800;
+  padding-left: 10px;
+  border-left: 1px solid #bbb;
+}
+
+#adminUserInfo{
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+#adminUserInfoUsername {
+  width: 300px;
+  height: 50px;
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: 800;
+  padding-left: 10px;
+  border-left: 1px solid #bbb;
+  color: #aaa;
+}
+
+#adminUserInfoUsername > div {
+  display: inline-block;
+  width: 105px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 18px;
+  font-weight: 800;
+  color: black;
+  padding-left: 20px;
+}
+
+#adminUserLogoutBtn {
+  width: 150px;
+  height: 50px;
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: 800;
+  padding-left: 10px;
+  border-left: 1px solid #bbb;
+  color: #aaa;
+}
+
+#adminUserLogoutBtn > button {
+  width: 80px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 18px;
+  font-weight: 800;
+  color: #aaa;
+  padding-left: 10px;
+  background-color: white;
+  border: none;
+}
+

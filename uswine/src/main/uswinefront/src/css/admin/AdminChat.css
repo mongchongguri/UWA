@@ -1,0 +1,181 @@
+.admin_chat_List_container{
+    position:absolute;
+    top:80px;
+    left:300px;
+    width: calc(100% - 400px);
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 30px;
+    margin: auto;
+}
+    #admin_chat_title{
+        margin-bottom: 30px;
+    }
+
+    .admin_chat_room{
+        display: flex;
+    }
+
+    .admin_chat_room_list {
+        display: flex;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        flex: 1;
+        background-color: #f5f5f5;
+    }
+
+    .admin_chat_room_list_ul {
+        width: 100%;
+    }
+
+    .admin_join_chat_room {
+        background-color: #897a69;
+        color: white;
+    }
+    .admin_join_chat_room button {
+        color: white !important;
+    }
+
+    .admin_chat_room_list_ul li {
+        display: flex;
+        width: 90%;
+        padding: 10px;
+    }
+
+    .admin_seller_chatting {
+        flex: 5;
+        cursor: pointer;
+        margin-right: 15px;
+        font-size: 15px;
+        display: flex;
+    }
+
+    .admin_chatting_remove {
+        flex: 1;
+    }
+    .admin_chatting_remove button {
+        border: none;
+        background-color: transparent;
+        color: #ff8888;
+        font-size: 18px;
+    }
+
+    .admin_chatting_container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 3;
+        background-color: white;
+    }
+
+    .admin_chatting_box {
+        display: flex;
+        flex-direction: column;
+        height: 500px;
+        padding: 20px 10px;
+        width: 80%;
+        overflow-y: scroll;
+    }
+    .admin_not_room {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .admin_input_chat_container {
+        display: flex;
+        justify-content: center;
+        width: 80%;
+        padding: 10px;
+    }
+
+    .admin_input_box {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        border-radius: 15px;
+        padding: 10px;
+        border: 1px solid #999;
+    }
+
+    .admin_input_chat {
+        width: 100%;
+        margin-left: 10px;
+        margin-right: 10px;
+        border: none;
+        outline: none;
+    }
+
+    .admin_chat_submit {
+        width: 50px;
+        height: 40px;
+        border-radius: 10px;
+        border: none;
+        background-color: #999;
+        color: white;
+    }
+
+    .admin_chat_submit:hover {
+        background-color: #897a69;
+    }
+
+    .admin_me_chat_container,
+    .admin_you_chat_container {
+        width: 100%;
+        display: flex;
+        padding-right: 20px;
+    }
+
+    .admin_me_chat_container ul {
+        display: flex;
+        flex-direction: column;
+        margin-right: auto;
+    }
+
+    .admin_me_chat_container li {
+        margin-right: auto;
+        text-align: start;
+    }
+
+    .admin_you_chat_container ul {
+        display: flex;
+        flex-direction: column;
+        margin-left: auto;
+    }
+
+    .admin_you_chat_container li {
+        margin-left: auto;
+        text-align: right;
+    }
+
+    .admin_me_chat_container li:nth-child(2) {
+        background-color: #f5f5f5;
+    }
+
+    .admin_you_chat_container li:nth-child(2) {
+        background-color: #897a69;
+        color: white;
+    }
+
+    .admin_chatting_box li:nth-child(2) {
+        word-wrap: break-word;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+
+    .admin_chatting_box li:nth-child(3) {
+        font-size: 13px;
+        color: #888;
+    }
+    
+    .newChat {
+        border: 1px solid #888;
+        color: #ff8080;
+        border-radius: 10px;
+        font-size: 12px;
+        
+        padding: 0px 10px;
+        display: flex;
+        align-items: center;
+      }

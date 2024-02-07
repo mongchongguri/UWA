@@ -1,6 +1,5 @@
 package com.uwa.uswine.config;
 
-import com.uwa.uswine.user.jwt.JWTUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -10,6 +9,8 @@ import org.springframework.messaging.simp.stomp.StompCommand;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.messaging.support.ChannelInterceptor;
 import org.springframework.stereotype.Component;
+
+import com.uwa.uswine.jwt.JWTUtil;
 
 import java.nio.file.AccessDeniedException;
 

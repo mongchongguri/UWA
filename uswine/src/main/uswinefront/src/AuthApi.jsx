@@ -1,20 +1,15 @@
 import axios from "axios";
 export default async function AuthApi(url, data) {
-  return await axios
-    .create({
-      headers: {
-        Authorization: localStorage.getItem("token"),
-      },
+  return(
+    await axios.create({
+        headers:{
+            'Authorization': localStorage.getItem('token'),
+        }
+    }).post(url,data)
+    .then((response)=>{
+        return response.data;
+    }).catch((error) => {
+          console.log(error);
     })
-    .post(url, data)
-    .then((response) => {
-      if (response.data === -1) {
-        alert("권한이 없습니다.");
-        window.history.back();
-      }
-      return response.data;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  )
 }

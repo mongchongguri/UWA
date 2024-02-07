@@ -3,6 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import axios from 'axios'
 import '../../css/join/join.css'
 import PopupPostCode from "./Popup"
+import AuthApi from "../../AuthApi";
 
 export default function JoinPage(){
     const [email,setEmail] = useState('')
@@ -12,6 +13,7 @@ export default function JoinPage(){
 
     const [inputNum,setInputNum] = useState('')
     const [isEmailCheck,setIsEmailCheck] = useState('false')
+    const [isNickNameCheck,setIsNickNameCheck] = useState('false')
 
     const [password,setPassword] = useState('')
     const [passwordCheck,setPasswordCheck] = useState('')
@@ -47,7 +49,7 @@ export default function JoinPage(){
 
     async function sendEmail(){
         try{
-            const response = await axios.post('http://localhost:8080/api/user/sendEmail',{
+            const response = await axios.post('/api/user/sendEmail',{
                 address:email
             })
             setOpenEmailCheck('true')
@@ -65,44 +67,61 @@ export default function JoinPage(){
             sendEmail()
         }
     }
-
+    function checkNickName(){
+        if(nickname!==''){
+            AuthApi('api/user/checkNickName',{
+                nickname
+            }).then((data)=>{
+                console.log(data)
+                if(data===1){
+                    alert('중복되는 닉네임입니다')
+                    setIsNickNameCheck('false')
+                }else if(data === -1){
+                    alert('사용가능한 닉네임 입니다.')
+                    setIsNickNameCheck('true')
+                }
+            })
+        }else{
+            alert('닉네임을 입력해주세요')
+            document.getElementById('inputJoinNickName').focus()
+        }
+    }
     async function handleSubmit() {
-        
-        
         const textAddress = postcode+" "+address+" "+detailAddress
-        if(isEmailCheck === 'true'){
-            if(residentCheck ==='true'){
-                if(password === passwordCheck){
-                    try {
-                        const response = await axios.post('/api/user/join', {
+        // if(isEmailCheck === 'true'){
+        //     if(residentCheck ==='true'){
+        //         if(password === passwordCheck){
+        //             if(isNickNameCheck === 'true'){
+                        AuthApi('/api/user/join',{
                             email: email,
                             password: password,
                             nickname: nickname,
                             address: textAddress,
                             phone: phone
-                        });
-                        
-                        console.log('Server response:', response.data);
-                        if(response.data === "join successful"){
-                            window.location.href='/login';
-                        }else{
-                            window.location.href='/join';
-                        }
-                    } catch (error) {
-                        console.error('Error:', error);
-                    }
-                }else{
-                    alert("비밀번호가 일치하지 않습니다.")
-                    document.getElementById('passwordCheck').focus();
-                }
-            }else{
-                alert('주민등록번호 인증을 해주세요')
-                document.getElementById('frontResident').focus();
-            }
-        }else{
-            alert('이메일 인증을 해주세요.')
-            document.getElementById('email').focus();
-        }
+                        }).then((data)=>{
+                            console.log('Server response:', data);
+                            if(data === "join successful"){
+                                window.location.href='/login';
+                            }else{
+                                window.location.href='/join';
+                            }
+                        })
+        //             }else{
+        //                 alert("닉네임 중복확인을 해주세요.")
+        //                 document.getElementById('inputJoinNickName').focus()
+        //             }
+        //         }else{
+        //             alert("비밀번호가 일치하지 않습니다.")
+        //             document.getElementById('passwordCheck').focus();
+        //         }
+        //     }else{
+        //         alert('주민등록번호 인증을 해주세요')
+        //         document.getElementById('frontResident').focus();
+        //     }
+        // }else{
+        //     alert('이메일 인증을 해주세요.')
+        //     document.getElementById('email').focus();
+        // }
     }
     return(
         <div id="joinBlock">
@@ -200,6 +219,9 @@ export default function JoinPage(){
                         placeholder="닉네임"
                         onChange={(e)=>setNickName(e.target.value)}
                     />
+                    <Button id="checkNickNameButton" variant="light" onClick={checkNickName} >
+                        중복확인
+                    </Button>
                 </div>
                 <div id="inputAddressBlock">
                     <div id ='postCodeBlock'>

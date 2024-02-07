@@ -1,0 +1,142 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: content-box;
+  }
+
+    .admin_notice_detail_container {
+        position:absolute;
+        top:80px;
+        left:300px;
+        width: calc(100% - 400px);
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+        margin: auto;
+    }
+  
+    .admin_notice_details_container {
+        padding: 50px;
+        background-color: white;
+        border-radius: 10px;
+    }
+    .notice_detail_title {
+        font-size: 25px;
+        font-weight: 500;
+    }
+      
+    .notice_detail_info_container {
+        display: flex;
+    }
+      
+    .notice_detail_info_container div {
+        margin-right: 10px;
+        font-size: 15px;
+        color: #777;
+    }
+    .notice_detail_content {
+        margin-top: 50px;
+    }
+      
+
+    
+    
+    
+    .notice_recomment_container{
+        color: #999999;
+    }
+      
+      
+    .admin_notice_comment_container {
+        background-color: white;
+        padding: 10px;
+        border: 1px solid #ccc;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    #buttonArea_notice_detail{
+        display:flex;
+        margin-top: 60px;
+    }
+    #NoticeCommentListHead{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        height: 60px;
+        background-color: #000000;
+    }
+    
+    .headNick{
+        width: 20%;
+        display: flex;
+        justify-content: center;
+        margin-left: 10%;
+    }
+    .headContent{
+        width: 41%;
+        display: flex;
+        justify-content: center;
+    }
+    .headWriteDate{
+        width: 15%;
+        display: flex;
+        justify-content: center;
+    }
+    .headComment-Recomment{
+        width: 12%;
+        display: flex;
+        justify-content: center;
+    }
+    #headColumn_notice_comment{
+        color: #ffffff;
+    }
+    .admin_comment_info{
+        display: flex;
+        align-items: center;
+        height:60px;
+        width:100%;
+        border-bottom: 1px solid #000;
+    }
+    .admin_comments_list{
+        padding:0;
+    }
+    .admin_comments_list li{
+        margin-top: 0;
+    }
+    .admin_comment_info_nickname{
+        width: 20%;
+        display: flex;
+        justify-content: center;
+    }
+    .admin_comment_info_comment{
+        width: 41%;
+        display: flex;
+        justify-content: center;
+    }
+    .admin_comment_info_writedate{
+        width: 15%;
+        display: flex;
+        justify-content: center;
+    }
+    .admin_comment_info_comment_recomment{
+        width: 12%;
+        display: flex;
+        justify-content: center;
+    }
+    .checkbox_notice{
+        width: 10%;
+        display: flex;
+        justify-content: center;
+    }
+
+    #deletebutton_notice_detail{
+        width: 70px;
+        height: 30px;
+        border: 1px solid black;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        font-size: 14px;
+      }

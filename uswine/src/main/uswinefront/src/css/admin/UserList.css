@@ -6,7 +6,10 @@
   }
 
   #userListBlock{
-    width: 80%;
+    position:absolute;
+    top:80px;
+    left:300px;
+    width: calc(100% - 400px);
     background-color: #ffffff;
     border-radius: 10px;
     padding: 30px;
@@ -32,11 +35,11 @@
     width: 15%;
     margin-right: 1%;
   }
-  #serchStartDate{
+  #startDate{
     width : 30%;
     margin-right: 0.5%;
   }
-  #serchEndDate{
+  #endDate{
     width : 30%;
     margin-right: 5%;
     margin-left: 0.5%;
@@ -49,33 +52,61 @@
 
   #countBlock{
     display: flex;
+    align-items: center;
   }
   #delete{
+    margin-right: 5%;
+  }
+  #save{
+    margin-right: 30px;
+  }
+
+
+
+  /* 페이징처리용 버튼 css */
+  /* #addUser{
     margin-right: auto;
-  }
-  #userList >span{
-    margin-left: auto;
-  }
+  } */
+  /* 검색결과 css */
+  /* #countBlock >span{
+    margin-right: 1%;
+  } */
 
 
 
   #userListHead{
+    width: 100%;
     display: flex;
     align-items: center;
-    background-color: #ebe6e6;
+    background-color: #000000;
     height: 80px;
     margin-top: 15px;
-    border-bottom: 2px solid #000;
     
   }
+  #headColumn{
+    width: 8%;
+    color: white;
+  }
   #headGroup{
-    margin-right: 15%;
+    width: 17%;
+    color: white;
   }
   #checkAll{
-      margin-left: 2%;
-      margin-right: 10%;
+      margin-left: 1%;
+      margin-right: 7%;
+      width: 5%;
   }
-
+  #userListFoot{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .activePage{
+    background-color: #000;
+    color: #fff;
+    border-radius: 10px;
+    padding: 5px 10px;
+  }
 
 
 
@@ -83,100 +114,114 @@
   #idSortBlock{
     display: flex;
     flex-direction: column;
-    margin-left: 5%;
-    margin-right: 10%;
+    width: 2%;
+    margin-right: 12%;
   }
   #idSort {
     width: 0;
     height: 0;
-    border-top: #ebe6e6;
-    border-left: 5px solid #ebe6e6;
-    border-right: 5px solid #ebe6e6;
-    border-bottom: 10px solid #999; /* 버튼의 배경색을 지정합니다. */
+    border-top: #000000;
+    border-left: 5px solid #000000;
+    border-right: 5px solid #000000;
+    border-bottom: 10px solid gray; /* 버튼의 배경색을 지정합니다. */
     cursor: pointer;
     margin-bottom: 2px;
     margin-top: 2px;
   }
   #idSort.active{
-    border-bottom-color: black;
+    border-bottom-color: white;
   }
   #idSortDESC {
     width: 0;
     height: 0;
-    border-top: 10px solid #999;
-    border-left: 5px solid #ebe6e6;
-    border-right: 5px solid #ebe6e6;
-    border-bottom: #ebe6e6; /* 버튼의 배경색을 지정합니다. */
+    border-top: 10px solid gray;
+    border-left: 5px solid #000000;
+    border-right: 5px solid #000000;
+    border-bottom: #000000; /* 버튼의 배경색을 지정합니다. */
     cursor: pointer;
   }
   #idSortDESC.active{
-    border-top-color: black;
+    border-top-color: white;
   }
 
   #nameSortBlock{
     display: flex;
     flex-direction: column;
-    margin-left: 5%;
-    margin-right: 15%;
-    
+    width: 2%;
+    margin-right: 12%;
   }
   #nameSort {
     width: 0;
     height: 0;
-    border-top: #ebe6e6;
-    border-left: 5px solid #ebe6e6;
-    border-right: 5px solid #ebe6e6;
-    border-bottom: 10px solid #999; /* 버튼의 배경색을 지정합니다. */
+    border-top: #000000;
+    border-left: 5px solid #000000;
+    border-right: 5px solid #000000;
+    border-bottom: 10px solid gray; /* 버튼의 배경색을 지정합니다. */
     cursor: pointer;
     margin-bottom: 2px;
     margin-top: 2px;
   }
   #nameSort.active{
-    border-bottom-color: black;
+    border-bottom-color: white;
   }
   #nameSortDESC {
     width: 0;
     height: 0;
-    border-top: 10px solid #999;
-    border-left: 5px solid #ebe6e6;
-    border-right: 5px solid #ebe6e6;
-    border-bottom: #ebe6e6; /* 버튼의 배경색을 지정합니다. */
+    border-top: 10px solid gray;
+    border-left: 5px solid #000000;
+    border-right: 5px solid #000000;
+    border-bottom: #000000;  /* 버튼의 배경색을 지정합니다. */
     cursor: pointer;
   }
   #nameSortDESC.active{
-    border-top-color: black;
+    border-top-color: white;
   }
   
   #lastupdateSortBlock{
     display: flex;
     flex-direction: column;
-    margin-left: 5%;
-    margin-right: 8%;
+    width: 2%;
     
   }
   #lastupdateSort {
     width: 0;
     height: 0;
-    border-top: #ebe6e6;
-    border-left: 5px solid #ebe6e6;
-    border-right: 5px solid #ebe6e6;
-    border-bottom: 10px solid #999; /* 버튼의 배경색을 지정합니다. */
+    border-top: #000000;
+    border-left: 5px solid #000000;
+    border-right: 5px solid #000000;
+    border-bottom: 10px solid gray; /* 버튼의 배경색을 지정합니다. */
     cursor: pointer;
     margin-bottom: 2px;
     margin-top: 2px;
   }
   #lastupdateSort.active{
-    border-bottom-color: black;
+    border-bottom-color: white;
   }
   #lastupdateSortDESC {
     width: 0;
     height: 0;
-    border-top: 10px solid #999;
-    border-left: 5px solid #ebe6e6;
-    border-right: 5px solid #ebe6e6;
-    border-bottom: #ebe6e6; /* 버튼의 배경색을 지정합니다. */
+    border-top: 10px solid gray;
+    border-left: 5px solid #000000;
+    border-right: 5px solid #000000;
+    border-bottom: #000000; /* 버튼의 배경색을 지정합니다. */
     cursor: pointer;
   }
   #lastupdateSortDESC.active{
-    border-top-color: black;
+    border-top-color: white;
+  }
+
+
+  .user_page_controller{
+    display: flex;
+    position:relative;
+    flex-direction: row;
+    /* margin-left: 100px; */
+  }
+  
+  .user_page_box{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 7px;
+    margin-top: 7px;
   }

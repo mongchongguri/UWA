@@ -17,9 +17,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
-import com.uwa.uswine.user.jwt.JWTUtil;
-import com.uwa.uswine.user.jwt.JwtTokenFilter;
-import com.uwa.uswine.user.jwt.LoginFilter;
+import com.uwa.uswine.jwt.JWTUtil;
+import com.uwa.uswine.jwt.JwtTokenFilter;
+import com.uwa.uswine.jwt.LoginFilter;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -86,25 +86,14 @@ public class SecurityConfig {
                 .httpBasic(AbstractHttpConfigurer::disable);
 
         //경로별 인가 작업
-//        http
-//                .authorizeHttpRequests((auth) -> auth
-//                        .requestMatchers(
-//                                "/",
-//                                "/login",
-//                                "/join"
-//                                ).permitAll()
-//                        .requestMatchers("/admin").hasRole("ADMIN")
-//                        .anyRequest().authenticated()
-//                );
-
         http
                 .authorizeHttpRequests((auth)-> {
-                    auth.requestMatchers("/ws/**").permitAll();
-                    auth.requestMatchers("/login","/join","/logout","/api/main/**","/api/wine/**","/api/onsale/list").permitAll();
-                    auth.requestMatchers("/api/mypage/**","/api/comment/**","/api/board/**","/api/onsale/**","/api/chatting/**").hasAnyRole("USER","SELLER");
-                    auth.requestMatchers("/api/seller/**").hasRole("SELLER");
-                    auth.anyRequest().authenticated();
-
+//                    auth.requestMatchers("/ws/**").permitAll();
+//                    auth.requestMatchers("/login","/join","/logout","/api/main/**","/api/wine/**","/api/onsale/list").permitAll();
+//                    auth.requestMatchers("/api/mypage/**","/api/comment/**","/api/board/**","/api/onsale/**","/api/chatting/**").hasAnyRole("USER","SELLER");
+//                    auth.requestMatchers("/api/seller/**").hasRole("SELLER");
+//                    auth.anyRequest().authenticated();
+                    auth.anyRequest().permitAll();
                 });
 
         http	
