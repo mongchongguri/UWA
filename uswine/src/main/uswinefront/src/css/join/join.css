@@ -5,220 +5,238 @@
   box-sizing: content-box;
 }
 
-
 #joinBlock {
   width: 500px;
   margin: 150px auto;
   background-color: #ffffff;
   border-radius: 10px;
   padding: 30px;
-  
 }
 
-  #inputJoinId {
+#inputJoinId {
   width: 438px;
-  }
-  #inputJoinId::placeholder{
-    color: #999;
-  }
+  border-radius: 0;
+  padding: 10px;
+}
+#inputJoinId::placeholder {
+  color: #999;
+}
 
-  #inputJoinPassword {
-    width: 438px;
-  }
-  #inputJoinPassword::placeholder{
-    color: #999;
-  }
-  
-  #inputJoinPasswordCheck {
-    width: 438px;
-  }
-  #inputJoinPasswordCheck::placeholder{
-    color: #999;
-  }
-  
-  #inputJoinNickName {
-    width: 438px;
-  }
-  #inputJoinNickName::placeholder{
-    color: #999;
-  }
-  
-  #numCheck{
-    width: 150px;
-  }
-  #numCheck::placeholder{
-    color: #999;
-  }
-  #numInputButton{
-    display: flex;
-    margin-right: auto;
-  }
-  
-  #frontResident{
-    width: 205.5px;
-    margin-right: 28px;
-  }
-  #frontResident::placeholder{
-    color: #999;
-  }
+#inputJoinPassword {
+  width: 438px;
+  border-radius: 0;
+  padding: 10px;
+}
+#inputJoinPassword::placeholder {
+  color: #999;
+}
 
-  #backResident{
-    width: 32px;
-    margin-left: 26px;
-    margin-right: 10px;
-  }
-  #backResident::placeholder{
-    color: #999;
-  }
-  
-  #inputJoinPhone {
-    width: 438px;
-  }
-  #inputJoinPhone::placeholder{
-    color: #999;
-  }
-  
-  #postcode{
-    width: 250px;
-    margin-bottom: 0;
-  }
-  #postcode::placeholder{
-    color: #999;
-  }
+#inputJoinPasswordCheck {
+  width: 438px;
+  border-radius: 0;
+  padding: 10px;
+}
+#inputJoinPasswordCheck::placeholder {
+  color: #999;
+}
 
-  #address{
-    width: 438px;
-  }
-  #address::placeholder{
-    color: #999;
-  }
-  
-  #detailAddress{
-    width: 438px;
-  }
-  #detailAddress::placeholder{
-    color: #999;
-  }
-  
+#inputJoinNickName {
+  width: 438px;
+  border-radius: 0;
+  padding: 10px;
+}
+#inputJoinNickName::placeholder {
+  color: #999;
+}
 
+#numCheck {
+  width: 150px;
+  border-radius: 0;
+  padding: 10px;
+}
+#numCheck::placeholder {
+  color: #999;
+}
+#numInputButton {
+  display: flex;
+  margin-right: auto;
+}
 
-  
-  #inputIdBlock{
-    padding-bottom: 20px;
-    display: flex;
-    flex-direction: column; /* 수직 방향으로 정렬 */
-    align-items: flex-end;
-    margin-right: 2px;
-  }
+#frontResident {
+  width: 205.5px;
+  margin-right: 28px;
+  border-radius: 0;
+  padding: 10px;
+}
+#frontResident::placeholder {
+  color: #999;
+}
 
+#backResident {
+  width: 32px;
+  margin-left: 26px;
+  margin-right: 10px;
+  border-radius: 0;
+  padding: 10px;
+}
+#backResident::placeholder {
+  color: #999;
+}
 
-  #inputPasswordBlock{
-    padding-bottom: 10px;
-  }
-  #checkMessage{
-    margin-top: 5px;
-    padding-bottom: 20px;
-  }
+#inputJoinPhone {
+  width: 438px;
+  border-radius: 0;
+  padding: 10px;
+}
+#inputJoinPhone::placeholder {
+  color: #999;
+}
 
-  #inputNickNameBlock{
-    display: flex;
-    flex-direction: column; /* 수직 방향으로 정렬 */
-    align-items: flex-start; /* 아이템들을 오른쪽으로 정렬 */
-    margin-bottom: 20px;
-  }
+#postcode {
+  width: 250px;
+  margin-bottom: 0;
+  border-radius: 0;
+  padding: 10px;
+}
+#postcode::placeholder {
+  color: #999;
+}
 
-  #inputAddressBlock {
-    padding-bottom: 20px;
-  }
-  #inputAddressBlock #postCodeBlock{
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
-  }
+#address {
+  width: 438px;
+  border-radius: 0;
+  padding: 10px;
+}
+#address::placeholder {
+  color: #999;
+}
 
-  #inputAddressBlock #address{
-    margin-bottom: 5px;
-  }
+#detailAddress {
+  width: 438px;
+  border-radius: 0;
+  padding: 10px;
+}
+#detailAddress::placeholder {
+  color: #999;
+}
 
+#inputIdBlock {
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column; /* 수직 방향으로 정렬 */
+  align-items: flex-end;
+  margin-right: 2px;
+}
 
-  #openPopup{
-    margin-left: 17.5px;
-    width: 170px;
-    background-color: #c2a191;
-    color: white;
-    font-weight: 800;
-  }
-  
+#inputPasswordBlock {
+  padding-bottom: 10px;
+}
+#checkMessage {
+  margin-top: 5px;
+  padding-bottom: 20px;
+}
 
-  #inputResidentBlock {
-    display: flex;
-    flex-direction: column; /* 수직 방향으로 정렬 */
-    align-items: flex-start; /* 아이템들을 오른쪽으로 정렬 */
-    margin-bottom: 20px;
-  }
-  #checkEmailButton {
-    width: 170px;
-    margin-left: auto;
-    background-color: #c2a191;
-    color: white;
-    font-weight: 800;
-  }
-  
-  #checkResidentButton {
-    margin-top: 10px; /* 버튼과 인풋박스 사이에 여백을 조절하는 부분 */
-    width: 170px;
-    margin-right: 2px;
-    margin-left: auto;
-    background-color: #c2a191;
-    color: white;
-    font-weight: 800;
-  }
-  #checkNickNameButton{
-    margin-top: 10px; /* 버튼과 인풋박스 사이에 여백을 조절하는 부분 */
-    width: 170px;
-    margin-right: 2px;
-    margin-left: auto;
-    background-color: #c2a191;
-    color: white;
-    font-weight: 800;
-  }
-  #inputResident {
-      display: flex;
-      align-items: center;
-      margin-right: 11px;
-  }
-  
+#inputNickNameBlock {
+  padding-bottom: 20px;
+}
 
-  
+#inputAddressBlock {
+  padding-bottom: 20px;
+}
+#inputAddressBlock #postCodeBlock {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
 
+#inputAddressBlock #address {
+  margin-bottom: 5px;
+}
 
-  #JoinBtnBlock{
-    height: 50px;
-    display: flex;
-    justify-content: space-around;
-    margin-top: 30px;;
-  }
-  
-  #JoinBtnBlock > button {
-    width: 438px;
-    height: 50px;
-    margin: 5px auto;
-    background-color: #c2a191;
-    color: white;
-    font-weight: 800;
-  }
+#openPopup {
+  margin-left: 17.5px;
+  border-radius: 0px;
+  background-color: #897a69;
+  color: white;
+  padding: 10px 30px;
+}
 
-  #numCheckBlock{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-  }
-  #numCheckButton{
-    margin-left: 10px;
-  }
-  
+#openPopup:hover {
+  background-color: #999;
+}
 
-  
-  
-  
+#inputResidentBlock {
+  display: flex;
+  flex-direction: column; /* 수직 방향으로 정렬 */
+  align-items: flex-start; /* 아이템들을 오른쪽으로 정렬 */
+  margin-bottom: 20px;
+}
+#checkEmailButton {
+  width: 170px;
+  margin-left: auto;
+  background-color: #897a69;
+  color: white;
+  border-radius: 0;
+}
+
+#checkEmailButton:hover {
+  background-color: #999;
+}
+
+#checkResidentButton {
+  margin-top: 10px; /* 버튼과 인풋박스 사이에 여백을 조절하는 부분 */
+  width: 170px;
+  margin-right: 2px;
+  margin-left: auto;
+  background-color: #897a69;
+  border-radius: 0;
+  color: white;
+}
+#checkResidentButton:hover {
+  background-color: #999;
+}
+#inputResident {
+  display: flex;
+  align-items: center;
+  margin-right: 11px;
+}
+
+#checkNickNameButton {
+  background-color: #897a69;
+  color: white;
+  border-radius: 0;
+  margin-top: 10px;
+}
+#FindAddressBtnBlock > button {
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#JoinBtnBlock {
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+
+#JoinBtnBlock > button {
+  background-color: #897a69;
+  color: white;
+  border-radius: 0;
+  width: 170px;
+}
+
+#JoinBtnBlock > button:hover {
+  background-color: #999;
+}
+
+#numCheckBlock {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+#numCheckButton {
+  margin-left: 10px;
+}

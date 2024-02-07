@@ -52,7 +52,6 @@
   border: none;
   padding: 0px 10px;
   background-color: #897a69;
-  border-radius: 5px;
   color: white;
   white-space: nowrap;
 }
@@ -84,7 +83,6 @@
   margin-left: 15px;
   padding: 10px 20px;
   border: none;
-  border-radius: 5px;
   background-color: #897a69;
   color: white;
 }
