@@ -74,7 +74,7 @@ function ChattingComponent({ userinfo }) {
         email: userinfo.username,
       }).then((data) => {
         if (data == 1) {
-          outNavigate("/mypage/chat");
+          outNavigate("/");
         }
       });
     }
