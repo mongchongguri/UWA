@@ -274,7 +274,7 @@ function ChattingRoom({ room, userinfo, sellerinfo }) {
           : null}
       </div>
       <div className="input_chat_container">
-        <div className="input_box">
+        <div className="chat_input_box">
           <input
             className="input_chat"
             type="text"
