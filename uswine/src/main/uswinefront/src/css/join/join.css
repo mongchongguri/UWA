@@ -144,6 +144,9 @@
   #openPopup{
     margin-left: 17.5px;
     width: 170px;
+    background-color: #c2a191;
+    color: white;
+    font-weight: 800;
   }
   
 
@@ -156,6 +159,9 @@
   #checkEmailButton {
     width: 170px;
     margin-left: auto;
+    background-color: #c2a191;
+    color: white;
+    font-weight: 800;
   }
   
   #checkResidentButton {
@@ -163,12 +169,18 @@
     width: 170px;
     margin-right: 2px;
     margin-left: auto;
+    background-color: #c2a191;
+    color: white;
+    font-weight: 800;
   }
   #checkNickNameButton{
     margin-top: 10px; /* 버튼과 인풋박스 사이에 여백을 조절하는 부분 */
     width: 170px;
     margin-right: 2px;
     margin-left: auto;
+    background-color: #c2a191;
+    color: white;
+    font-weight: 800;
   }
   #inputResident {
       display: flex;
@@ -176,15 +188,9 @@
       margin-right: 11px;
   }
   
+
   
-  
- 
-  
-  #FindAddressBtnBlock > button {
-    padding: 12px 24px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
+
 
   #JoinBtnBlock{
     height: 50px;
@@ -194,7 +200,12 @@
   }
   
   #JoinBtnBlock > button {
-    width: 170px;
+    width: 438px;
+    height: 50px;
+    margin: 5px auto;
+    background-color: #c2a191;
+    color: white;
+    font-weight: 800;
   }
 
   #numCheckBlock{

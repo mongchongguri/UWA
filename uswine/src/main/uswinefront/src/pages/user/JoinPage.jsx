@@ -255,7 +255,7 @@ export default function JoinPage(){
                     />
                 </div>
                 <div id="JoinBtnBlock">
-                    <Button variant="light" name="join" onClick={handleSubmit} >
+                    <Button variant="light"  name="join" onClick={handleSubmit} >
                         회원가입
                     </Button>
                 </div>

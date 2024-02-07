@@ -198,9 +198,6 @@ public class AdminService {
 	@Transactional
 	public void updateUser(String changeNick, String changeRole, String userNick) {
 		UserEntity user = userRepository.findByNickname(userNick);
-		
-		
-		
         if (user != null) {
         	if(!user.getRole().equals(Role.ROLE_SELLER)) {
         		if(changeRole.equals("seller")) {
@@ -223,10 +220,8 @@ public class AdminService {
             }else if(changeRole.equals("ban")) {
             	user.setRole(Role.ROLE_BAN);
             }
-
             // userRepository.save 메서드를 통해 업데이트 반영
             userRepository.save(user);
-            
         }
 	}
 	public Page<SellerRegistEntity> getSellerRequest(int page) {
@@ -286,6 +281,15 @@ public class AdminService {
 		Optional<NoticeEntity> optional = noticeRepository.findById(id);
 		NoticeEntity entity=optional.get();
 		noticeRepository.delete(entity);
+		String notice_idx = Integer.toString((int)entity.getId());
+		List<NoticeCommentEntity> comment_entitys = noticeCommentRepository.findByNoticeIdx(notice_idx);
+		for(NoticeCommentEntity comment_entity : comment_entitys) {
+			noticeCommentRepository.delete(comment_entity);
+		}
+		List<NoticeRecommentEntity> recomment_entitys = noticeRecommentRepository.findByNoticeIdx(notice_idx);
+		for(NoticeRecommentEntity recomment_entity : recomment_entitys) {
+			noticeRecommentRepository.delete(recomment_entity);
+		}
 	}
 	public long adminRecommentCount(String id) {
 		
