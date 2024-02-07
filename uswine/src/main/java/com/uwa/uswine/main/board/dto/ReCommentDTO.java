@@ -3,6 +3,7 @@ package com.uwa.uswine.main.board.dto;
 import com.uwa.uswine.main.board.entity.ReCommentEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.util.Date;
@@ -10,6 +11,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @ToString
+@NoArgsConstructor
 public class ReCommentDTO {
     private long id;
     private String boardIdx;
