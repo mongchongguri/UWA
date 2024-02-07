@@ -29,6 +29,24 @@
   background-color: #dddddd;
 }
 
+.sell_store_list .store_region_click {
+  background-color: #897a69;
+  color: white;
+}
+
+.store_region_click .store_icon {
+  color: white;
+}
+
+.store_region_click .store_icon_delivery {
+  color: white;
+}
+
+.store_region_click .store_btn_container button {
+  background-color: white;
+  color: #333;
+}
+
 .store_address {
   margin-bottom: 10px;
 }
@@ -56,4 +74,28 @@
   margin-right: 10px;
   margin-left: 10px;
   color: #897a69;
+}
+
+.store_icon_delivery {
+  color: #ff5555;
+}
+
+.store_btn_container {
+  display: flex;
+}
+
+.store_btn_container div {
+  margin-left: auto;
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+}
+
+.store_btn_container button {
+  margin-right: 10px;
+  padding: 3px 8px;
+  font-size: 13px;
+  border: none;
+  background-color: #897a69;
+  color: white;
 }

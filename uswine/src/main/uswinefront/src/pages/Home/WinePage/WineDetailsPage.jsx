@@ -7,6 +7,7 @@ import { jwtDecode } from "jwt-decode";
 import {
   faBox,
   faDollarSign,
+  faL,
   faPhone,
   faTruckFast,
 } from "@fortawesome/free-solid-svg-icons";
@@ -144,39 +145,90 @@ function WineDetailComponent({ wineDetail }) {
 function WineSellInfoComponent({ wineDetail }) {
   const { kakao } = window;
   let [stores, setStores] = useState([]);
+  let [position, setPosition] = useState(null);
+  let [currentPosition, setCurrentPosition] = useState([]);
+  let [initState, setInitState] = useState();
+  let [clickStates, setClickStates] = useState();
+
+  const options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0,
+  };
+
+  function success(position) {
+    setCurrentPosition([position.coords.latitude, position.coords.longitude]);
+  }
+
+  function error(err) {
+    console.log("현재 위치를 가져올 수 없습니다.");
+  }
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(success, error, options);
+  }, [wineDetail]);
 
   useEffect(() => {
     AuthApi("/api/seller/info/store", {
       id: wineDetail.id,
     }).then((data) => {
+      const initialState = Array.from({ length: data.length }, () => false);
       setStores(data);
+      setInitState(initialState);
+      setClickStates(initialState);
     });
   }, []);
 
   useEffect(() => {
-    const script = document.createElement("script");
-    script.async = true;
-    script.src =
-      "//dapi.kakao.com/v2/maps/sdk.js?appkey=a912192bd381e7addd457d5ba6ddd1b1&libraries=services&autoload=false";
-    document.head.appendChild(script);
+    kakao.maps.load(function () {
+      const container = document.getElementById("map");
+      const options = {
+        center: new kakao.maps.LatLng(currentPosition[0], currentPosition[1]),
+        level: 3,
+      };
 
-    script.addEventListener("load", () => {
-      if(kakao != undefined) {
-        kakao.maps.load(() => {
-          const container = document.getElementById("map");
-          const options = {
-            center: new kakao.maps.LatLng(33.450701, 126.570667),
-            level: 3,
-          };
-  
-          const map = new kakao.maps.Map(container, options);
-          var geocoder = new kakao.maps.services.Geocoder();
-          const zoomControl = new kakao.maps.ZoomControl();
-          map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+      const map = new kakao.maps.Map(container, options);
+
+      const zoomControl = new kakao.maps.ZoomControl();
+      map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+      const imageSrc =
+        "https://mongchongguriforum.s3.ap-northeast-2.amazonaws.com/maker.png";
+      const imageSize = new kakao.maps.Size(64, 80);
+      const imageOption = { offset: new kakao.maps.Point(27, 69) };
+
+      const markerImage = new kakao.maps.MarkerImage(
+        imageSrc,
+        imageSize,
+        imageOption
+      );
+
+      if (position != null) {
+        const geocoder = new kakao.maps.services.Geocoder();
+
+        geocoder.addressSearch(position, function (result, status) {
+          if (status === kakao.maps.services.Status.OK) {
+            let coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+            let marker = new kakao.maps.Marker({
+              image: markerImage,
+              position: coords,
+            });
+
+            map.setCenter(coords);
+            marker.setMap(map);
+          }
         });
       }
     });
-  }, []);
+  }, [position, currentPosition]);
+
+  function mapPosition(address, i) {
+    setPosition(address);
+    let copy = [...initState];
+    copy[i] = true;
+    setClickStates(copy);
+  }
 
   return (
     <div className="wine_sell_info">
@@ -194,8 +246,20 @@ function WineSellInfoComponent({ wineDetail }) {
             {stores.length != 0
               ? stores.map(function (store, i) {
                   return (
-                    <div className="store_wine_list" key={i}>
-                      <li className="store_region">
+                    <div
+                      className="store_wine_list"
+                      key={i}
+                      onClick={() => {
+                        mapPosition(store.address.slice(5), i);
+                      }}
+                    >
+                      <li
+                        className={
+                          clickStates[i]
+                            ? "store_region store_region_click"
+                            : "store_region"
+                        }
+                      >
                         <div className="store_address">
                           <span>{store.address.substring(0, 5)}</span>
                           <span>{store.address.slice(5)}</span>
@@ -204,7 +268,7 @@ function WineSellInfoComponent({ wineDetail }) {
                             <span>
                               <FontAwesomeIcon
                                 icon={faTruckFast}
-                                color="#ff5555"
+                                className="store_icon_delivery"
                               />
                             </span>
                           ) : null}
@@ -233,6 +297,12 @@ function WineSellInfoComponent({ wineDetail }) {
                             />
                             {store.sellStock}
                           </li>
+                        </ul>
+                        <ul className="store_btn_container">
+                          <div>
+                            <button>장바구니</button>
+                            <button>구매하기</button>
+                          </div>
                         </ul>
                       </li>
                       <li>
