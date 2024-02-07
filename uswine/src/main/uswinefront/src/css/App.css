@@ -1,0 +1,12 @@
+* {
+  font-family: "SUITE-Regular";
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-sizing: content-box;
+}
+
+#contents {
+  padding: 30px;
+  background-color: #f3edea;
+}

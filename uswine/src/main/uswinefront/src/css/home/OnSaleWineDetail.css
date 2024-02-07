@@ -1,0 +1,25 @@
+.seller_info .info_title {
+  flex: 2;
+}
+
+.seller_info .info_detail {
+  flex: 3;
+}
+
+.wine_buy_btn {
+  display: flex;
+}
+
+.wine_buy_btn button {
+  margin: auto;
+  padding: 5px 15px;
+  border: 1px solid #333;
+  background-color: white;
+  font-size: 15px;
+}
+
+.wine_buy_btn button:hover {
+  background-color: #ff8888;
+  color: white;
+  border: 1px solid #ff8888;
+}

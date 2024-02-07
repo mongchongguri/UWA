@@ -1,0 +1,130 @@
+.sales_management_container {
+  padding: 30px 10%;
+}
+
+.management_container {
+  padding: 50px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.seller_info_card {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.seller_detail_info p {
+  font-size: 16px;
+}
+
+.seller_detail_info p span {
+  font-size: 15px;
+  margin-left: 10px;
+}
+
+.sell_total_income {
+  font-weight: 700;
+  display: flex;
+  justify-content: end;
+}
+.sell_detail_info {
+  display: flex;
+}
+.sell_wine_count {
+  width: 25%;
+  height: 150px;
+  background-color: #fdefdb;
+  margin-right: 20px;
+  padding: 10px;
+}
+.sell_wine_count:nth-child(4) {
+  margin-right: 0;
+}
+
+.sell_wine_count p {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.sell_wine_count p:nth-child(2) {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.money_unit {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  margin-bottom: 5px;
+  margin-left: 10px;
+}
+
+.sell_withdraw_container {
+  margin-top: 10px;
+  display: flex;
+}
+
+.sell_withdraw_container div {
+  margin-left: auto;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.sell_withdraw_container span {
+  margin-right: 10px;
+}
+.withdraw_btn {
+  padding: 5px 10px;
+  border: none;
+  background-color: #897a69;
+  color: white;
+}
+
+.sell_wine_list {
+  display: flex;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #8888887c;
+}
+
+.sell_list_title {
+  border-top: 2px solid #8888887c;
+}
+
+.sell_wine_list li:nth-child(1) {
+  flex: 10%;
+}
+
+.sell_wine_list li:nth-child(2) {
+  flex: 35%;
+}
+
+.sell_wine_list li:nth-child(3) {
+  flex: 15%;
+}
+
+.sell_wine_list li:nth-child(4) {
+  flex: 15%;
+}
+
+.sell_wine_list li:nth-child(5) {
+  flex: 10%;
+}
+
+.sell_wine_list li:nth-child(6) {
+  flex: 10%;
+}
+
+.sell_wine_list li:nth-child(7) {
+  flex: 10%;
+}
+
+.sell_cancel {
+  padding: 1px 10px;
+  background-color: #ff8888;
+  color: white;
+  border: none;
+}

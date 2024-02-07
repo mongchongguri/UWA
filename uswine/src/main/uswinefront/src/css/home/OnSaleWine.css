@@ -1,0 +1,22 @@
+.wine_seller_info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.wine_seller_info p {
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wine_seller_info p:nth-child(1) {
+  font-size: 15px;
+}
+
+.wine_seller_info p:nth-child(2) {
+  font-size: 13px;
+  color: #666;
+}

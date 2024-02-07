@@ -1,0 +1,15 @@
+.delivery_select_container {
+  padding: 15px 0px;
+  display: flex;
+  font-size: 16px;
+}
+
+.delivery_select_container label {
+  display: flex;
+  white-space: nowrap;
+  margin-right: 10px;
+}
+
+.delivery_select_container input {
+  margin-right: 10px;
+}
