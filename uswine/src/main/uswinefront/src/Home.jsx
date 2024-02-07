@@ -5,7 +5,9 @@ import {
   faAngleUp,
   faAngleLeft,
   faAngleRight,
+  faStar as solidStar,
 } from "@fortawesome/free-solid-svg-icons";
+import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import AuthApi from "./AuthApi";
@@ -264,6 +266,13 @@ function Home() {
                 return (
                   <li key={i}>
                     <div className="wine_list_card">
+                      <span className="wine_favorite_button">
+                        <FontAwesomeIcon
+                          icon={regularStar}
+                          className="favorite_icon"
+                          size="x"
+                        />
+                      </span>
                       <div className="wine_names">
                         <span className="wine_name">{wine.wine_name}</span>
                         <hr></hr>
@@ -297,6 +306,13 @@ function Home() {
                     }}
                   >
                     <div className="wine_list_card">
+                      <span className="wine_favorite_button">
+                        <FontAwesomeIcon
+                          icon={regularStar}
+                          className="favorite_icon"
+                          size="x"
+                        />
+                      </span>
                       <div className="wine_names">
                         <span className="wine_name">{wine.wine_name}</span>
                         <hr></hr>
@@ -325,6 +341,13 @@ function Home() {
                 return (
                   <li key={i}>
                     <div className="wine_list_card">
+                      <span className="wine_favorite_button">
+                        <FontAwesomeIcon
+                          icon={regularStar}
+                          className="favorite_icon"
+                          size="x"
+                        />
+                      </span>
                       <div className="wine_names">
                         <span className="wine_name">{wine.wine_name}</span>
                         <hr></hr>

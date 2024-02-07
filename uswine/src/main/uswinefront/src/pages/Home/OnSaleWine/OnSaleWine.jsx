@@ -6,7 +6,9 @@ import {
   faAngleRight,
   faAngleUp,
   faMagnifyingGlass,
+  faStar as solidStar,
 } from "@fortawesome/free-solid-svg-icons";
+import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 import { useEffect, useState } from "react";
 import AuthApi from "../../../AuthApi";
 import { useNavigate } from "react-router-dom";
@@ -108,6 +110,13 @@ function OnSaleWine() {
                 return (
                   <li key={i}>
                     <div className="wine_list_card">
+                      <span className="wine_favorite_button">
+                        <FontAwesomeIcon
+                          icon={regularStar}
+                          className="favorite_icon"
+                          size="x"
+                        />
+                      </span>
                       <div className="wine_names">
                         <span className="wine_name">{wine.wineName}</span>
                         <hr></hr>
@@ -144,6 +153,13 @@ function OnSaleWine() {
                         }
                       >
                         <div className="wine_list_card">
+                          <span className="wine_favorite_button">
+                            <FontAwesomeIcon
+                              icon={regularStar}
+                              className="favorite_icon"
+                              size="x"
+                            />
+                          </span>
                           <div className="wine_names">
                             <span className="wine_name">{wine.wineName}</span>
                             <hr></hr>
@@ -176,6 +192,13 @@ function OnSaleWine() {
                 return (
                   <li key={i}>
                     <div className="wine_list_card">
+                      <span className="wine_favorite_button">
+                        <FontAwesomeIcon
+                          icon={regularStar}
+                          className="favorite_icon"
+                          size="x"
+                        />
+                      </span>
                       <div className="wine_names">
                         <span className="wine_name">{wine.wineName}</span>
                         <hr></hr>
