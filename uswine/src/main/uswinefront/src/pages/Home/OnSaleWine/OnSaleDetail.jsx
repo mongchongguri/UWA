@@ -4,6 +4,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import AuthApi from "../../../AuthApi";
 import "../../../css/home/WineDetailsPage.css";
 import "../../../css/home/OnSaleWineDetail.css";
+import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function OnSaleDetail() {
   const token = localStorage.getItem("token") || "";
@@ -81,17 +84,6 @@ function OnSaleDetailComponent({ wineInfo, stock }) {
             </li>
           </ul>
         </div>
-        <div className="wine_buy_btn">
-          <button
-            onClick={() => {
-              navigate(`/onsale/chat/room/${wineInfo.nickName}/${wineInfo.id}`);
-            }}
-          >
-            채팅하기
-          </button>
-          <button>장바구니</button>
-          <button>구매하기</button>
-        </div>
       </div>
       <div className="wine_details_info">
         <ul className="wine_detail_list">
@@ -99,6 +91,9 @@ function OnSaleDetailComponent({ wineInfo, stock }) {
             <ul className="wine_detail_info">
               <li>{wineInfo.wineType}</li>
               <li>{wineInfo.wineRegion}</li>
+              <li>
+                <FontAwesomeIcon icon={regularStar} size="xl" />
+              </li>
             </ul>
           </li>
           <li className="wine_detail_name">{wineInfo.wineName}</li>
@@ -213,6 +208,20 @@ function OnSaleDetailComponent({ wineInfo, stock }) {
               </li>
             </ul>
           </li>
+          <div className="wine_buy_btn">
+            <div>
+              <button
+                onClick={() => {
+                  navigate(
+                    `/onsale/chat/room/${wineInfo.nickName}/${wineInfo.id}`
+                  );
+                }}
+              >
+                채팅하기
+              </button>
+              <button>장바구니</button>
+            </div>
+          </div>
         </ul>
       </div>
     </>

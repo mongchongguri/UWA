@@ -28,6 +28,7 @@
 }
 
 .wine_detail_info {
+  display: flex;
   white-space: nowrap;
   padding-left: 0;
 }
@@ -170,7 +171,6 @@
 .sell_btn {
   padding: 5px 10px;
   margin-top: 10px;
-  border-radius: 5px;
   border: none;
   background-color: #897a69;
   color: white;

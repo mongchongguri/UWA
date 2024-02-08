@@ -10,7 +10,9 @@ import {
   faL,
   faPhone,
   faTruckFast,
+  faStar as solidStar,
 } from "@fortawesome/free-solid-svg-icons";
+import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PhoneNumberFormant from "../../../function/PhoneNumberFormat";
 
@@ -65,6 +67,9 @@ function WineDetailComponent({ wineDetail }) {
               <li>{wineDetail.wine_info[1]}</li>
               <li style={{ color: "#888" }}>|</li>
               <li>{wineDetail.wine_info[2]}</li>
+              <li>
+                <FontAwesomeIcon icon={regularStar} size="xl" />
+              </li>
             </ul>
           </li>
           <li className="wine_detail_name">{wineDetail.wine_name}</li>
@@ -301,7 +306,6 @@ function WineSellInfoComponent({ wineDetail }) {
                         <ul className="store_btn_container">
                           <div>
                             <button>장바구니</button>
-                            <button>구매하기</button>
                           </div>
                         </ul>
                       </li>
