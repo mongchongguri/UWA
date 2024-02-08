@@ -88,12 +88,11 @@ public class SecurityConfig {
         //경로별 인가 작업
         http
                 .authorizeHttpRequests((auth)-> {
-//                    auth.requestMatchers("/ws/**").permitAll();
-//                    auth.requestMatchers("/login","/join","/logout","/api/main/**","/api/wine/**","/api/onsale/list").permitAll();
-//                    auth.requestMatchers("/api/mypage/**","/api/comment/**","/api/board/**","/api/onsale/**","/api/chatting/**").hasAnyRole("USER","SELLER");
-//                    auth.requestMatchers("/api/seller/**").hasRole("SELLER");
-//                    auth.anyRequest().authenticated();
-                    auth.anyRequest().permitAll();
+                    auth.requestMatchers("/ws/**").permitAll();
+                    auth.requestMatchers("/login","/join","/logout","/api/main/**","/api/wine/**","/api/onsale/list").permitAll();
+                    auth.requestMatchers("/api/mypage/**","/api/comment/**","/api/board/**","/api/onsale/**","/api/chatting/**").hasAnyRole("USER","SELLER");
+                    auth.requestMatchers("/api/seller/**").hasRole("SELLER");
+                    auth.anyRequest().authenticated();
                 });
 
         http	

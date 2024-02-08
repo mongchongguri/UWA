@@ -73,6 +73,7 @@ public class MNWineController {
 
         //와인 정보를 MySQL에서 가져오는 소스
         List<MNWInfoWineSellDTO> info = infoWineService.getWineInfo(page);
+        System.out.println("info: " + info);
 
         int totalPage = info.size() / 20;
 
@@ -85,8 +86,11 @@ public class MNWineController {
         List<String> itemId = new ArrayList<>();    //itemId를 담을 List
 
         for(MNWInfoWineSellDTO dto: info){
+            System.out.println("Controller itemId: " + dto);
             itemId.add(dto.getItemId());
         }
+
+
 
         List<MNWWineDTO> wine = infoWineService.getWineList(itemId);
 

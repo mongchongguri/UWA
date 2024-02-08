@@ -2,12 +2,12 @@ package com.uwa.uswine.adminseller.service;
 
 import com.uwa.uswine.adminseller.dto.MNWInfoWineSellDTO;
 import com.uwa.uswine.adminseller.dto.MNWWineDTO;
-import com.uwa.uswine.adminseller.entity.MNWInfoWineSellEntity;
 import com.uwa.uswine.adminseller.repository.MNWInfoWineJPARepository;
 import com.uwa.uswine.adminseller.repository.MNWInfoWineMongoRepository;
 import com.uwa.uswine.adminseller.repository.MNWSellWineSqlMongoRepository;
 import com.uwa.uswine.adminseller.repository.MNWSellWineSqlRepository;
 import com.uwa.uswine.main.wine.entity.WineEntity;
+import com.uwa.uswine.seller.InfoWine.entity.InfoWineSellEntity;
 import com.uwa.uswine.seller.sellWine.dto.SellWineDTO;
 import com.uwa.uswine.seller.sellWine.dto.SellWineSQLDTO;
 import com.uwa.uswine.seller.sellWine.entity.SellWineEntity;
@@ -38,11 +38,13 @@ public class MNWInfoWineService {
     }
 
     public List<MNWWineDTO> getWineList(List<String> itemIdList) {
+        System.out.println(itemIdList);
 
         List<MNWWineDTO> wineList = new ArrayList<>();
 
         for(String itemId : itemIdList){
             WineEntity entity = infoWineMongoRepository.findById(itemId).block();
+            System.out.println("Entity: "+entity);
             MNWWineDTO dto = new MNWWineDTO();
             dto.setWine_idx(entity.getWine_idx());
             dto.setWine_info(entity.getWine_info());
@@ -57,6 +59,8 @@ public class MNWInfoWineService {
             wineList.add(dto);
         }
 
+        System.out.println("Service: "+wineList);
+
         return wineList;
     }
 
@@ -70,10 +74,11 @@ public class MNWInfoWineService {
 
         List<MNWInfoWineSellDTO> dataList = new ArrayList<>();
 
-        Page<MNWInfoWineSellEntity> data = infoWineJPARepository.findAll(pageable);
+        Page<InfoWineSellEntity> data = infoWineJPARepository.findAll(pageable);
 
-        for(MNWInfoWineSellEntity entity : data){
+        for(InfoWineSellEntity entity : data){
             MNWInfoWineSellDTO dto = new MNWInfoWineSellDTO();
+            System.out.println("Entity: "+entity);
             dto.setId(entity.getId());
             dto.setAddress(entity.getAddress());
             dto.setDelivery(entity.isDelivery());
@@ -87,6 +92,8 @@ public class MNWInfoWineService {
             dto.setSellStock(entity.getSellStock());
             dataList.add(dto);
         }
+
+        System.out.println("Service: " + dataList);
         return dataList;
     }
 
@@ -94,7 +101,7 @@ public class MNWInfoWineService {
 
         Long id = dto.getId();
 
-        Optional<MNWInfoWineSellEntity> entity = infoWineJPARepository.findById(id);
+        Optional<InfoWineSellEntity> entity = infoWineJPARepository.findById(id);
 
         MNWInfoWineSellDTO returnDTO = new MNWInfoWineSellDTO();
         returnDTO.setAddress(entity.get().getAddress());
