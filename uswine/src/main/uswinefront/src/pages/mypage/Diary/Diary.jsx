@@ -101,6 +101,7 @@ export default function Diary() {
         setLoding(false); //로딩 완료
         setTimeout(() => {
             setPercent(data);
+            console.log('실행여부' + percent);
         }, 100);
     };
 
@@ -139,17 +140,18 @@ export default function Diary() {
                                             <div className="diary_button">
                                                 <div className="d-grid gap-2">
                                                     <Button
+                                                        className="diary_btn"
                                                         variant="primary"
                                                         size="lg"
                                                         onClick={() => {
                                                             contentShow(diary.id);
                                                         }}
                                                     >
-                                                        <div className="icon">
+                                                        <div className="diaryicon">
                                                             <FontAwesomeIcon icon={faCalendar} />
                                                         </div>
                                                         <div className="diary_contentTitles">{diary.title}</div>
-                                                        <div className="icon">
+                                                        <div className="diaryicon">
                                                             <IoMdTime />
                                                         </div>
                                                         <div className="diary_contentTime">
@@ -171,6 +173,8 @@ export default function Diary() {
                                 {today.split(' ')[0] == formateDate.split(' ')[0] ? (
                                     <div className="d-grid gap-2">
                                         <Button
+                                            className="diary_btn"
+                                            id="diaryAdd_btn"
                                             variant="outline-primary"
                                             size="lg"
                                             onClick={() => {
@@ -200,15 +204,17 @@ export default function Diary() {
 
                 <div className="diary_component2">
                     <div className="EmotionTitle">
-                        <h2>오늘의 당신의 상태는?</h2>
+                        <h2>{today.split(' ')[0]} 당신의 상태는?</h2>
                     </div>
                     <div className="EmotionDescription">
                         {loding ? ( //로딩이 참이면, 로딩 페이지로
                             <Loding />
-                        ) : (
+                        ) : percent !== 0 ? (
                             <div>
                                 <EmotionBar percent={percent} />
                             </div>
+                        ) : (
+                            <div>노 일기</div>
                         )}
                     </div>
                 </div>

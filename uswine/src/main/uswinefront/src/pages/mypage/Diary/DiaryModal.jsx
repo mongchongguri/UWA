@@ -52,10 +52,15 @@ function DiaryModal(props) {
             </Modal.Header>
             <Modal.Body>
                 <Form className="diaryContent">
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group className="mb-3">
                         <Form.Label>제목</Form.Label>
                         {props.diaryOne.title == '' ? (
-                            <Form.Control type="text" autoFocus onChange={(e) => setTitle(e.target.value)} />
+                            <Form.Control
+                                className="diary-editor-title"
+                                type="text"
+                                autoFocus
+                                onChange={(e) => setTitle(e.target.value)}
+                            />
                         ) : (
                             <div>{props.diaryOne.title}</div>
                         )}
@@ -63,14 +68,16 @@ function DiaryModal(props) {
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                         <Form.Label>내용</Form.Label>
                         {props.diaryOne.content == '' ? (
-                            <DiaryEditor
-                                ref={childComponentRef}
-                                title={title}
-                                nickname={props.nickname}
-                                email={props.email}
-                                date={props.date}
-                                hide={props.onHide}
-                            />
+                            <div className="diary-editor">
+                                <DiaryEditor
+                                    ref={childComponentRef}
+                                    title={title}
+                                    nickname={props.nickname}
+                                    email={props.email}
+                                    date={props.date}
+                                    hide={props.onHide}
+                                />
+                            </div>
                         ) : (
                             <MarkUp MakrDownData={props.diaryOne.content} />
                             // <Form.Control as="textarea" rows={3} value={props.content} />
@@ -83,11 +90,11 @@ function DiaryModal(props) {
                     취소
                 </Button>
                 {props.diaryOne.content == '' && props.diaryOne.title == '' ? (
-                    <Button variant="primary" onClick={callChildFunction}>
+                    <Button id="diaryModal_btn" variant="primary" onClick={callChildFunction}>
                         저장
                     </Button>
                 ) : (
-                    <Button variant="primary" onClick={() => deleteDiary(props.diaryOne.id)}>
+                    <Button id="diaryModal_btn" variant="primary" onClick={() => deleteDiary(props.diaryOne.id)}>
                         삭제
                     </Button>
                 )}
