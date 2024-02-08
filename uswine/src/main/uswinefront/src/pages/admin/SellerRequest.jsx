@@ -80,6 +80,9 @@ export default function SellerRequest(){
     }
     return (
         <div id="requestList">
+            <div id="requestTitle">
+                <h1>판매자 요청</h1>
+            </div>
             <div id="requestListHead">
                 <div id="headColumn_request" className="headEmail">
                     이메일

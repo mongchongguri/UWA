@@ -15,7 +15,9 @@
     padding: 30px;
     margin: auto;
   }
-
+  #requestTitle{
+    margin-bottom: 30px;
+  }
   #requestListHead{
     width: 100%;
     display: flex;

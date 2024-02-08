@@ -14,6 +14,9 @@
     padding: 30px;
     margin: auto;
   }
+  #noticeTitle{
+    margin-bottom: 30px;
+  }
   #noticeListHead{
     width: 100%;
     display: flex;
