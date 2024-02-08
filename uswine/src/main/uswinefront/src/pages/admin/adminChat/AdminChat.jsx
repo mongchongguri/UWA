@@ -102,7 +102,7 @@ function AdminChatComponent({userinfo}){
                         }>
                           {newChat[i] != "" ? "new!" : null}
                         </div>
-                        {chat.userNickname} 님의 문의
+                        {" "}{chat.userNickname} 님의 문의
                       </div>
                       <div className="admin_chatting_remove">
                         <button

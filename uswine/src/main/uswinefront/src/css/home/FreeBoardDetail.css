@@ -61,7 +61,7 @@
   resize: none;
   border: none;
   outline: none;
-  padding: 10px;
+  /* padding: 10px; */
 }
 
 .comment_info_container {
@@ -147,7 +147,7 @@
   resize: none;
   border: none;
   outline: none;
-  padding: 10px;
+  /* padding: 10px; */
 }
 .input_comment_recomment {
   width: 100%;

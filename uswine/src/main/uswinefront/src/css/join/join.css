@@ -14,7 +14,7 @@
 }
 
 #inputJoinId {
-  width: 438px;
+  width: 476px;
   border-radius: 0;
   padding: 10px;
 }
@@ -23,7 +23,7 @@
 }
 
 #inputJoinPassword {
-  width: 438px;
+  width: 476px;
   border-radius: 0;
   padding: 10px;
 }
@@ -32,7 +32,7 @@
 }
 
 #inputJoinPasswordCheck {
-  width: 438px;
+  width: 476px;
   border-radius: 0;
   padding: 10px;
 }
@@ -41,7 +41,7 @@
 }
 
 #inputJoinNickName {
-  width: 438px;
+  width: 476px;
   border-radius: 0;
   padding: 10px;
 }
@@ -64,7 +64,7 @@
 
 #frontResident {
   width: 205.5px;
-  margin-right: 28px;
+  margin-right: 45px;
   border-radius: 0;
   padding: 10px;
 }
@@ -73,8 +73,8 @@
 }
 
 #backResident {
-  width: 32px;
-  margin-left: 26px;
+  width: 8px;
+  margin-left: 45px;
   margin-right: 10px;
   border-radius: 0;
   padding: 10px;
@@ -84,7 +84,7 @@
 }
 
 #inputJoinPhone {
-  width: 438px;
+  width: 476px;
   border-radius: 0;
   padding: 10px;
 }
@@ -93,7 +93,7 @@
 }
 
 #postcode {
-  width: 250px;
+  width: 312.3px;
   margin-bottom: 0;
   border-radius: 0;
   padding: 10px;
@@ -103,7 +103,7 @@
 }
 
 #address {
-  width: 438px;
+  width: 476px;
   border-radius: 0;
   padding: 10px;
 }
@@ -112,7 +112,7 @@
 }
 
 #detailAddress {
-  width: 438px;
+  width: 476px;
   border-radius: 0;
   padding: 10px;
 }
@@ -126,6 +126,7 @@
   flex-direction: column; /* 수직 방향으로 정렬 */
   align-items: flex-end;
   margin-right: 2px;
+
 }
 
 #inputPasswordBlock {
@@ -146,11 +147,11 @@
 #inputAddressBlock #postCodeBlock {
   display: flex;
   align-items: center;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 #inputAddressBlock #address {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 #openPopup {
@@ -200,12 +201,20 @@
   align-items: center;
   margin-right: 11px;
 }
+#inputResident h6{
+  display: flex;
+  justify-items: center;
+  margin : 0;
+}
 
 #checkNickNameButton {
   background-color: #897a69;
   color: white;
   border-radius: 0;
   margin-top: 10px;
+}
+#inputNickNameBlock > button:hover{
+  background-color: #999;
 }
 #FindAddressBtnBlock > button {
   padding: 12px 24px;

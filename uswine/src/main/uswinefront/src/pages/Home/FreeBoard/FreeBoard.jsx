@@ -49,6 +49,7 @@ function FreeBoard() {
   useEffect(() => {
     async function fetchData() {
       let recommendList = [...initBoardList];
+
       const init = initBoardList.map(async (board, i) => {
         const data = await AuthApi("/api/board/countRecommend", {
           boardIdx: board.id,

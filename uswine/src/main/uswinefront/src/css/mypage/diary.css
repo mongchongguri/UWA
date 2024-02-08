@@ -1,4 +1,4 @@
-.diary_container {
+/* .diary_container {
     padding: 30px 10%;
 }
 
@@ -43,38 +43,38 @@
     height: 40px;
     background-color: lightblue;
     margin-bottom: 10px;
-}
+} */
 
-.btn {
+/* .btn {
     margin-bottom: 20px;
-}
-.form-control {
+} */
+/* .form-control {
     width: 95%;
-}
+} */
 
-.fc-daygrid-more-link.fc-more-link {
+/* .fc-daygrid-more-link.fc-more-link {
     color: #000;
 }
 
 .fc-daygrid-day-number {
     color: #000;
     font-size: 1em;
-}
+} */
 /*요일*/
-.fc-col-header-cell-cushion {
+/* .fc-col-header-cell-cushion {
     color: #000;
 }
 .fc-col-header-cell-cushion:hover {
     text-decoration: none;
     color: #000;
-}
+} */
 /*시간제목*/
-.fc-daygrid-dot-event > .fc-event-title {
+/* .fc-daygrid-dot-event > .fc-event-title {
     color: #000 !important;
-}
+} */
 
 /*title 옆에 점*/
-.fc-daygrid-event-dot {
+/* .fc-daygrid-event-dot {
     border: 3px solid #000 !important;
     border-radius: 50%;
 }
@@ -129,9 +129,9 @@
 .font_icon {
     color: #897a69;
     size: s;
-}
+} */
 /* #c5af96 */
-.btn-primary {
+/* .btn-primary {
     --bs-btn-color: #fff;
     --bs-btn-bg: #c5af96;
     --bs-btn-border-color: #c5af96;
@@ -162,9 +162,9 @@
     line-height: 50px;
     color: #333;
     margin: 0;
-}
+} */
 
-.progress {
+/* .progress {
     width: 100%;
     height: 50px;
     background-color: #f0f0f0;
@@ -177,7 +177,7 @@
 }
 .EmotionDescription {
     height: 100px;
-}
+} */
 /* .progress,
 .progress-stacked {
     --bs-progress-height: 3rem;
@@ -196,10 +196,10 @@
     border-radius: var(--bs-progress-border-radius);
 } */
 
-.progress-bar {
+/* .progress-bar {
     font-size: 16px;
 }
 
 .ql-editor {
     height: 200px;
-}
+} */

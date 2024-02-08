@@ -2,23 +2,24 @@ import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import AuthApi from "../../../AuthApi";
-import "../../../css/admin/AdminWineDetail.css";
+import "../../../css/admin/AdminWineDetail.css"
 
-export default function AdminWineDetail() {
-  const token = localStorage.getItem("token") || "";
-  if (token === "") {
-    return <></>;
-  } else {
-    const userinfo = jwtDecode(token);
-    if (userinfo.role === "ROLE_ADMIN") {
-      return <AdminWineDetailComponet userinfo={userinfo} />;
-    } else {
+export default function AdminWineDetail(){
+    const token = localStorage.getItem("token") || "";
+    if (token === "") {
       return <></>;
+    } else {
+      const userinfo = jwtDecode(token);
+      if(userinfo.role === "ROLE_ADMIN") {
+        return <AdminWineDetailComponet userinfo={userinfo} />;
+      } else {
+        return <></>
+      }
+      
     }
-  }
 }
 
-function AdminWineDetailComponet() {
+function AdminWineDetailComponet(){
   let { id } = useParams();
   let [wineDetail, setWineDetail] = useState([]);
 
@@ -29,34 +30,34 @@ function AdminWineDetailComponet() {
       setWineDetail(data);
     });
   }, [id]);
-
-  return (
+  
+  return(
     <div id="admin_wine_detail_container">
-      <div className="admin_wine_detail_component">
-        {wineDetail.length === 0 ? (
-          <p>정보가 없는 와인입니다.</p>
-        ) : (
-          <GetWineDetail wineDetail={wineDetail} id={id} />
-        )}
-      </div>
+        <div className="admin_wine_detail_component">
+          {wineDetail.length === 0 ? (
+            <p>정보가 없는 와인입니다.</p>
+          ) : (
+            <GetWineDetail wineDetail={wineDetail} id={id} />
+          )}
+        </div>
     </div>
-  );
+  )
 }
-function GetWineDetail({ wineDetail, id }) {
-  function delete_wine() {
-    AuthApi("/api/admin/wineDelete", {
-      id,
-    }).then((data) => {
-      console.log(data);
-      if (data === 1) {
-        alert("삭제되었습니다.");
-        window.history.back();
-      } else {
-        alert("삭제에 실패하였습니다.");
+function GetWineDetail({wineDetail,id}){
+  function delete_wine(){
+    AuthApi("/api/admin/wineDelete",{
+      id
+    }).then((data)=>{
+      console.log(data)
+      if(data ===1){
+        alert("삭제되었습니다.")
+        window.history.back()
+      }else{
+        alert("삭제에 실패하였습니다.")
       }
-    });
+    })
   }
-  return (
+  return(
     <>
       <div className="admin_wine_detail_img">
         <img src={wineDetail.wine_image} alt="" />
@@ -72,9 +73,7 @@ function GetWineDetail({ wineDetail, id }) {
             </ul>
           </li>
           <li className="admin_wine_detail_name">{wineDetail.wine_name}</li>
-          <li className="admin_wine_detail_name_en">
-            {wineDetail.wine_name_en}
-          </li>
+          <li className="admin_wine_detail_name_en">{wineDetail.wine_name_en}</li>
           <li className="admin_wine_detail_note">{wineDetail.wine_note}</li>
           <li>
             <div className="admin_wine_info_table">
@@ -129,13 +128,12 @@ function GetWineDetail({ wineDetail, id }) {
           </li>
           <li>
             <div className="admin_wine_detail_btns">
-              <button className="admin_wine_delete_btn" onClick={delete_wine}>
-                와인 삭제
-              </button>
+              <button className="admin_wine_delete_btn" onClick={delete_wine}>와인 삭제</button>
             </div>
           </li>
+          
         </ul>
       </div>
     </>
-  );
+  )
 }

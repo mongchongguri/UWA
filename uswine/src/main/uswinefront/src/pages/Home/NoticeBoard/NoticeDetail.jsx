@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "../../../css/home/NoticeBoardDetail.css";
 import AuthApi from "../../../AuthApi";
 import DateFormat from "../../../function/DateFormat";
 import MarkUp from "../../../function/MarkUp";
@@ -218,15 +217,17 @@ function NoticeBoardDetailsComponent({ userinfo }) {
                 </div>
                 <div className="comment_info_comment">{comment.comment}</div>
                 <div>
-                  {useReComment[i] ? (
+                  
                     <ReCommentComponent
                       noticeCommentIdx={comment.id}
                       setUseReComment={setUseReComment}
                       initReComment={initReComment}
                       nickname={nickname}
                       deleteReComment={deleteReComment}
+                      useReComment={useReComment}
+                      i={i}
                     />
-                  ) : null}
+                  
                 </div>
               </li>
             );
@@ -237,7 +238,7 @@ function NoticeBoardDetailsComponent({ userinfo }) {
   }
 
   function ReCommentComponent({ noticeCommentIdx, setUseReComment, initReComment,
-    nickname,deleteReComment,noticeComment }) {
+    nickname,deleteReComment,noticeComment,useReComment,i }) {
     let [recomment, setReComment] = useState("");
 
     function saveReComment() {
@@ -296,6 +297,7 @@ function NoticeBoardDetailsComponent({ userinfo }) {
               })
             : null}
         </ul>
+        {useReComment[i] ? (
         <div className="recomment_container">
           <textarea
             className="recomment_area"
@@ -315,6 +317,7 @@ function NoticeBoardDetailsComponent({ userinfo }) {
             </button>
           </div>
         </div>
+        ):null}
       </div>
     );
   }
