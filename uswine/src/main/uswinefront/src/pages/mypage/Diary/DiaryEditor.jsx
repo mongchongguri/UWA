@@ -75,7 +75,7 @@ function DiaryEditor(props, ref) {
         console.log('자식 함수가 호출되었습니다.2');
         const date = new Date();
         const formateDate = DateFormat(date);
-        console.log(props)
+        console.log(props);
         AuthApi('/api/mypage/diary/insertD', {
             nickname: props.nickname,
             email: props.email,
@@ -97,19 +97,12 @@ function DiaryEditor(props, ref) {
 
     return (
         <>
-            <div>
-                {/* <label htmlFor="title">제목</label> */}
-                {/* <input id="title" type="text" onChange={handleTitleChange} /> */}
-                <br></br>
-                {/* <label htmlFor="date">날짜</label> */}
-                {/* <input id="date" type="date" /> */}
-                <ReactQuill
-                    ref={quillRef}
-                    style={{ width: '754px', height: '300px' }}
-                    modules={modules}
-                    onChange={setContent}
-                />
-            </div>
+            <ReactQuill
+                ref={quillRef}
+                style={{ width: '740px', height: '300px', paddingBottom: '20px' }}
+                modules={modules}
+                onChange={setContent}
+            />
             {/* <button style={{ marginTop: '50px' }} onClick={handlerSubmit}>
                 제출
             </button> */}
