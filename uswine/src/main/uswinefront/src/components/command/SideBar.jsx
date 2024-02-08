@@ -3,24 +3,23 @@ import React from "react";
 import "../../css/admin/command/adminsidebar.css";
 import { Link } from "react-router-dom";
 import logo from "../../css/imgs/logo.png";
-const SideBar=()=>{
+const SideBar = () => {
   const token = localStorage.getItem("token") || "";
-    if (token === "") {
+  if (token === "") {
+    alert("권한이 없습니다.");
+    window.history.back();
+    return <></>;
+  } else {
+    const userinfo = jwtDecode(token);
+    if (userinfo.role === "ROLE_ADMIN") {
+      return <SideBarComponent userinfo={userinfo} />;
+    } else {
       alert("권한이 없습니다.");
       window.history.back();
       return <></>;
-    } else {
-      const userinfo = jwtDecode(token);
-      if(userinfo.role === "ROLE_ADMIN") {
-        return <SideBarComponent userinfo={userinfo} />;
-      } else {
-        alert("권한이 없습니다.");
-        window.history.back();
-        return <></>
-      }
-      
     }
-}
+  }
+};
 const SideBarComponent = () => {
   const token = localStorage.getItem("token");
 
@@ -57,13 +56,13 @@ const SideBarComponent = () => {
                 <Link to={"/admin/wineList"}>전체와인 관리</Link>
               </li>
               <li>
-                <Link>판매와인 관리</Link>
+                <Link to={"/admin/management/wine"}>판매와인 관리</Link>
               </li>
               <li>
-                <Link to ={"/admin/notice/1"}>공지사항 관리</Link>
+                <Link to={"/admin/notice/1"}>공지사항 관리</Link>
               </li>
               <li>
-                <Link>이벤트 관리</Link>
+                <Link to={"/admin/event"}>이벤트 관리</Link>
               </li>
             </ul>
           </li>

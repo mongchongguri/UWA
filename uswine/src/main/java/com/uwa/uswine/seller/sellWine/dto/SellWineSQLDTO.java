@@ -3,11 +3,13 @@ package com.uwa.uswine.seller.sellWine.dto;
 import com.uwa.uswine.seller.sellWine.entity.SellWineSqlEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class SellWineSQLDTO {
     private String nickname;
     private String email;

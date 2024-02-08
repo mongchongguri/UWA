@@ -1,12 +1,16 @@
 package com.uwa.uswine.admin.controller;
 
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
+import com.uwa.uswine.main.board.entity.BoardEntity;
+import com.uwa.uswine.main.board.entity.CommentEntity;
+import com.uwa.uswine.main.board.entity.ReCommentEntity;
+import com.uwa.uswine.main.board.service.CommentService;
+import com.uwa.uswine.main.board.service.ReCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +39,156 @@ public class AdminController {
 	JoinService joinService;
 	@Autowired
 	AdminSellerService sellerService;
-	
+
+	private final CommentService commentService;
+	private final ReCommentService reCommentService;
+
+	public AdminController(CommentService commentService, ReCommentService reCommentService){
+		this.commentService = commentService;
+		this.reCommentService = reCommentService;
+	}
+
+	@PostMapping("getCommentCount")
+	public List<Long> getCommentCount(@RequestBody Map<String, Object> boardIdList){
+
+		List<Integer> list = (List<Integer>) boardIdList.get("boardIDList");
+
+		List<Long> allCountList = new ArrayList<>();
+
+		for(int i=0; i<list.size(); i++){
+
+			String idx = String.valueOf(list.get(i));
+			long commentCount = commentService.countComment(idx);
+			long recommentCount = reCommentService.getCountReComments(idx);
+
+			long allCount = commentCount + recommentCount;
+
+			allCountList.add(allCount);
+		}
+
+
+		return allCountList;
+	}
+
+
+	@PostMapping("updateBoardDetail")
+	public String updateBoardDetail (@RequestBody Map<String, Object> param){
+
+		String temp = (String) param.get("boardID");
+		int temp2 = Integer.parseInt(temp);
+
+		Long boardID = (long) temp2;
+
+		adminService.updateBoardDetail(boardID);
+
+		return null;
+	}
+
+
+	@PostMapping("updteBoardComments")
+	public String updateBoardComments(@RequestBody Map<String, Object> params){
+
+		Map<String, Object> commentCheckList = (Map<String, Object>) params.get("commentChecklist");
+		Map<String, Object> recommentCheckList = (Map<String, Object>) params.get("recommentChecklist");
+
+
+		String success = "0";
+
+		for(Map.Entry<String, Object> commentCheck: commentCheckList.entrySet()){
+			String key = commentCheck.getKey();
+			Long id = (long) Integer.parseInt(key);
+			Boolean value = (Boolean)commentCheck.getValue();
+
+			if(value == false){
+				continue;
+			}else {this.adminService.updateBoardComment(id);}
+		}
+
+		for(Map.Entry<String, Object> recommentCheck: recommentCheckList.entrySet()){
+			String key = recommentCheck.getKey();
+			Long id = (long) Integer.parseInt(key);
+			Boolean value = (Boolean)recommentCheck.getValue();
+
+			if(value == false){
+				continue;
+			} else{
+				this.adminService.updateBoardRecomment(id);
+			}
+		}
+
+		success = "1";
+
+		return success;
+	}
+
+
+
+	@PostMapping("getFreeBoardReComment")
+	public ResponseEntity<List<ReCommentEntity>> getFreeBoardReComment(@RequestBody Map<String, String> param){
+
+		String boardID = param.get("boardID");
+
+		return ResponseEntity.ok(this.adminService.getReComment(boardID));
+
+	}
+
+
+	@PostMapping("getFreeBoardComment")
+	public ResponseEntity<List<CommentEntity>> getFreeBoardComment(@RequestBody Map<String, String> param){
+
+		String id = param.get("boardID");
+
+		return ResponseEntity.ok(this.adminService.getComment(id));
+	}
+
+	@PostMapping("getFreeBoard")
+	public ResponseEntity<Optional<BoardEntity>> getFreeBoard(@RequestBody Map<String, String> param){
+
+		Long id = Long.valueOf(param.get("boardID"));
+
+		return ResponseEntity.ok(this.adminService.getBoard(id));
+	}
+
+	@PostMapping("adminBoardlist")
+	public Page<BoardEntity> getBoardList(@RequestBody Map<String, Object> page){
+		int currentpage = (int) page.get("page");
+		int size = 10;
+
+		int searchType = (int)page.get("searchType");
+		String searchKeyword = (String)page.get("searchKeyword");
+
+		return this.adminService.getboardList(currentpage, size, searchType, searchKeyword);
+	}
+
+	@PostMapping("updateBoard")
+	public String updateBoard(@RequestBody Map<String, Object> checklist){
+
+		ArrayList<Long> truelist = new ArrayList<>();
+
+		String finish = "0";
+
+		for(Map.Entry<String, Object> check: checklist.entrySet()){
+			String key = check.getKey();
+			Map<String, Object> value = (Map<String, Object>) check.getValue();
+
+			for(Map.Entry<String, Object> num: value.entrySet()){
+				Long id = Long.valueOf(num.getKey());
+				Boolean checked = (Boolean) num.getValue();
+
+				if(checked == false){
+					continue;
+				}
+
+				truelist.add(id);
+				finish = "1";
+			}
+		}
+
+		adminService.updateBoard(truelist);
+		return finish;
+	}
+
+
 	@PostMapping("/List")
 	public Page<UserEntity> getUserList(@RequestBody UserSearchDTO userSearch){
 		System.out.println(userSearch);

@@ -4,8 +4,16 @@ package com.uwa.uswine.admin.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
+import com.uwa.uswine.admin.repository.AdminRepository;
+import com.uwa.uswine.main.board.entity.BoardEntity;
+import com.uwa.uswine.main.board.entity.CommentEntity;
+import com.uwa.uswine.main.board.entity.ReCommentEntity;
+import com.uwa.uswine.main.board.repository.BoardRepository;
+import com.uwa.uswine.main.board.repository.CommentRepository;
+import com.uwa.uswine.main.board.repository.ReCommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -47,6 +55,106 @@ public class AdminService {
 	private final NoticeCommentRepository noticeCommentRepository;
 	private final NoticeRecommentRepository noticeRecommentRepository;
 	private final WineListRepository wineListRepository;
+
+	private final AdminRepository adminRepository;
+	private final BoardRepository boardRepository;
+	private final CommentRepository commentRepository;
+	private final ReCommentRepository reCommentRepository;
+
+	public Page<BoardEntity> getboardList(int page, int size, int searchType, String searchKeyword){
+
+		List<Sort.Order> sorts = new ArrayList<>();
+		sorts.add(Sort.Order.desc("writedate"));
+
+		Pageable pageable = PageRequest.of(page, size, Sort.by(sorts));
+
+		switch (searchType) {
+			case 0: return boardRepository.findByTitleContainingOrContentContaining(searchKeyword, searchKeyword,pageable);
+			case 1: return boardRepository.findByTitleContaining(searchKeyword,pageable);
+			case 2: return boardRepository.findByContentContaining(searchKeyword,pageable);
+			case 3: return boardRepository.findByNicknameContaining(searchKeyword,pageable);
+			default: return null;
+		}
+	}
+
+	public void updateBoard (List<Long> truelist){
+
+		for(Long id : truelist){
+			Long boardEntityId = id;
+
+			Optional<BoardEntity> boardEntity = adminRepository.findById(boardEntityId);
+
+			if(boardEntity != null){
+				BoardEntity entity = boardEntity.get();
+
+				entity.setTitle("관리자에 의해 삭제된 게시물입니다.");
+				entity.setContent("관리자에 의해 삭제된 게시물입니다.");
+
+				adminRepository.save(entity);
+			}
+		}
+	}
+
+	public Optional<BoardEntity> getBoard(Long id) {
+
+		return this.boardRepository.findById(id);
+
+	}
+
+	public List<CommentEntity> getComment(String id) {
+
+		return this.commentRepository.findByBoardIdx(id);
+	}
+
+	public List<ReCommentEntity> getReComment(String boardID){
+
+
+		return this.reCommentRepository.findByBoardIdx(boardID);
+	}
+
+	public void updateBoardComment(Long key) {
+
+		Optional<CommentEntity> optional = this.commentRepository.findById(key);
+
+		CommentEntity commentEntity = optional.get();
+		commentEntity.setComment("관리자에 의해 삭제된 댓글입니다.");
+
+		commentRepository.save(commentEntity);
+
+
+
+
+	}
+
+	public void updateBoardRecomment(Long id) {
+
+		Optional<ReCommentEntity> optional = this.reCommentRepository.findById(id);
+
+		ReCommentEntity reCommentEntity = optional.get();
+		reCommentEntity.setRecomment("관리자에 의해 삭제된 답급입니다.");
+
+		reCommentRepository.save(reCommentEntity);
+
+	}
+
+	public void updateBoardDetail(Long boardID) {
+		Optional<BoardEntity> optional = boardRepository.findById(boardID);
+
+		BoardEntity boardEntity = optional.get();
+
+		boardEntity.setTitle("관리자에 의해 삭제되었습니다.");
+		boardEntity.setContent("관리자에 의해 삭제되었습니다.");
+
+		boardRepository.save(boardEntity);
+	}
+
+	public List<Integer> getCommentCount(Map<String, Object> param) {
+		if(param.size() != 0){
+			System.out.println(param.get("boardIDList"));
+		}
+
+		return null;
+	}
 	
 	public Page<UserEntity> getUserList(UserSearchDTO userSearch) {
 		Page<UserEntity> returnList = null;

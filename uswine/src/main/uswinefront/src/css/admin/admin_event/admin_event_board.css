@@ -1,0 +1,78 @@
+*{
+  padding:0;
+  margin:0;
+  box-sizing: content-box;
+}
+
+#event_board_container{
+  width: calc(100% - 270px);
+  position: absolute;
+  top:80px;
+  left:270px;
+  padding: 50px;
+}
+
+#event_board_contentBlock{
+  width: 80%;
+  margin: 0 auto;
+}
+
+#create_event_btn {
+  text-align: right;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+#create_event_btn > button {
+  width: 90px;
+  height: 30px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+}
+
+#evetlist_table > thead > tr {
+  text-align: center;
+}
+
+#evetlist_table > thead > tr > th {
+  background-color: black;
+  color: white;
+}
+
+#evetlist_table > thead > tr > th:first-child {
+  width: 15%;
+}
+
+#evetlist_table > thead > tr > th:nth-child(2) {
+  width: 35%;
+}
+
+#evetlist_table > thead > tr > th:nth-child(3) {
+  width: 10%;
+}
+
+#evetlist_table > thead > tr > th:nth-child(4) {
+  width: 20%;
+}
+
+#evetlist_table > thead > tr > th:nth-child(5) {
+  width: 20%;
+}
+
+#evetlist_table > tbody > tr > td {
+  text-align: center;
+}
+
+#evetlist_table > tbody > tr > td > a {
+  text-decoration: none;
+  color: black;
+}
+
+
+
+#event_page_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

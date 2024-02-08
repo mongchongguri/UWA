@@ -1,0 +1,242 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: content-box;
+}
+
+#management_wine_container {
+  position: absolute;
+  top: 80px;
+  left: 270px;
+  width: calc(100% - 270px);
+}
+
+#management_wine_content{
+  padding: 50px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+#management_wine_content > h1 {
+  height: 100px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#admin_wine_link {
+  text-decoration: none;
+  color: black;
+}
+
+/* Search Box CSS */
+.admin_wine_search {
+  width: 100%;
+  border-radius: 50px;
+  background-color: white;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.admin_wine_search-txt {
+  width: 20%;
+  border: none;
+  outline: none;
+  font-weight: 100;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.search-btn {
+  background-color: transparent;
+  border: none;
+}
+.search-icon {
+  color: #7d0a0a;
+}
+
+/* tag_wine_container CSS*/
+.admin_tag_wine_container {
+  padding: 5px;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.admin_tag_wine_container ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+
+.admin_tag_wine_container ul li {
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border: 1.5px solid #ead196;
+  border-radius: 10px;
+  background-color: white;
+  padding: 5px 10px 5px 10px;
+  font-size: 15px;
+}
+
+/* selectTag CSS */
+.selectTag {
+  background: #ead196 !important;
+}
+/* wine_container CSS */
+.admin_wineList_container {
+  width: 100%;
+  display: flex;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.admin_wineList_container div {
+  white-space: nowrap;
+}
+
+.total_wine_count {
+  font-size: 15px;
+  margin-right: auto;
+  padding-left: 10px;
+}
+
+.wine_view {
+  width: 100%;
+  display: inline-block;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.wine_list_prev,
+.wine_list_current,
+.wine_list_next {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  transform: translateX(-100%);
+}
+
+.slide_animation {
+  transition: transform 0.5s;
+}
+
+.admin_wineList_container ul li {
+  flex-basis: calc(25% - 10px);
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: white;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  min-width: calc(25% - 10px);
+  white-space: normal;
+}
+
+/* wine_list_card Layout CSS */
+.admin_wine_list_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding: 10px;
+  height: 90%;
+  width: 70%;
+  cursor: pointer;
+}
+
+.admin_wine_list_card hr {
+  width: 50%;
+  border: none;
+  border-top: 2px solid black;
+  margin: 10px 0;
+}
+
+.admin_wine_list_card img {
+  width: 50%;
+  margin-top: 10px;
+}
+.wine_names {
+  display: flex;
+  height: 40%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: normal !important;
+}
+.wine_name {
+  font-size: 16px;
+}
+
+.wine_name_en {
+  font-size: 13px;
+}
+
+
+.wine_info {
+  margin-top: 10px;
+  font-size: 13px;
+  white-space: normal !important;
+}
+
+.wine_info span b {
+  background-color: #ead196;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+/*controller CSS*/
+.admin_wine_page_controller {
+    display: flex;
+    position:relative;
+    flex-direction: row;
+}
+
+.admin_wine_page_box {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 7px;
+    margin-top: 7px;
+}
+
+.page_input {
+  width: 30px;
+  text-align: center;
+  outline: none;
+  border: none;
+}
+
+.error_page {
+  background-color: #7d0a0a;
+  color: white;
+}
+
+#admin_wine_detail_Foot{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#wineInsert{
+  display: flex;
+  margin-left: auto;
+}
+
+.wine_seller_info > div{
+  font-size: 13px;
+  font-family: SUITE-Regular;
+  text-align: center;
+}

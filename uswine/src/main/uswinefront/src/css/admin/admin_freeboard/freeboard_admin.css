@@ -1,0 +1,163 @@
+#freeBoardContent {
+  width: calc(100% - 270px);
+  position: absolute;
+  top:80px;
+  left:270px;
+  padding: 50px;
+}
+
+
+#freeboradContentNameBlock {
+  width: 100%;
+  height: 100px;
+}
+
+#freeboradContentNameBlock > h1 {
+  width: 100%;
+  height: 100px;
+  line-height: 100px;
+  color: black;
+}
+
+#freeboard_search_block{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#freeboard_board_deleteBtn > button {
+  width: 70px;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+#freeboard_search{
+  width: 500px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: end;
+}
+
+#freeboard_search_select {
+  width: 100px;
+  height: 50px;
+  line-height: 50px;
+}
+
+#freeboard_search_select > select{
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+#freeboard_search_keyword{
+  width: 250px;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+#freeboard_search_btn{
+  width: 50px;
+  height: 30px;
+  font-size: 14px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+#freeboard_table{
+  margin-top: 5px;
+  width: 100%;
+  font-size: 15px;
+}
+
+#freeboard_table > thead {
+  text-align: center;
+}
+
+#freeboard_table > thead tr th{
+  background-color: #272829;
+}
+
+#freeboard_table  thead tr th{
+  font-weight: bold;
+}
+
+
+#freeboard_table  thead tr th:first-child{
+  width: 100px;
+}
+
+#freeboard_table  thead tr th:nth-child(2){
+  width: 780px;
+}
+
+
+#freeboard_table  thead tr th:nth-child(3){
+  width: 250px;
+}
+
+#freeboard_table  thead tr th:nth-child(4){
+  width: 150px;
+}
+
+#freeboard_table  thead tr th:nth-child(5){
+  width: 150px;
+}
+
+#freeboard_table tbody tr {
+  text-align: center;
+}
+
+#freeboard_table tbody tr td {
+  background-color: white;
+  color: black;
+}
+
+#freeboard_table tbody tr td:nth-child(5) button {
+  width: 60px;
+  border: 1px solid black;
+  background-color: #ddd;
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 1px;
+}
+
+#freeboard_table tbody tr td:nth-child(2) a {
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+
+#freeboard_table tbody tr td:nth-child(2) a span{
+  display: inline-block;
+  position: relative;
+  left: 5px;
+  color: #aaa;
+  font-size: 12px;
+}
+
+
+#freeboard_page_controller{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+#freeboard_page_box{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 7px;
+  margin-top: 7px;
+}

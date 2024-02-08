@@ -3,12 +3,14 @@ package com.uwa.uswine.seller.sellWine.dto;
 import com.uwa.uswine.seller.sellWine.entity.SellWineEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.util.List;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
 public class SellWineDTO {
     private String nickName;
