@@ -19,6 +19,7 @@ public class SellWineEntity {
     private String id;
 
     private String nickName;
+    private String email;
     private String phone;
     private String sellerInfo;
     private String sellMoney;

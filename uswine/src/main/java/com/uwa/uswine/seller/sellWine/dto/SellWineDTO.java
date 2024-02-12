@@ -14,6 +14,7 @@ import java.util.List;
 @ToString
 public class SellWineDTO {
     private String nickName;
+    private String email;
     private String phone;
     private String sellerInfo;
     private String sellMoney;
@@ -43,6 +44,7 @@ public class SellWineDTO {
         SellWineEntity sellWineEntity = new SellWineEntity();
 
         sellWineEntity.setNickName(this.nickName);
+        sellWineEntity.setEmail(this.email);
         sellWineEntity.setPhone(this.phone);
         sellWineEntity.setSellerInfo(this.sellerInfo);
         sellWineEntity.setSellMoney(this.sellMoney);

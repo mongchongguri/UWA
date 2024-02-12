@@ -81,7 +81,6 @@ public class MNWInfoWineService {
             System.out.println("Entity: "+entity);
             dto.setId(entity.getId());
             dto.setAddress(entity.getAddress());
-            dto.setDelivery(entity.isDelivery());
             dto.setDetailAddress(entity.getDetailAddress());
             dto.setEmail(entity.getEmail());
             dto.setItemId(entity.getItemId());
@@ -105,7 +104,6 @@ public class MNWInfoWineService {
 
         MNWInfoWineSellDTO returnDTO = new MNWInfoWineSellDTO();
         returnDTO.setAddress(entity.get().getAddress());
-        returnDTO.setDelivery(entity.get().isDelivery());
         returnDTO.setDetailAddress(entity.get().getDetailAddress());
         returnDTO.setEmail(entity.get().getEmail());
         returnDTO.setItemId(entity.get().getItemId());

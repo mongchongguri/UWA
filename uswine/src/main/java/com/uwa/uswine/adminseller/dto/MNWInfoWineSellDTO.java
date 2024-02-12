@@ -18,6 +18,5 @@ public class MNWInfoWineSellDTO {
     private String sellStock;
     private String address;
     private String detailAddress;
-    private boolean delivery;
     private Date sellDate;
 }

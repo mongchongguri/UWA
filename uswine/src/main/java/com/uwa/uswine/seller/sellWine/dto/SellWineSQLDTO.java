@@ -19,6 +19,7 @@ public class SellWineSQLDTO {
     private String sellMoney;
     private String wineType;
     private String wineRegion;
+    private String stock;
     private String mongoId;
     private Date selldate;
 
@@ -33,6 +34,7 @@ public class SellWineSQLDTO {
         sellWineSqlEntity.setSellMoney(this.sellMoney);
         sellWineSqlEntity.setWineType(this.wineType);
         sellWineSqlEntity.setWineRegion(this.wineRegion);
+        sellWineSqlEntity.setStock(this.stock);
         sellWineSqlEntity.setMongoId(this.mongoId);
         sellWineSqlEntity.setSelldate(this.selldate);
         return sellWineSqlEntity;

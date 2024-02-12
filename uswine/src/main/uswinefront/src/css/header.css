@@ -59,6 +59,14 @@ header {
 #header_login_btn span:nth-child(1) {
   margin-right: 15px;
 }
+
+.header_cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #c8beae;
+  font-size: 22px;
+}
 #headerNicknameBlock {
   margin-right: 20px !important;
   color: #666;

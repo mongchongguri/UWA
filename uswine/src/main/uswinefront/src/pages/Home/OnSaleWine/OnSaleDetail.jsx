@@ -39,15 +39,48 @@ function OnSaleDetailCheck({ userinfo }) {
         {wineInfo == null ? (
           <p>정보가 없는 와인입니다.</p>
         ) : (
-          <OnSaleDetailComponent wineInfo={wineInfo} stock={stock} />
+          <OnSaleDetailComponent
+            wineInfo={wineInfo}
+            stock={stock}
+            userinfo={userinfo}
+          />
         )}
       </div>
     </div>
   );
 }
 
-function OnSaleDetailComponent({ wineInfo, stock }) {
+function OnSaleDetailComponent({ wineInfo, stock, userinfo }) {
   let navigate = useNavigate();
+  console.log(wineInfo);
+  console.log(userinfo);
+  function cartFunction() {
+    AuthApi("/api/mypage/cart/buyWine", {
+      mongoId: wineInfo.id,
+      username: userinfo.nickname,
+      useremail: userinfo.username,
+      sellername: wineInfo.nickName,
+      selleremail: wineInfo.email,
+      price: wineInfo.sellMoney,
+      document: 1,
+    }).then((data) => {
+      if (data === 1) {
+        const cart = window.confirm(
+          "장바구니에 담았습니다. 장바구니로 이동하시겠습니까?"
+        );
+        if (cart) {
+          navigate("/mypage/cart");
+        }
+      } else {
+        const cart = window.confirm(
+          "이미 장바구니에 있는 항목입니다. 장바구니로 이동하시겠습니까?"
+        );
+        if (cart) {
+          navigate("/mypage/cart");
+        }
+      }
+    });
+  }
   return (
     <>
       <div className="wine_detail_img">
@@ -219,7 +252,13 @@ function OnSaleDetailComponent({ wineInfo, stock }) {
               >
                 채팅하기
               </button>
-              <button>장바구니</button>
+              <button
+                onClick={() => {
+                  cartFunction();
+                }}
+              >
+                장바구니
+              </button>
             </div>
           </div>
         </ul>

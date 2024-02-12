@@ -81,6 +81,7 @@ function SellerWineComponent({ userinfo }) {
         const IMG_URL = await upload.promise().then((res) => res.Location);
         await AuthApi("/api/seller/wine/upload", {
           nickName: userinfo.nickname,
+          email: userinfo.username,
           phone: phoneNumber,
           sellerInfo: sellerInfo,
           sellMoney: sellMoney,
@@ -122,6 +123,7 @@ function SellerWineComponent({ userinfo }) {
             mongoId: data,
             selldate: date,
           }).then((data) => {
+            console.log(data);
             if (data == 1) {
               alert("와인 판매 등록이 완료되었습니다.");
               window.history.back();
@@ -280,7 +282,7 @@ function SellerWineComponent({ userinfo }) {
                     onChange={(e) => {
                       setPostCode(e.target.value);
                     }}
-                    readOnly={true}
+                    // readOnly={true}
                   />
                   <PopupPostCode
                     setPostCode={setPostCode}
@@ -295,7 +297,7 @@ function SellerWineComponent({ userinfo }) {
                     onChange={(e) => {
                       setAddress(e.target.value);
                     }}
-                    readOnly={true}
+                    // readOnly={true}
                   />
                 </div>
                 <div>

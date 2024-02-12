@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface InfoWineRepository extends JpaRepository<InfoWineSellEntity,Long> {
     List<InfoWineSellEntity> findByItemId(String id);
+    InfoWineSellEntity findByItemIdAndEmail(String id,String email);
 }

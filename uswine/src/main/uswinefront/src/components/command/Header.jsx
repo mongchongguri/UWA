@@ -22,6 +22,7 @@ import {
   faCreditCard,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { BsCart4 } from "react-icons/bs";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 
@@ -86,6 +87,11 @@ const Header = () => {
         </div>
         {token ? (
           <div id="headerBtnBlock">
+            <Link to="mypage/cart">
+              <div className="header_cart">
+                <BsCart4 />
+              </div>
+            </Link>
             <div id="headerNicknameBlock">{jwtDecode(token)["nickname"]}</div>
             <div>
               <FontAwesomeIcon
@@ -143,7 +149,11 @@ const Header = () => {
           <li>
             <Link
               to="/"
-              className={currentPath == "/" || currentPath.startsWith("/wine") ? "header_selectMenu" : null}
+              className={
+                currentPath == "/" || currentPath.startsWith("/wine")
+                  ? "header_selectMenu"
+                  : null
+              }
             >
               전체 와인
             </Link>
@@ -172,14 +182,14 @@ const Header = () => {
             <Link>이벤트</Link>
           </li>
           <li>
-             <Link 
+            <Link
               to="/notice/1"
               className={
                 currentPath.startsWith("/notice") ? "header_selectMenu" : null
               }
             >
               공지사항
-              </Link>
+            </Link>
           </li>
         </ul>
       </div>
@@ -220,13 +230,22 @@ function SideBar({ boxRef, token, currentPath }) {
             <FontAwesomeIcon icon={faUser} className="side_bar_menu_icon" />내
             정보
           </li>
-          <li className="side_bar_menu_list">
-            <FontAwesomeIcon
-              icon={faBasketShopping}
-              className="side_bar_menu_icon"
-            />
-            장바구니
-          </li>
+          <Link
+            to="mypage/cart"
+            className={
+              currentPath.startsWith("/mypage/cart")
+                ? "side_menu_list_select"
+                : null
+            }
+          >
+            <li className="side_bar_menu_list">
+              <FontAwesomeIcon
+                icon={faBasketShopping}
+                className="side_bar_menu_icon"
+              />
+              장바구니
+            </li>
+          </Link>
           <li className="side_bar_menu_list">
             <FontAwesomeIcon
               icon={faCreditCard}
@@ -242,17 +261,17 @@ function SideBar({ boxRef, token, currentPath }) {
             게시글 관리
           </li>
           <Link
-              to="mypage/diary"
-              className={
-                currentPath.startsWith("/mypage/diary")
-                    ? "side_menu_list_select"
-                    : null
-              }
+            to="mypage/diary"
+            className={
+              currentPath.startsWith("/mypage/diary")
+                ? "side_menu_list_select"
+                : null
+            }
           >
-          <li className="side_bar_menu_list">
-            <FontAwesomeIcon icon={faBook} className="side_bar_menu_icon" />
-            다이어리
-          </li>
+            <li className="side_bar_menu_list">
+              <FontAwesomeIcon icon={faBook} className="side_bar_menu_icon" />
+              다이어리
+            </li>
           </Link>
           <Link
             to="mypage/chat"

@@ -37,9 +37,6 @@ public class InfoWineSellEntity {
     private String detailAddress;
 
     @Column(nullable = false)
-    private boolean delivery;
-
-    @Column(nullable = false)
     private Date sellDate;
 
 }

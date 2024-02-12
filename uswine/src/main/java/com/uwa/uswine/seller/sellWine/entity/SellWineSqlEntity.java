@@ -22,7 +22,7 @@ public class SellWineSqlEntity {
     @Column(nullable = false)
     private String wineName;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String wineNameEn;
 
     @Column(nullable = false)

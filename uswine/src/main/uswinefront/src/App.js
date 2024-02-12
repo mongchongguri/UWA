@@ -37,6 +37,7 @@ import AdminEventUpdate from "./pages/admin/admin_event/AdminEventUpdate";
 import AdminFreeBoard from "./pages/admin/admin_freeboard/AdminFreeBoard";
 import AdminWine from "./pages/admin/wine_management/AdminWine";
 import AdminSellerWine from "./pages/admin/wine_management/AdminSellerWine";
+import UserWineCart from "./pages/mypage/Cart/UserWineCart";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
       <Routes>
         <Route path="/" element={<User />}>
           <Route index element={<Home />} />
+          {/* 헤더 */}
           <Route path="login" element={<LoginPage />} />
           <Route path="join" element={<JoinPage />} />
           <Route path="notice/:page/" element={<UserNotice />} />
@@ -59,6 +61,7 @@ function App() {
           <Route path="board/write" element={<WriteBoard />} />
           {/* 마이 페이지 */}
           <Route path="mypage/regist" element={<SellerRegistrationPage />} />
+          <Route path="mypage/cart" element={<UserWineCart />} />
           <Route path="mypage/chat" element={<Chatting />} />
           <Route path="mypage/chat/room/:id?" element={<Chatting />} />
           <Route path="mypage/diary" element={<Diary />} />

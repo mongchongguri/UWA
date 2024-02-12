@@ -21,7 +21,6 @@ public class InfoWineDTO {
     private String sellStock;
     private String address;
     private String detailAddress;
-    private boolean delivery;
     private Date sellDate;
 
     public InfoWineSellEntity toEntity() {
@@ -34,7 +33,6 @@ public class InfoWineDTO {
         infoWineSellEntity.setSellStock(this.sellStock);
         infoWineSellEntity.setAddress(this.address);
         infoWineSellEntity.setDetailAddress(this.detailAddress);
-        infoWineSellEntity.setDelivery(this.delivery);
         infoWineSellEntity.setSellDate(this.sellDate);
         return infoWineSellEntity;
     }
