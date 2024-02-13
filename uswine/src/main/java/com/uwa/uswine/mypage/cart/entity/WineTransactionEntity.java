@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.Date;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -44,4 +46,7 @@ public class WineTransactionEntity {
 
     @Column(nullable = false)
     private String useraddress;
+
+    @Column(nullable = false)
+    private Date timestamp;
 }

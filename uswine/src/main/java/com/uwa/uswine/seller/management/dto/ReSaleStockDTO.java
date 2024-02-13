@@ -9,8 +9,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class SalesManagementDTO {
-    private String email;
-    private int sellingpage;
-    private int soldpage;
+public class ReSaleStockDTO {
+    private long id;
+    private String reStock;
+    private int document;
 }

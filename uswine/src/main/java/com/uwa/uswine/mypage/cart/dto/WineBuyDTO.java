@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.Date;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,6 +25,8 @@ public class WineBuyDTO {
     private String username;
     private String useraddress;
 
+    private Date timestamp;
+
     public WineTransactionEntity toEntity() {
         WineTransactionEntity wineTransactionEntity = new WineTransactionEntity();
         wineTransactionEntity.setWineId(this.wineId);
@@ -37,6 +41,7 @@ public class WineBuyDTO {
         wineTransactionEntity.setUseremail(this.useremail);
         wineTransactionEntity.setUsername(this.username);
         wineTransactionEntity.setUseraddress(this.useraddress);
+        wineTransactionEntity.setTimestamp(this.timestamp);
         return wineTransactionEntity;
     }
 }

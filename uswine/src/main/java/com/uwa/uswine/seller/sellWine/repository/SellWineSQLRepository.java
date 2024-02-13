@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SellWineSQLRepository extends JpaRepository<SellWineSqlEntity,Long> {
     SellWineSqlEntity findByMongoIdAndEmail(String id,String email);
+    SellWineSqlEntity findById(long id);
 }

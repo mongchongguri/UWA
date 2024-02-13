@@ -16,6 +16,7 @@ import reactor.core.publisher.Mono;
 public interface WineListRepository extends ReactiveMongoRepository<WineEntity,Object> {
 
     Flux<WineEntity> findBy(Pageable pageable);
+    Mono<WineEntity> findById(String id);
     Mono<Long> count();
     // Mono is total Page
     @Query("{'$and': [{'$or': [{'wine_name': {$regex: ?0, $options: 'i', $exists: true}}, {'wine_name': {$exists: false}}, {'wine_name_en': {$regex: ?0, $options: 'i', $exists: true}},{'wine_name_en': {$exists: false}}]},{'$or': [{'wine_aroma': {$in: ?1, $exists: true}}, {'wine_aroma': {$exists: false}}]},{'$or': [{'wine_info.0': {$in: ?2, $exists: true}}, {'wine_info': {$exists: false}}]}]}")

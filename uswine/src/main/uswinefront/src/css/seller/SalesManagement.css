@@ -83,6 +83,32 @@
   color: white;
 }
 
+.wine_info_list_container {
+  margin-bottom: 30px;
+}
+.wine_info_title_container {
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+}
+
+.wine_info_title {
+  padding-left: 2rem !important;
+  font-weight: 700;
+}
+
+.wine_info_title_container button {
+  margin-left: 10px;
+  font-size: 13px;
+  padding: 5px 10px;
+  border: none;
+  margin-bottom: 1rem;
+}
+
+.wine_info_title_button {
+  background-color: #897a69;
+  color: white;
+}
 .sell_wine_list {
   display: flex;
   padding-top: 10px;
@@ -99,32 +125,123 @@
 }
 
 .sell_wine_list li:nth-child(2) {
-  flex: 35%;
+  flex: 30%;
 }
 
 .sell_wine_list li:nth-child(3) {
   flex: 15%;
+  display: flex;
+  justify-content: center;
 }
 
 .sell_wine_list li:nth-child(4) {
   flex: 15%;
+  display: flex;
+  justify-content: center;
 }
 
 .sell_wine_list li:nth-child(5) {
-  flex: 10%;
+  flex: 15%;
+  display: flex;
+  justify-content: center;
 }
 
 .sell_wine_list li:nth-child(6) {
   flex: 10%;
+  display: flex;
+  justify-content: center;
 }
 
 .sell_wine_list li:nth-child(7) {
   flex: 10%;
+  display: flex;
+  justify-content: center;
 }
 
+.management_page_controller {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.management_page_controller button {
+  padding: 0px 10px;
+  border: none;
+  background-color: transparent;
+}
+.management_page_controller input {
+  width: 30px;
+  padding: 5px;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  outline: none;
+}
+.management_page_controller span {
+  width: 30px;
+  padding: 7px 10px;
+  text-align: center;
+  margin-left: 5px;
+  border-bottom: 1px solid #ddd;
+}
 .sell_cancel {
   padding: 1px 10px;
   background-color: #ff8888;
   color: white;
   border: none;
+}
+
+.management_resale_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000b8;
+  display: flex;
+}
+
+.management_resale_input_box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.management_resale_input_box p {
+  margin-bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.management_resale_input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.management_resale_input input {
+  margin-right: 10px;
+  padding: 5px;
+  border: none;
+  border-bottom: 1px solid #333;
+  outline: none;
+}
+
+.management_resale_input button {
+  margin-right: 10px;
+  padding: 5px 10px;
+  border: 1px solid #333;
+  background-color: #fff;
+}
+
+.management_resale_input button:hover {
+  background-color: #333;
+  color: #fff;
 }

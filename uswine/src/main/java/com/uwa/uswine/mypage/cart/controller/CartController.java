@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -49,6 +50,7 @@ public class CartController {
 
         List<Integer> buyRestult = new ArrayList<>();
         for(Map<String,Object> item : itemList) {
+            Date date = new Date();
             WineBuyDTO dto = new WineBuyDTO();
             dto.setWineId((String) item.get("wineId"));
             dto.setWineName((String) item.get("wineName"));
@@ -60,6 +62,7 @@ public class CartController {
             dto.setUseremail((String) item.get("useremail"));
             dto.setUsername((String) item.get("username"));
             dto.setUseraddress((String) item.get("address"));
+            dto.setTimestamp(date);
 
             int rs = buyService.updateStock(dto);
             buyRestult.add(rs);
