@@ -29,7 +29,12 @@ public class OnSaleWineController {
 
     @PostMapping("email")
     public String getEmail(@RequestBody SellerNickNameDTO sellerNickNameDTO) {
-        return this.onSaleWineService.findEmail(sellerNickNameDTO.getNickname()).getEmail();
+        System.out.println(sellerNickNameDTO.toString());
+        if (sellerNickNameDTO.getDocument() != 0) {
+            return this.onSaleWineService.findEmail(sellerNickNameDTO.getNickname()).getEmail();
+        } else {
+            return this.onSaleWineService.findInfoEmail(sellerNickNameDTO.getNickname()).getEmail();
+        }
 
     }
 }

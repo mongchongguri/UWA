@@ -41,4 +41,7 @@ public class WineTransactionEntity {
 
     @Column(nullable = false)
     private String username;
+
+    @Column(nullable = false)
+    private String useraddress;
 }

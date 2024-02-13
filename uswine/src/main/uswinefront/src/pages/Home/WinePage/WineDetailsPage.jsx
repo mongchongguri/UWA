@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "../../../css/home/WineDetailsPage.css";
 import "../../../css/home/WineDetailSellInfo.css";
@@ -187,57 +187,57 @@ function WineSellInfoComponent({ wineDetail, userinfo }) {
     });
   }, []);
 
-  // useEffect(() => {
-  //   const script = document.createElement("script");
-  //   script.async = true;
-  //   script.src =
-  //     "//dapi.kakao.com/v2/maps/sdk.js?appkey=a912192bd381e7addd457d5ba6ddd1b1&libraries=services&autoload=false";
-  //   document.head.appendChild(script);
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.async = true;
+    script.src =
+      "//dapi.kakao.com/v2/maps/sdk.js?appkey=a912192bd381e7addd457d5ba6ddd1b1&libraries=services&autoload=false";
+    document.head.appendChild(script);
 
-  //   script.onload = () => {
-  //     kakao.maps.load(() => {
-  //       const container = document.getElementById("map");
-  //       const options = {
-  //         center: new kakao.maps.LatLng(523951.25, 1085073.75),
-  //         level: 3,
-  //       };
+    script.onload = () => {
+      kakao.maps.load(function () {
+        const container = document.getElementById("map");
+        const options = {
+          center: new kakao.maps.LatLng(currentPosition[0], currentPosition[1]),
+          level: 3,
+        };
 
-  //       const map = new kakao.maps.Map(container, options);
+        const map = new kakao.maps.Map(container, options);
 
-  //       const zoomControl = new kakao.maps.ZoomControl();
-  //       map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+        const zoomControl = new kakao.maps.ZoomControl();
+        map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
-  //       const imageSrc =
-  //         "https://mongchongguriforum.s3.ap-northeast-2.amazonaws.com/maker.png";
-  //       const imageSize = new kakao.maps.Size(64, 80);
-  //       const imageOption = { offset: new kakao.maps.Point(27, 69) };
+        const imageSrc =
+          "https://mongchongguriforum.s3.ap-northeast-2.amazonaws.com/maker.png";
+        const imageSize = new kakao.maps.Size(64, 80);
+        const imageOption = { offset: new kakao.maps.Point(27, 69) };
 
-  //       const markerImage = new kakao.maps.MarkerImage(
-  //         imageSrc,
-  //         imageSize,
-  //         imageOption
-  //       );
+        const markerImage = new kakao.maps.MarkerImage(
+          imageSrc,
+          imageSize,
+          imageOption
+        );
 
-  //       if (position != null) {
-  //         const geocoder = new kakao.maps.services.Geocoder();
+        if (position != null) {
+          const geocoder = new kakao.maps.services.Geocoder();
 
-  //         geocoder.addressSearch(position, function (result, status) {
-  //           if (status === kakao.maps.services.Status.OK) {
-  //             let coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+          geocoder.addressSearch(position, function (result, status) {
+            if (status === kakao.maps.services.Status.OK) {
+              let coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-  //             let marker = new kakao.maps.Marker({
-  //               image: markerImage,
-  //               position: coords,
-  //             });
+              let marker = new kakao.maps.Marker({
+                image: markerImage,
+                position: coords,
+              });
 
-  //             map.setCenter(coords);
-  //             marker.setMap(map);
-  //           }
-  //         });
-  //       }
-  //     });
-  //   };
-  // }, [position, currentPosition]);
+              map.setCenter(coords);
+              marker.setMap(map);
+            }
+          });
+        }
+      });
+    };
+  }, [position, currentPosition]);
 
   function mapPosition(address, i) {
     setPosition(address);
@@ -289,6 +289,7 @@ function WineSellInfoComponent({ wineDetail, userinfo }) {
           <ul className="sell_store_list">
             {stores.length != 0
               ? stores.map(function (store, i) {
+                  console.log(store);
                   return (
                     <div
                       className="store_wine_list"
@@ -336,7 +337,15 @@ function WineSellInfoComponent({ wineDetail, userinfo }) {
                         </ul>
                         <ul className="store_btn_container">
                           <div>
-                            <button>채팅하기</button>
+                            <button
+                              onClick={() => {
+                                navigate(
+                                  `/onsale/chat/room/${store.nickname}/${store.itemId}/0`
+                                );
+                              }}
+                            >
+                              채팅하기
+                            </button>
                             <button
                               onClick={() => {
                                 cartFunction(store);

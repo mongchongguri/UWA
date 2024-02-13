@@ -10,7 +10,6 @@ import com.uwa.uswine.mypage.cart.repository.UserCartRepository;
 import com.uwa.uswine.mypage.cart.repository.WineCartRepository;
 import com.uwa.uswine.seller.sellWine.entity.SellWineEntity;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

@@ -149,11 +149,14 @@ function OnSaleDetailComponent({ wineInfo, stock, userinfo }) {
                           if (taste[1] > i) {
                             return (
                               <li
+                                key={i}
                                 className={`wine_detail_taste taste_${i + 1}`}
                               ></li>
                             );
                           } else {
-                            return <li className="wine_detail_taste"></li>;
+                            return (
+                              <li className="wine_detail_taste" key={i}></li>
+                            );
                           }
                         })}
                       </ul>

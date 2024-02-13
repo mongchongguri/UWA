@@ -73,6 +73,7 @@ function UserWineCartComponent({ userinfo }) {
           sellername: carts[i].sellername,
           useremail: userinfo.username,
           username: userinfo.nickname,
+          address: userAddress,
         };
         finalWine.push(wine);
       }
@@ -80,6 +81,7 @@ function UserWineCartComponent({ userinfo }) {
     AuthApi("/api/mypage/cart/buy", {
       wineDTO: finalWine,
     }).then((data) => {
+      console.log(data);
       let check = 0;
       for (let i = 0; i < data.length; i++) {
         if (data[i] != 1) {
@@ -92,6 +94,7 @@ function UserWineCartComponent({ userinfo }) {
       if (check == data.length) {
         alert("상품을 구매했습니다.");
       }
+      setDeleteBtn(deleteBtn + 1);
     });
   }
 

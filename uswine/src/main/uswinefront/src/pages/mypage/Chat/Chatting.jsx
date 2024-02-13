@@ -29,18 +29,20 @@ function Chatting() {
 function ChattingComponent({ userinfo }) {
   let navigate = useNavigate();
   let outNavigate = useNavigate();
-  let { seller, item } = useParams();
+  let { seller, item, document } = useParams();
   let { id } = useParams(); //roomId
 
   let [sellerinfo, setSellerInfo] = useState({});
   let [chatList, setChatList] = useState([]);
 
   let [room, setRoom] = useState(null);
+  let [useSeller, setUseSeller] = useState(seller);
 
   useEffect(() => {
-    if (seller) {
+    if (useSeller != null) {
       AuthApi("/api/onsale/email", {
         nickname: seller,
+        document: document,
       }).then((data) => {
         setSellerInfo({
           sellername: data,
@@ -55,7 +57,7 @@ function ChattingComponent({ userinfo }) {
     } else {
       setRoom(null);
     }
-  }, [navigate]);
+  }, [navigate, outNavigate]);
 
   useEffect(() => {
     AuthApi("/api/chatting/chatlist", {
@@ -63,7 +65,7 @@ function ChattingComponent({ userinfo }) {
     }).then((data) => {
       setChatList(data);
     });
-  }, [navigate]);
+  }, [navigate, outNavigate]);
 
   function outRoom(id) {
     const outChat = window.confirm("채팅방을 나가시겠습니까?");
@@ -74,7 +76,8 @@ function ChattingComponent({ userinfo }) {
         email: userinfo.username,
       }).then((data) => {
         if (data == 1) {
-          outNavigate("/");
+          outNavigate("/mypage/chat");
+          setUseSeller(null);
         }
       });
     }
@@ -108,7 +111,8 @@ function ChattingComponent({ userinfo }) {
                     </div>
                     <div className="chatting_remove">
                       <button
-                        onClick={() => {
+                        onClick={(e) => {
+                          e.stopPropagation();
                           outRoom(chat.id);
                         }}
                       >
@@ -139,6 +143,7 @@ function NotInRoom({ userinfo, sellerinfo, setSellerInfo }) {
   let [inquiry, setInquiry] = useState(false);
 
   useEffect(() => {
+    console.log(sellerinfo);
     AuthApi("/api/chatting/create", {
       userEmail: userinfo.username,
       userNickname: userinfo.nickname,
@@ -188,13 +193,10 @@ function ChattingRoom({ room, userinfo, sellerinfo }) {
   let [messages, setMessages] = useState([]);
   let [stompClient, setStompClient] = useState(null);
 
-  console.log(messages);
   useEffect(() => {
-    console.log(room);
     AuthApi("/api/chatting/getchat", {
       room: room,
     }).then((data) => {
-      console.log(data);
       setMessages(data);
     });
   }, [room]);

@@ -55,7 +55,10 @@ function App() {
           <Route path="wine/sell/:id" element={<InfoWineSell />} />
           <Route path="onsale" element={<OnSaleWine />} />
           <Route path="onsale/:stock/:id" element={<OnSaleDetail />} />
-          <Route path="onsale/chat/room/:seller/:item" element={<Chatting />} />
+          <Route
+            path="onsale/chat/room/:seller/:item/:document?"
+            element={<Chatting />}
+          />
           <Route path="board/:type/:page/:keyword?" element={<FreeBoard />} />
           <Route path="board/:id" element={<FreeBoardDetails />} />
           <Route path="board/write" element={<WriteBoard />} />

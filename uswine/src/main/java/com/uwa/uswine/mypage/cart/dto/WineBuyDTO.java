@@ -21,6 +21,7 @@ public class WineBuyDTO {
     private String sellername;
     private String useremail;
     private String username;
+    private String useraddress;
 
     public WineTransactionEntity toEntity() {
         WineTransactionEntity wineTransactionEntity = new WineTransactionEntity();
@@ -35,6 +36,7 @@ public class WineBuyDTO {
 
         wineTransactionEntity.setUseremail(this.useremail);
         wineTransactionEntity.setUsername(this.username);
+        wineTransactionEntity.setUseraddress(this.useraddress);
         return wineTransactionEntity;
     }
 }

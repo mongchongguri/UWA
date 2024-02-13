@@ -2,6 +2,8 @@ package com.uwa.uswine.main.onsale.service;
 
 import com.uwa.uswine.main.onsale.repository.OnSaleWineMongoRepository;
 import com.uwa.uswine.main.onsale.repository.OnSaleWineSqlRepository;
+import com.uwa.uswine.seller.InfoWine.entity.InfoWineSellEntity;
+import com.uwa.uswine.seller.InfoWine.repository.InfoWineRepository;
 import com.uwa.uswine.seller.sellWine.entity.SellWineEntity;
 import com.uwa.uswine.seller.sellWine.entity.SellWineSqlEntity;
 import jakarta.persistence.Tuple;
@@ -16,6 +18,7 @@ public class OnSaleWineService {
     private final OnSaleWineMongoRepository onSaleWineMongoRepository;
     private final OnSaleWineSqlRepository onSaleWineSqlRepository;
 
+    private final InfoWineRepository infoWineRepository;
 
     public Page<SellWineSqlEntity> findAll() {
         return this.onSaleWineSqlRepository.findBy(PageRequest.of(0,20));
@@ -27,5 +30,9 @@ public class OnSaleWineService {
 
     public SellWineSqlEntity findEmail(String nickname) {
         return this.onSaleWineSqlRepository.findEmailByNickname(nickname);
+    }
+
+    public InfoWineSellEntity findInfoEmail(String nickname) {
+        return this.infoWineRepository.findByNickname(nickname);
     }
 }

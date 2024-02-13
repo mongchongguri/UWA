@@ -59,6 +59,7 @@ public class CartController {
             dto.setSellername((String) item.get("sellername"));
             dto.setUseremail((String) item.get("useremail"));
             dto.setUsername((String) item.get("username"));
+            dto.setUseraddress((String) item.get("address"));
 
             int rs = buyService.updateStock(dto);
             buyRestult.add(rs);

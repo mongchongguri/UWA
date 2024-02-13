@@ -31,7 +31,7 @@ public class BuyService {
                 int stock = (Integer.parseInt(sellWine.getSellStock()) - dto.getStock());
                 // 재고가 존재하는 경우 구매 개수만큼 재고 삭제 -> 구매 확정
                 // 판매자 계정 금액 증가
-                if(stock > 0) {
+                if(stock >= 0) {
                     sellWine.setSellStock(String.valueOf(stock));
                     this.infoWineRepository.save(sellWine);
 
@@ -61,11 +61,14 @@ public class BuyService {
             }
         } else if(dto.getDocument() == 1) {
             SellWineSqlEntity sellWine = this.sellWineSQLRepository.findByMongoIdAndEmail(dto.getWineId(),dto.getSelleremail());
+            System.out.println("???");
+            System.out.println(sellWine.toString());
             if(sellWine != null) {
                 int stock = (Integer.parseInt(sellWine.getStock()) - dto.getStock());
                 // 재고가 존재하는 경우 구매 개수만큼 재고 삭제 -> 구매 확정
                 // 판매자 계정 금액 증가
-                if(stock > 0) {
+                System.out.println("남은 재고 : " + stock);
+                if(stock >= 0) {
                     // 재고 줄이기
                     sellWine.setStock(String.valueOf(stock));
                     this.sellWineSQLRepository.save(sellWine);
@@ -84,6 +87,7 @@ public class BuyService {
                     if(cart != null) {
                         this.wineCartRepository.delete(cart);
                     }
+                    return 1;
                 } else {
                     // 재고가 없는 경우
                     return 2;
