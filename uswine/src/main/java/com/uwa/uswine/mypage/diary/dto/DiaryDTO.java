@@ -1,8 +1,7 @@
-package com.uwa.uswine.mypage.diary;
+package com.uwa.uswine.mypage.diary.dto;
 
+import com.uwa.uswine.mypage.diary.entity.DiaryEntity;
 import lombok.*;
-
-import java.util.Date;
 
 @Getter
 @Setter

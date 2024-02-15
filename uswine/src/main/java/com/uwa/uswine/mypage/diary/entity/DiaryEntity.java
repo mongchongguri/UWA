@@ -1,4 +1,4 @@
-package com.uwa.uswine.mypage.diary;
+package com.uwa.uswine.mypage.diary.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

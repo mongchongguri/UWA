@@ -1,5 +1,10 @@
-package com.uwa.uswine.mypage.diary;
+package com.uwa.uswine.mypage.diary.controller;
 
+import com.uwa.uswine.main.wine.entity.WineEntity;
+import com.uwa.uswine.mypage.diary.dto.DiaryDTO;
+import com.uwa.uswine.mypage.diary.entity.AromaEntity;
+import com.uwa.uswine.mypage.diary.entity.DiaryEntity;
+import com.uwa.uswine.mypage.diary.service.DiaryService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.jsoup.Jsoup;
@@ -9,8 +14,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @CrossOrigin
@@ -57,8 +63,13 @@ public class DiaryController {
 
 
     @PostMapping("analysis")
-    public int getSentiment(@RequestBody DiaryDTO diaryDTO) throws IOException {
+    public Map<String, Object> getSentiment(@RequestBody DiaryDTO diaryDTO) throws IOException {
+
+        Map<String,Object> map = new HashMap<>();
+
+
         int rs = 0;
+        int rank = 0;
         int i = 0;
         List<Float> scoreList = new ArrayList<>();
 
@@ -84,7 +95,19 @@ public class DiaryController {
             System.out.println(rs);
             }
 
+        if(rs >= 75){
+            rank = 1;
+        } else if (rs >= 25) {
+            rank = 2;
+        } else if (rs >= -25) {
+            rank = 3;
+        } else if (rs >= -75) {
+            rank = 4;
+        } else rank = 5;
 
-        return rs;
+        map.put("percent", rs);
+        map.put("wineList", diaryService.getRecommendedWineList(diaryService.getRandomAromaList(rank).getAroma()));
+
+        return map;
     }
 }

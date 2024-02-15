@@ -7,16 +7,19 @@
     padding: 50px;
     background-color: white;
     border-radius: 10px;
-    height: 600px;
+    height: 700px;
     margin-bottom: 10px;
+    margin-right: 10px;
 }
 
 .diary_component2 {
+    /* display: flex; */
     padding: 50px;
     background-color: white;
     border-radius: 10px;
-    height: 600px;
+    height: 230px;
     margin-bottom: 10px;
+    margin-right: 10px;
 }
 
 .calendar {
@@ -196,4 +199,89 @@
 
 .diary-editor-title {
     width: 740px;
+}
+
+/* recommend_wine_css */
+
+.recommend_wine_view {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    /* margin-top: 10%; */
+}
+.recommend_wine_view ul li {
+    flex-basis: calc(25% - 10px);
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: white;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    min-width: calc(25% - 10px);
+    white-space: normal;
+}
+
+.recommend_wine_list {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-right: 50px;
+    /* transform: translateX(-100%); */
+}
+
+.recommend_wine_list_card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 10px;
+    height: 100%;
+    cursor: pointer;
+}
+
+.recommend_wine_list_card hr {
+    width: 50%;
+    border: none;
+    border-top: 2px solid black;
+    margin: 10px 0;
+}
+
+.recommend_wine_img {
+    width: 50%;
+    margin-top: 10px;
+}
+.recommend_wine_names {
+    display: flex;
+    height: 40%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: normal !important;
+    width: 80%;
+    margin-top: 10px;
+}
+
+.recommend_wine_name {
+    font-size: 16px;
+}
+
+.recommend_wine_name_en {
+    font-size: 13px;
+}
+
+.recommend_wine_info {
+    margin-top: 10px;
+    font-size: 13px;
+    white-space: normal !important;
+}
+
+.recommend_wine_info span b {
+    background-color: #ead196;
+    border-radius: 5px;
+    padding: 5px;
 }

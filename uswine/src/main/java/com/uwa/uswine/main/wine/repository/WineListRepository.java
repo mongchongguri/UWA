@@ -53,4 +53,10 @@ public interface WineListRepository extends ReactiveMongoRepository<WineEntity,O
             "{'$count': 'count'}"
     })
     Mono<Long> countByWineNameWineInfo(String wineName, List<Object> wineAromaList, List<Object> wineKind);
+
+    @Query("{'$or': [{'wine_aroma': {$in: ?0}}, {'wine_aroma': {$exists: false}}]}")
+    Flux<WineEntity> findByWineAroma(List<String> aromaList);
+
+    @Query("{'$or': [{'_id': {$in: ?0}}, {'_id': {$exists: false}}]}")
+    Flux<WineEntity> findById(List<String> mongoId);
 }

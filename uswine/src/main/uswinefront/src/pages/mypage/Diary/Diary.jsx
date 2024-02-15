@@ -14,6 +14,7 @@ import { FaPlus } from 'react-icons/fa6';
 import { IoMdTime } from 'react-icons/io';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendar } from '@fortawesome/free-regular-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 export default function Diary() {
     const token = localStorage.getItem('token');
@@ -28,11 +29,14 @@ export default function Diary() {
     let now = new Date();
     const formateDate = DateFormat(now);
     let [diaryList, setDiaryList] = useState([]);
+    console.log('diaryList first' + diaryList + 'end');
     let [diaryOne, setDiaryOne] = useState('');
     let [today, setToday] = useState(formateDate);
     const [events, setEvents] = useState([]);
     let [percent, setPercent] = useState('');
     const [loding, setLoding] = useState(true);
+    let [wineList, setWineList] = useState([]);
+    let navigate = useNavigate();
 
     // 일기 보기
     let contentShow = (id) => {
@@ -86,12 +90,13 @@ export default function Diary() {
             diarydate: today,
         }).then((data) => {
             setDiaryList(data);
+            console.log('diaryData' + data);
         });
     }, [modalShow, today]);
 
     //로딩 화면 만들기
 
-    const getEmotion = async () => {
+    const getEmotionAndWine = async () => {
         const data = await AuthApi('/api/mypage/diary/analysis', {
             email: email,
             diarydate: today,
@@ -100,14 +105,19 @@ export default function Diary() {
         setPercent(0);
         setLoding(false); //로딩 완료
         setTimeout(() => {
-            setPercent(data);
-            console.log('실행여부' + percent);
+            setPercent(data.percent);
+            setWineList(data.wineList);
         }, 100);
     };
 
-    // 감성 가져오기
+    function wineDetailsNav(Id) {
+        navigate(`/wine/${Id}`);
+    }
+
+    // 감성, 추천 와인 가져오기
     useEffect(() => {
-        getEmotion();
+        getEmotionAndWine();
+        // getRecommendedWineList();
     }, [modalShow, today]);
 
     // 화면
@@ -116,6 +126,15 @@ export default function Diary() {
             <div className="diary_container">
                 <div className="diary_component">
                     <Container fluid>
+                        <Row>
+                            <Col>
+                                <p style={{ fontSize: '20px', fontWeight: '900' }}>다이어리 등록</p>
+                                <p style={{ color: '#888' }}>
+                                    다이어리를 입력하고 오늘의 기분에 따른 와인도 추천 받으세요!
+                                </p>
+                                <hr />
+                            </Col>
+                        </Row>
                         <Row>
                             <Col>
                                 <div className="calendar">
@@ -137,7 +156,7 @@ export default function Diary() {
                                 {diaryList !== undefined ? (
                                     diaryList.map((diary, index) => {
                                         return (
-                                            <div className="diary_button">
+                                            <div className="diary_button" key={index}>
                                                 <div className="d-grid gap-2">
                                                     <Button
                                                         className="diary_btn"
@@ -163,7 +182,7 @@ export default function Diary() {
                                         );
                                     })
                                 ) : (
-                                    <div>
+                                    <div style={{ display: 'flex' }}>
                                         <h4>오늘의 일기를 적어보세요!</h4>
                                     </div>
                                 )}
@@ -201,23 +220,68 @@ export default function Diary() {
                         </Row>
                     </Container>
                 </div>
+                {today.split(' ')[0] == formateDate.split(' ')[0] && diaryList.length !== 0 ? (
+                    <>
+                        <div className="diary_component2">
+                            <div className="EmotionTitle">
+                                <h2>{today.split(' ')[0]} 오늘 당신의 기분은?</h2>
+                            </div>
+                            <div className="EmotionDescription">
+                                {loding ? ( //로딩이 참이면, 로딩 페이지로
+                                    <Loding />
+                                ) : diaryList.length !== 0 ? (
+                                    <div>
+                                        <EmotionBar percent={percent} />
+                                    </div>
+                                ) : (
+                                    <div>
+                                        <h4>오늘의 일기를 적어보세요! 기분에 맞는 와인도 추천 해드려요!</h4>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                        {diaryList.length !== 0 ? (
+                            <div className="recommend_wine_view">
+                                <ul className="recommend_wine_list">
+                                    {wineList.map(function (wine, i) {
+                                        // console.log(wine);
+                                        return (
+                                            <li
+                                                key={i}
+                                                onClick={() => {
+                                                    wineDetailsNav(wine.id);
+                                                }}
+                                            >
+                                                <div className="recommend_wine_list_card">
+                                                    <div className="recommend_wine_names">
+                                                        <span className="recommend_wine_name">{wine.wine_name}</span>
+                                                        <hr></hr>
+                                                        <span className="recommend_wine_name_en">
+                                                            {wine.wine_name_en}
+                                                        </span>
+                                                    </div>
 
-                <div className="diary_component2">
-                    <div className="EmotionTitle">
-                        <h2>{today.split(' ')[0]} 당신의 상태는?</h2>
-                    </div>
-                    <div className="EmotionDescription">
-                        {loding ? ( //로딩이 참이면, 로딩 페이지로
-                            <Loding />
-                        ) : percent !== 0 ? (
-                            <div>
-                                <EmotionBar percent={percent} />
+                                                    <img className="recommend_wine_img" src={wine.wine_image} alt="" />
+
+                                                    <div className="recommend_wine_info">
+                                                        <span>
+                                                            <b>{wine.wine_info[0]}</b> | {wine.wine_info[1]} |{' '}
+                                                            {wine.wine_info[2]}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
                             </div>
                         ) : (
-                            <div>노 일기</div>
+                            <></>
                         )}
-                    </div>
-                </div>
+                    </>
+                ) : (
+                    <></>
+                )}
             </div>
         </>
     );
@@ -231,18 +295,18 @@ function EmotionBar(props) {
     );
 }
 
-function WineCard() {
+function WineCard({ wine }, { i }) {
     return (
-        <Card style={{ width: 'auto' }}>
-            <Card.Img
-                height={30}
-                variant="top"
-                src="http://www.naracellar.com/data/editor/2002/20200228112104_738245cbd87528fcb171c22f10edfdca_bit9.png"
-            />
+        <Card style={{ width: '25%', display: 'flex', flex: 'wrap' }}>
+            <Card.Img height={50} variant="top" src={wine.wine_image} />
             <Card.Body>
-                <Card.Title>춫현 와인</Card.Title>
-                <Card.Text>네놈을 바라보니 마구니가 가득한 듯 하구나 이 와인을 먹어보거라</Card.Text>
-                <Button variant="secondary">상세보기</Button>
+                <Card.Title>{wine.wine_name}</Card.Title>
+                <Card.Title>{wine.wine_name_en}</Card.Title>
+                <Card.Text>
+                    {' '}
+                    <b>{wine.wine_info[0]}</b> | {wine.wine_info[1]} | {wine.wine_info[2]}
+                </Card.Text>
+                {/* <Button variant="secondary">상세보기</Button> */}
             </Card.Body>
         </Card>
     );
@@ -255,3 +319,36 @@ function Loding() {
         </div>
     );
 }
+
+// {/* <div className="wine_view">
+// <ul className="wine_list_current">
+//     {wineList.map(function (wine, i) {
+//         console.log(wine);
+//         return (
+//             <li
+//                 key={i}
+//                 onClick={() => {
+//                     wineDetailsNav(wine.id);
+//                 }}
+//             >
+//                 <div className="wine_list_card">
+//                     <div className="wine_names">
+//                         <span className="wine_name">{wine.wine_name}</span>
+//                         <hr></hr>
+//                         <span className="wine_name_en">{wine.wine_name_en}</span>
+//                     </div>
+
+//                     <img src={wine.wine_image} alt="" />
+
+//                     <div className="wine_info">
+//                         <span>
+//                             <b>{wine.wine_info[0]}</b> | {wine.wine_info[1]} |{' '}
+//                             {wine.wine_info[2]}
+//                         </span>
+//                     </div>
+//                 </div>
+//             </li>
+//         );
+//     })}
+// </ul>
+// </div> */}
