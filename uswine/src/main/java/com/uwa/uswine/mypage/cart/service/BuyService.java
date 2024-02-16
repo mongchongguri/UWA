@@ -6,6 +6,8 @@ import com.uwa.uswine.mypage.cart.repository.WineCartRepository;
 import com.uwa.uswine.mypage.cart.repository.WineTransactionRepository;
 import com.uwa.uswine.seller.InfoWine.entity.InfoWineSellEntity;
 import com.uwa.uswine.seller.InfoWine.repository.InfoWineRepository;
+import com.uwa.uswine.seller.goods.entity.GoodsStateEntity;
+import com.uwa.uswine.seller.goods.repositroy.GoodsStateRepository;
 import com.uwa.uswine.seller.management.entity.SellerEntity;
 import com.uwa.uswine.seller.management.repository.SalesManagementSellerRepository;
 import com.uwa.uswine.seller.sellWine.entity.SellWineSqlEntity;
@@ -22,6 +24,8 @@ public class BuyService {
     private final WineCartRepository wineCartRepository;
     private final WineTransactionRepository wineTransactionRepository;
     private final SalesManagementSellerRepository salesManagementSellerRepository;
+
+    private final GoodsStateRepository goodsStateRepository;
 
     public int updateStock(WineBuyDTO dto) {
         // 0 : info_wine_sell_entity, 1 : sell_wine_sql_entity 재고 수정하기
@@ -49,6 +53,13 @@ public class BuyService {
                     if(cart != null) {
                         this.wineCartRepository.delete(cart);
                     }
+
+                    // 배송 상태 저장
+                    long transactionId = this.wineTransactionRepository.findByTimestamp(dto.getTimestamp()).getId();
+                    GoodsStateEntity goods = new GoodsStateEntity();
+                    goods.setTransactionId(transactionId);
+                    goods.setOrderTime(dto.getTimestamp());
+                    this.goodsStateRepository.save(goods);
                     // 성공적으로 구매한 경우
                     return 1;
                 } else {
@@ -61,8 +72,6 @@ public class BuyService {
             }
         } else if(dto.getDocument() == 1) {
             SellWineSqlEntity sellWine = this.sellWineSQLRepository.findByMongoIdAndEmail(dto.getWineId(),dto.getSelleremail());
-            System.out.println("???");
-            System.out.println(sellWine.toString());
             if(sellWine != null) {
                 int stock = (Integer.parseInt(sellWine.getStock()) - dto.getStock());
                 // 재고가 존재하는 경우 구매 개수만큼 재고 삭제 -> 구매 확정
@@ -76,8 +85,8 @@ public class BuyService {
                     // 판매자 금액 증가
                     SellerEntity seller = this.salesManagementSellerRepository.findByEmail(dto.getSelleremail());
                     int total_price = Integer.parseInt(sellWine.getSellMoney()) * dto.getStock();
-                    seller.setMoney(total_price);
-                    seller.setTotalMoney(total_price);
+                    seller.setMoney(seller.getMoney() + total_price);
+                    seller.setTotalMoney(seller.getTotalMoney() + total_price);
 
                     //거래 명부 저장
                     this.wineTransactionRepository.save(dto.toEntity());
@@ -87,6 +96,13 @@ public class BuyService {
                     if(cart != null) {
                         this.wineCartRepository.delete(cart);
                     }
+
+                    // 배송 상태 저장
+                    long transactionId = this.wineTransactionRepository.findByTimestamp(dto.getTimestamp()).getId();
+                    GoodsStateEntity goods = new GoodsStateEntity();
+                    goods.setTransactionId(transactionId);
+                    goods.setOrderTime(dto.getTimestamp());
+                    this.goodsStateRepository.save(goods);
                     return 1;
                 } else {
                     // 재고가 없는 경우

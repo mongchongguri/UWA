@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import "../../../css/admin/Notice.css"
+import "../../../css/admin/admin_notice/Notice.css"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { jwtDecode } from "jwt-decode";
 import AuthApi from "../../../AuthApi";
@@ -109,7 +109,7 @@ function AdminNoticeComponent (){
                 <div id="noticeListBody">
                         {noticeList.map((notice,index)=>(
                             <div key={index} style={{ display: 'flex', alignItems: 'center',
-                            height:'60px',borderBottom:'1px solid #000',width:'100%' }}>
+                            height:'42px',borderBottom:'1px solid #000',width:'100%' }}>
                                 <div id={`noticetitle_${notice.id}`} style={{width:'70%', display:'flex',
                                 justifyContent:'center'}}>
                                     <Link to={`/admin/noticeDetail/${notice.id}/1`} >{notice.title}</Link>

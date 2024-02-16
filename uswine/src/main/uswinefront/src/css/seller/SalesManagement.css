@@ -181,9 +181,11 @@
   width: 30px;
   padding: 7px 10px;
   text-align: center;
-  margin-left: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
   border-bottom: 1px solid #ddd;
 }
+
 .sell_cancel {
   padding: 1px 10px;
   background-color: #ff8888;

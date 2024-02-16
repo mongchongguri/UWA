@@ -282,7 +282,7 @@ function SellerWineComponent({ userinfo }) {
                     onChange={(e) => {
                       setPostCode(e.target.value);
                     }}
-                    // readOnly={true}
+                    readOnly={true}
                   />
                   <PopupPostCode
                     setPostCode={setPostCode}
@@ -297,7 +297,7 @@ function SellerWineComponent({ userinfo }) {
                     onChange={(e) => {
                       setAddress(e.target.value);
                     }}
-                    // readOnly={true}
+                    readOnly={true}
                   />
                 </div>
                 <div>

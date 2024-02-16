@@ -1,0 +1,9 @@
+.user_delivery_container {
+  padding: 30px 10%;
+}
+
+.user_delivery {
+  padding: 50px;
+  background-color: white;
+  border-radius: 10px;
+}

@@ -8,7 +8,7 @@ import {
   faAngleRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "../../../css/admin/AdminWineList.css";
+import "../../../css/admin/admin_wine/AdminWineList.css";
 export default function AdminWineList() {
   const token = localStorage.getItem("token") || "";
   if (token === "") {

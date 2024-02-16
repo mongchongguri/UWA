@@ -37,15 +37,19 @@ import AdminEventUpdate from "./pages/admin/admin_event/AdminEventUpdate";
 import AdminFreeBoard from "./pages/admin/admin_freeboard/AdminFreeBoard";
 import AdminWine from "./pages/admin/wine_management/AdminWine";
 import AdminSellerWine from "./pages/admin/wine_management/AdminSellerWine";
+import MyBoardList from "./pages/mypage/MyBoard/MyBoardList";
+import MyCommentList from "./pages/mypage/MyBoard/MyCommentList";
+import MyInfo from "./pages/mypage/MyInfo/MyInfo";
+import Delivery from "./pages/Delivery";
 import UserWineCart from "./pages/mypage/Cart/UserWineCart";
-
+import UserDeliveryState from "./pages/mypage/Delivery/UserDeliveryState";
+import GoodsDelivery from "./pages/Seller/GoodsDelivery";
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<User />}>
           <Route index element={<Home />} />
-          {/* 헤더 */}
           <Route path="login" element={<LoginPage />} />
           <Route path="join" element={<JoinPage />} />
           <Route path="notice/:page/" element={<UserNotice />} />
@@ -54,7 +58,7 @@ function App() {
           <Route path="wine/:id" element={<WineDetailsPage />} />
           <Route path="wine/sell/:id" element={<InfoWineSell />} />
           <Route path="onsale" element={<OnSaleWine />} />
-          <Route path="onsale/:stock/:id" element={<OnSaleDetail />} />
+          <Route path="onsale/:id" element={<OnSaleDetail />} />
           <Route
             path="onsale/chat/room/:seller/:item/:document?"
             element={<Chatting />}
@@ -65,12 +69,17 @@ function App() {
           {/* 마이 페이지 */}
           <Route path="mypage/regist" element={<SellerRegistrationPage />} />
           <Route path="mypage/cart" element={<UserWineCart />} />
+          <Route path="mypage/delivery" element={<UserDeliveryState />} />
           <Route path="mypage/chat" element={<Chatting />} />
           <Route path="mypage/chat/room/:id?" element={<Chatting />} />
           <Route path="mypage/diary" element={<Diary />} />
+          <Route path="mypage/myinfo/:page" element={<MyInfo />} />
+          <Route path="mypage/myboard/:page" element={<MyBoardList /> } />
+          <Route path="mypage/mycomment/:page" element={<MyCommentList /> } />
           {/* 판매자 페이지 */}
           <Route path="seller/wine" element={<SellerWine />} />
           <Route path="seller/management" element={<SalesManagement />} />
+          <Route path="seller/delivery" element={<GoodsDelivery />} />
         </Route>
         <Route path="/admin" element={<Admin />}>
           <Route
@@ -110,6 +119,7 @@ function App() {
           />
           <Route path="management/sellerwine" element={<AdminSellerWine />} />
         </Route>
+        <Route path="/delivery/:page" element={<Delivery />}/>
       </Routes>
     </div>
   );

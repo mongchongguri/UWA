@@ -1,0 +1,370 @@
+.userinfoOutContainer{
+    padding: 30px 10%;
+}
+.userinfoInContainer{
+    padding: 50px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+
+}
+
+.userinfoBox{
+    width: 20%;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+}
+.userinfo_logo{
+    width:274px;
+    height: 309px;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+.userinfoBox img{
+    width: 140px;
+    height: 170px;
+    margin-top: 15px;
+}
+.userinfo_name{
+    font-size: 20px;
+    margin-top: 10px;
+    
+}
+.userinfo_phone{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border-bottom: thin solid rgb(180, 180, 180);
+    margin-bottom: 20px;
+}
+.userinfo_phone_logo{
+    margin-left: 20px;
+    margin-right: 50px;
+}
+.userinfo_email{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border-bottom: thin solid rgb(180, 180, 180);
+    margin-bottom: 20px;
+}
+.userinfo_email_logo{
+    margin-left: 20px;
+}
+.userinfo_email_value{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 212px;
+}
+.userinfo_address{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border-bottom: thin solid rgb(180, 180, 180);
+}
+.userinfo_address_logo{
+    margin-left: 20px;
+}
+.userinfo_address_value{
+    display: flex;
+    flex-direction: column;
+    width: 212px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+
+.userinfoLines{
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+}
+
+.userinfoMiddleLine{
+    width : 1095px;
+    height: 264px;
+    display: flex;
+    margin-top: 20px;
+}
+.userinfoBackLine{
+    width : 1095px;
+    height: 280px;
+    display: flex;
+}
+
+
+
+.userTotalBoardBox{
+    margin-left: 100px;
+    height: 264px;
+    width: 400px;
+}
+
+.userTotalBoardBox_label{
+    height: 38px;
+    width : 400px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+#userinfo_totalboard_first_label span{
+    display: inline-block;
+    position: relative;
+    left: 5px;
+    color: #aaa;
+    font-size: 12px;
+}
+#userinfo_totalboard_second_label{
+    margin-left: auto;
+}
+.userTotalBoardBox_value{
+    border-top : 1px solid black;
+    
+    width : 400px;
+    height: 225px;
+}
+.userinfo_board_info_container{
+    display :flex;
+    flex-direction: row;
+    margin :0;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 15%;
+    border-bottom: 1px solid #8888887c;
+}
+.userinfo_board_info_container:hover{
+    
+}
+
+.userinfo_board_info_container li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+
+
+}
+.userinfo_board_info_container li:nth-child(1) {
+    width: 60%;
+    font-size: 15px;
+    color: #454545;
+    
+}
+  
+.userinfo_board_info_container li:nth-child(2) {
+    width: 30%;
+    font-size: 15px;
+    color: #454545;
+}
+
+
+
+.userinfo_board_comment_count {
+    border: 1px solid #888;
+    color: #ff8080;
+    border-radius: 10px;
+    font-size: 12px;
+    margin-left: 10px;
+    padding: 0px 10px;
+
+}
+
+.userTotalCommentBox{
+    margin-left: 100px;
+}
+
+.userinfo_buywinelist_Box{
+    width : 900px;
+    height: 240px;
+    margin-left: 100px;
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+}   
+.userinfo_buywinelist_label{
+    height: 38px;
+    width: 400px;
+    display:flex;
+    align-items: center;
+    font-weight: bold;
+}
+.userinfo_buywinelist_value{
+    border-top : 1px solid black;
+    
+    width : 900px;
+    height: 280px;
+}
+.userinfo_buywinelist_container{
+    display :flex;
+    flex-direction: row;
+    margin :0;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 15%;
+    border-bottom: 1px solid #8888887c;
+}
+
+.userinfo_buywinelist_container li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+
+
+}
+.userinfo_buywinelist_container li:nth-child(1){
+    width: 20%;
+    font-size: 15px;
+    color: #454545;
+    margin-left: 10px;
+}
+.userinfo_buywinelist_container li:nth-child(2){
+    width: 20%;
+    font-size: 15px;
+    color: #454545;
+}
+.userinfo_buywinelist_container li:nth-child(3){
+    width: 20%;
+    font-size: 15px;
+    color: #454545;
+}
+.userinfo_buywinelist_container li:nth-child(4){
+    width: 20%;
+    font-size: 15px;
+    color: #454545;
+}
+#userinfo_buywinelist_first_label span{
+    display: inline-block;
+    position: relative;
+    left: 5px;
+    color: #aaa;
+    font-size: 12px;
+}
+
+.userinfo_lastul{
+    border-bottom : 1px solid black;
+}
+.userinfo_headcolumn li{
+    color:black !important;
+    font-size: 18px !important;
+}
+
+.userinfo_page_controller{
+    display: flex;
+    position:relative;
+    flex-direction: row;
+    margin-left: 360px;
+  }
+.userinfo_page_box{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 7px;
+    margin-top: 7px;
+}
+
+
+.userinfo_changeinfo{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.userinfo_changeinfo button{
+    background-color: white;
+    border : 1px solid black;
+    border-radius: 10px;
+    width : 115px;
+    margin-top: 10px;
+}
+
+.userinfo_modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000b8;
+    z-index: 999;
+}
+
+.userinfo_modal_input {
+    position: fixed;
+    top: 25%;
+    left: 38%;
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.userinfo_new_nickname_box{
+    display: flex;
+    flex-direction: column;
+    margin-top: 170px;
+    margin-bottom: 100px;
+}
+.userinfo_new_nickname_input{
+    display: flex;
+}
+#userinfo_new_nickname{
+    margin-right: 10px;
+}
+.userinfo_check_new_nickname{
+    width: 50px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.userinfo_new_password_box{
+    display: flex;
+    flex-direction: column;
+    margin-top: 170px;
+    margin-bottom: 100px;
+}
+.userinfo_update_nickname_button{
+    margin-right: 50px;
+    margin-left: 50px;
+    width: 70px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.userinfo_update_password_button{
+    margin-right: 50px;
+    margin-left: 50px;
+    width: 70px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.userinfo_close_modal{
+    margin-right: 50px;
+    width: 70px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.userinfo_new_nickname_box span{
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.userinfo_new_password_box span{
+    font-weight: bold;
+    margin-bottom: 5px;
+}

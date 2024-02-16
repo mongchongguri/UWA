@@ -7,7 +7,22 @@ import {
     faAngleLeft,
     faAngleRight,
   } from "@fortawesome/free-solid-svg-icons";
+import { jwtDecode } from "jwt-decode";
 export default function SellerRequest(){
+    const token = localStorage.getItem("token") || "";
+    if (token === "") {
+      return <></>;
+    } else {
+      const userinfo = jwtDecode(token);
+      if(userinfo.role === "ROLE_ADMIN") {
+        return <SellerRequestComponent userinfo={userinfo} />;
+      } else {
+        return <></>
+      }
+      
+    }
+}
+function SellerRequestComponent(){
     const navigate = useNavigate()
 
     const { page } = useParams()

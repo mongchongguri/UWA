@@ -2,7 +2,7 @@ import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import AuthApi from "../../../AuthApi";
-import "../../../css/admin/AdminWineDetail.css"
+import "../../../css/admin/admin_wine/AdminWineDetail.css"
 
 export default function AdminWineDetail(){
     const token = localStorage.getItem("token") || "";

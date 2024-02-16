@@ -1,6 +1,7 @@
 package com.uwa.uswine.mypage.cart.dto;
 
 import com.uwa.uswine.mypage.cart.entity.WineTransactionEntity;
+import com.uwa.uswine.seller.goods.entity.GoodsStateEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,7 +36,7 @@ public class WineBuyDTO {
         wineTransactionEntity.setStock(this.stock);
         wineTransactionEntity.setDocument(this.document);
 
-        wineTransactionEntity.setSelleremaiil(this.selleremail);
+        wineTransactionEntity.setSelleremail(this.selleremail);
         wineTransactionEntity.setSellername(this.sellername);
 
         wineTransactionEntity.setUseremail(this.useremail);

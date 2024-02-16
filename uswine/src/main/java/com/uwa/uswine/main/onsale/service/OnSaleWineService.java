@@ -20,12 +20,15 @@ public class OnSaleWineService {
 
     private final InfoWineRepository infoWineRepository;
 
-    public Page<SellWineSqlEntity> findAll() {
-        return this.onSaleWineSqlRepository.findBy(PageRequest.of(0,20));
+    public Page<SellWineSqlEntity> findSearch(String search) {
+        return this.onSaleWineSqlRepository.findByWineNameContainingAndStockGreaterThan(search,"0",PageRequest.of(0,20));
     }
 
     public SellWineEntity findWine(String id) {
         return this.onSaleWineMongoRepository.findById(id).block();
+    }
+    public String findStock(String id) {
+        return this.onSaleWineSqlRepository.findByMongoId(id).getStock();
     }
 
     public SellWineSqlEntity findEmail(String nickname) {

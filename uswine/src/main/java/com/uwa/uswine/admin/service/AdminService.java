@@ -131,7 +131,7 @@ public class AdminService {
 		Optional<ReCommentEntity> optional = this.reCommentRepository.findById(id);
 
 		ReCommentEntity reCommentEntity = optional.get();
-		reCommentEntity.setRecomment("관리자에 의해 삭제된 답급입니다.");
+		reCommentEntity.setRecomment("관리자에 의해 삭제된 답글입니다.");
 
 		reCommentRepository.save(reCommentEntity);
 

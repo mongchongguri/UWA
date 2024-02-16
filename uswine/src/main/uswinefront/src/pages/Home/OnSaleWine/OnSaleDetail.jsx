@@ -1,5 +1,5 @@
 import { jwtDecode } from "jwt-decode";
-import { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import AuthApi from "../../../AuthApi";
 import "../../../css/home/WineDetailsPage.css";
@@ -21,15 +21,16 @@ function OnSaleDetail() {
 }
 
 function OnSaleDetailCheck({ userinfo }) {
-  let { stock, id } = useParams();
+  let { id } = useParams();
 
   let [wineInfo, setWineInfo] = useState({});
+  let [stock, setStock] = useState();
   useEffect(() => {
     AuthApi("/api/onsale/wine", {
       id: id,
     }).then((data) => {
-      console.log(data);
-      setWineInfo(data);
+      setWineInfo(data.info);
+      setStock(data.stock);
     });
   }, []);
 
@@ -52,8 +53,6 @@ function OnSaleDetailCheck({ userinfo }) {
 
 function OnSaleDetailComponent({ wineInfo, stock, userinfo }) {
   let navigate = useNavigate();
-  console.log(wineInfo);
-  console.log(userinfo);
   function cartFunction() {
     AuthApi("/api/mypage/cart/buyWine", {
       mongoId: wineInfo.id,
@@ -171,13 +170,13 @@ function OnSaleDetailComponent({ wineInfo, stock, userinfo }) {
               {wineInfo.wineAroma != null
                 ? wineInfo.wineAroma.map((aroma, i) => {
                     if (i + 1 === wineInfo.wineAroma.length) {
-                      return <li>{aroma}</li>;
+                      return <li key={i}>{aroma}</li>;
                     } else {
                       return (
-                        <>
+                        <React.Fragment key={i}>
                           <li>{aroma}</li>
                           <li style={{ color: "#888" }}>|</li>
-                        </>
+                        </React.Fragment>
                       );
                     }
                   })

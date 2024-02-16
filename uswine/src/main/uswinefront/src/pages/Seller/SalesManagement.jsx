@@ -246,7 +246,7 @@ function SalesManagementComponent({ userinfo }) {
                 <p>{soldOutCount}</p>
               </div>
               <div className="sell_wine_count">
-                <p>거래완료 와인</p>
+                <p>거래 현황</p>
                 <p>{transactionCount}</p>
               </div>
               <div className="sell_wine_count">

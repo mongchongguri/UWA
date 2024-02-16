@@ -10,6 +10,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @CrossOrigin
 @RestController
 @AllArgsConstructor
@@ -18,13 +21,17 @@ public class OnSaleWineController {
     private final OnSaleWineService onSaleWineService;
 
     @PostMapping("list")
-    public Page<SellWineSqlEntity> list() {
-        return this.onSaleWineService.findAll();
+    public Page<SellWineSqlEntity> list(@RequestBody Map<String,String> search) {
+        return this.onSaleWineService.findSearch(search.get("wineName"));
     }
 
     @PostMapping("wine")
-    public SellWineEntity get(@RequestBody WineIdDTO wineIdDTO) {
-        return this.onSaleWineService.findWine(wineIdDTO.getId());
+    public Map<String,Object> get(@RequestBody WineIdDTO wineIdDTO) {
+        String stock = this.onSaleWineService.findStock(wineIdDTO.getId());
+        Map<String,Object> info = new HashMap<>();
+        info.put("stock",stock);
+        info.put("info",this.onSaleWineService.findWine(wineIdDTO.getId()));
+        return info;
     }
 
     @PostMapping("email")

@@ -13,16 +13,19 @@
     border-radius: 10px;
     padding: 30px;
     margin: auto;
+    font-size: 15px;
   }
   #noticeTitle{
-    margin-bottom: 30px;
+    margin-top: 40px;
+    margin-bottom: 6.5%;
   }
   #noticeListHead{
     width: 100%;
     display: flex;
     align-items: center;
-    height: 60px;
+    height: 39px;
     background-color: #000000;
+    font-weight: bold;
   }
   #headColumn_notice{
     color: #ffffff;
@@ -98,15 +101,14 @@
     border: 1px solid black;
     border-radius: 5px;
     font-size: 14px;
+    margin-top: 10px;
+    margin-right: 76px;
   }
 
   .admin_notice_comment_count {
-    border: 1px solid #888;
-    color: #ff8080;
-    border-radius: 10px;
+    display: inline-block;
+    position: relative;
+    left: 5px;
+    color: #aaa;
     font-size: 12px;
-    margin-left: 10px;
-    padding: 0px 10px;
-    display: flex;
-    align-items: center;
   }

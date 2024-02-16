@@ -22,6 +22,6 @@ public class InfoWineService {
     }
 
     public List<InfoWineSellEntity> getStore(String id) {
-        return this.infoWineRepository.findByItemId(id);
+        return this.infoWineRepository.findByItemIdAndSellStockGreaterThan(id,"0");
     }
 }

@@ -33,7 +33,7 @@ public class WineTransactionEntity {
     private int document;
 
     @Column(nullable = false)
-    private String selleremaiil;
+    private String selleremail;
 
     @Column(nullable = false)
     private String sellername;

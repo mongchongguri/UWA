@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { jwtDecode } from "jwt-decode";
 import MarkUp from "../../../function/MarkUp"
 import AuthApi from "../../../AuthApi"
-import "../../../css/admin/NoticeDetail.css"
+import "../../../css/admin/admin_notice/NoticeDetail.css"
 import AdminCommentList from "./AdminNoticeCommentList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

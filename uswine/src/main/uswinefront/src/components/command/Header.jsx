@@ -20,11 +20,13 @@ import {
   faBasketShopping,
   faComment,
   faCreditCard,
+  faTruck,
+  faTruckFast,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { BsCart4 } from "react-icons/bs";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
+import { BsCart4 } from "react-icons/bs";
 
 const Header = () => {
   let navigate = useNavigate();
@@ -149,11 +151,7 @@ const Header = () => {
           <li>
             <Link
               to="/"
-              className={
-                currentPath == "/" || currentPath.startsWith("/wine")
-                  ? "header_selectMenu"
-                  : null
-              }
+              className={currentPath == "/" || currentPath.startsWith("/wine") ? "header_selectMenu" : null}
             >
               전체 와인
             </Link>
@@ -182,14 +180,14 @@ const Header = () => {
             <Link>이벤트</Link>
           </li>
           <li>
-            <Link
+             <Link 
               to="/notice/1"
               className={
                 currentPath.startsWith("/notice") ? "header_selectMenu" : null
               }
             >
               공지사항
-            </Link>
+              </Link>
           </li>
         </ul>
       </div>
@@ -226,10 +224,19 @@ function SideBar({ boxRef, token, currentPath }) {
             <FontAwesomeIcon icon={faStar} className="side_bar_menu_icon" />
             즐겨찾기
           </li>
+          <Link
+            to="mypage/myinfo/1"
+            className={
+              currentPath.startsWith("/mypage/myinfo/1")
+                ? "side_menu_list_select"
+                : null
+            }
+          >
           <li className="side_bar_menu_list">
             <FontAwesomeIcon icon={faUser} className="side_bar_menu_icon" />내
             정보
           </li>
+          </Link>
           <Link
             to="mypage/cart"
             className={
@@ -246,32 +253,32 @@ function SideBar({ boxRef, token, currentPath }) {
               장바구니
             </li>
           </Link>
-          <li className="side_bar_menu_list">
-            <FontAwesomeIcon
-              icon={faCreditCard}
-              className="side_bar_menu_icon"
-            />
-            구매이력
-          </li>
-          <li className="side_bar_menu_list">
-            <FontAwesomeIcon
-              icon={faNoteSticky}
-              className="side_bar_menu_icon"
-            />
-            게시글 관리
-          </li>
           <Link
-            to="mypage/diary"
+            to="mypage/delivery"
             className={
-              currentPath.startsWith("/mypage/diary")
+              currentPath.startsWith("/mypage/delivery")
                 ? "side_menu_list_select"
                 : null
             }
           >
             <li className="side_bar_menu_list">
-              <FontAwesomeIcon icon={faBook} className="side_bar_menu_icon" />
-              다이어리
+              <FontAwesomeIcon icon={faTruck} className="side_bar_menu_icon" />
+              배송 현황
             </li>
+          </Link>
+          
+          <Link
+              to="mypage/diary"
+              className={
+                currentPath.startsWith("/mypage/diary")
+                    ? "side_menu_list_select"
+                    : null
+              }
+          >
+          <li className="side_bar_menu_list">
+            <FontAwesomeIcon icon={faBook} className="side_bar_menu_icon" />
+            다이어리
+          </li>
           </Link>
           <Link
             to="mypage/chat"
@@ -347,13 +354,22 @@ function SideBar({ boxRef, token, currentPath }) {
                   판매 관리
                 </li>
               </Link>
-              <li className="side_bar_menu_list">
-                <FontAwesomeIcon
-                  icon={faUsers}
-                  className="side_bar_menu_icon"
-                />
-                고객 관리
-              </li>
+              <Link
+                to="seller/delivery"
+                className={
+                  currentPath.startsWith("/seller/delivery")
+                    ? "side_menu_list_select"
+                    : null
+                }
+              >
+                <li className="side_bar_menu_list">
+                  <FontAwesomeIcon
+                    icon={faTruckFast}
+                    className="side_bar_menu_icon"
+                  />
+                  배송 관리
+                </li>
+              </Link>
               <li className="side_bar_menu_list">
                 <FontAwesomeIcon
                   icon={faChartSimple}

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import AuthApi from "../../../AuthApi";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PopupPostCode from "../../user/Popup";
 
 function UserWineCart() {
   const token = localStorage.getItem("token") || "";
@@ -18,6 +19,12 @@ function UserWineCart() {
 }
 function UserWineCartComponent({ userinfo }) {
   let [userAddress, setUserAddress] = useState();
+
+  let [postCode, setPostCode] = useState("");
+  let [address, setAddress] = useState("");
+  let [detailAddress, setDetailAddress] = useState("");
+
+  let [changeAddressBtn, setChangeAddressBtn] = useState(false);
 
   let [carts, setCarts] = useState([]);
   let [buyCount, setBuyCount] = useState([]);
@@ -111,6 +118,71 @@ function UserWineCartComponent({ userinfo }) {
   }
   return (
     <div className="cart_container">
+      {changeAddressBtn ? (
+        <div className="cart_change_address_container">
+          <div className="cart_change_address_box">
+            <p>변경할 배송지를 입력해주세요.</p>
+            <hr style={{ width: "100%", marginBottom: "30px" }} />
+            <div className="sell_info_input">
+              <div>
+                <input
+                  type="text"
+                  id="postcode"
+                  className="sell_postcode input_read_only"
+                  onChange={(e) => {
+                    setPostCode(e.target.value);
+                  }}
+                  readOnly={true}
+                />
+                <PopupPostCode
+                  setPostCode={setPostCode}
+                  setAddress={setAddress}
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="address"
+                  className="sell_address input_read_only"
+                  onChange={(e) => {
+                    setAddress(e.target.value);
+                  }}
+                  readOnly={true}
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  className="sell_detail_address"
+                  placeholder="상세주소를 입력해주세요."
+                  onChange={(e) => {
+                    setDetailAddress(e.target.value);
+                  }}
+                />
+              </div>
+            </div>
+            <div className="cart_address_change_btn">
+              <button
+                onClick={() => {
+                  setUserAddress(postCode + address + " " + detailAddress);
+                  setChangeAddressBtn(false);
+                  alert("배송지가 변경되었습니다.");
+                }}
+              >
+                변경
+              </button>
+              <button
+                onClick={() => {
+                  setChangeAddressBtn(false);
+                }}
+              >
+                취소
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
       <div className="cart_component">
         <div className="cart_info_container">
           <p style={{ fontSize: "20px", fontWeight: "900" }}>
@@ -122,7 +194,14 @@ function UserWineCartComponent({ userinfo }) {
           {userAddress ? (
             <p>
               배송지 : ( {userAddress.substring(0, 5)} ) {userAddress.slice(5)}
-              <button className="delivery_change_address">배송지 변경</button>
+              <button
+                className="delivery_change_address"
+                onClick={() => {
+                  setChangeAddressBtn(true);
+                }}
+              >
+                배송지 변경
+              </button>
             </p>
           ) : null}
           <hr />

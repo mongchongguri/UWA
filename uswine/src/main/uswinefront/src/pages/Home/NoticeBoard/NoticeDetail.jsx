@@ -35,6 +35,7 @@ function NoticeBoardDetailsComponent({ userinfo }) {
 
 
   useEffect(() => {
+    console.log(userinfo)
     AuthApi("/api/notice/noticeDetail", {
       id: id,
     }).then((data) => {

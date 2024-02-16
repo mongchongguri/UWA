@@ -191,7 +191,6 @@ public class AdminController {
 
 	@PostMapping("/List")
 	public Page<UserEntity> getUserList(@RequestBody UserSearchDTO userSearch){
-		System.out.println(userSearch);
 		Page<UserEntity> userList = adminService.getUserList(userSearch);
 		return userList;
 	}
@@ -227,7 +226,6 @@ public class AdminController {
 	@SuppressWarnings("unchecked")
 	@PostMapping("/UpdateUsers")
 	public int udateUsers(@RequestBody Map<String,Object> users) {
-		System.out.println(users);
 		Map<String,Boolean> getUsers=(Map<String,Boolean>)users.get("users");
 		Map<String,String> changeRoles = (Map<String,String>)users.get("userChangeRoles");
 		Map<String,String> changeNicks = (Map<String,String>)users.get("userChangeNicks");
@@ -255,7 +253,6 @@ public class AdminController {
 	
 	@PostMapping("SellerRequest")
 	public Page<SellerRegistEntity> getSellerRequest(@RequestBody Map<String,Object> map){
-		System.out.println("here : "+(String)map.get("currentPage"));
 		int page=Integer.parseInt((String)map.get("currentPage"));
 		Page<SellerRegistEntity> sellerRequest = adminService.getSellerRequest(page-1);
 		return sellerRequest;
@@ -304,7 +301,6 @@ public class AdminController {
 	
 	@PostMapping("NoticeList")
 	public Map<String, Object>  getNoticeList(@RequestBody Map <String,String> map){
-		System.out.println(map);
 		int page = Integer.parseInt(map.get("currentPage"));
 		Page<NoticeEntity> notice_List = adminService.getNoticeList(page-1);
 		Map<String, Long> comment_map = new HashMap<String,Long>();

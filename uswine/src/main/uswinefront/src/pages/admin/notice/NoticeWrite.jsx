@@ -1,4 +1,4 @@
-import "../../../css/admin/NoticeWrite.css"
+import "../../../css/admin/admin_notice/NoticeWrite.css"
 import ReactQuill, { Quill } from "react-quill";
 import { ImageResize } from "quill-image-resize-module-ts";
 import { useMemo, useState, useRef } from "react";

@@ -1,0 +1,104 @@
+.goods_delivery_container {
+  padding: 30px 10%;
+}
+
+.delivery_container {
+  padding: 50px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.wine_delivery_state {
+  padding-top: 30px;
+}
+.wine_delivery_state ul {
+  padding-left: 0px !important;
+}
+
+.wine_delivery_state .wine_info_title {
+  padding-left: 0px !important;
+}
+
+.wine_delivery_state .sell_wine_list {
+  padding-left: 5px !important;
+  width: 100%;
+}
+
+.delivery_list {
+  display: flex;
+  flex-direction: column;
+}
+.wine_delivery_state li:nth-child(1) {
+  flex: 5% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wine_delivery_state li:nth-child(2) {
+  flex: 30% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wine_delivery_state li:nth-child(3) {
+  flex: 30% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wine_delivery_state li:nth-child(4) {
+  flex: 5% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wine_delivery_state li:nth-child(5) {
+  flex: 10% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delivery_list li:nth-child(5) {
+  color: #888;
+}
+.wine_delivery_state li:nth-child(6) {
+  flex: 5% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delivery_state_btn {
+  padding: 5px 10px;
+  background-color: #897a69;
+  border: none;
+  color: white;
+  font-size: 13px;
+}
+
+.delvery_info_input {
+  display: flex;
+  flex-direction: column;
+}
+
+.delvery_info_input input {
+  margin-bottom: 10px;
+  padding: 8px;
+  outline: none;
+}
+
+.delivery_info_btn_container {
+  margin-left: auto;
+}
+
+.delivery_info_btn_container button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: #897a69;
+  color: white;
+  border: none;
+}

@@ -19,13 +19,19 @@ function OnSaleWine() {
   let [totalWine, setTotalWine] = useState();
   let [currentPage, setCurrentPage] = useState(1);
 
+  let [searchWine, setSearchWine] = useState("");
+  let [searchBtn, setSearchBtn] = useState(0);
+
   useEffect(() => {
-    AuthApi("/api/onsale/list").then((data) => {
+    AuthApi("/api/onsale/list", {
+      wineName: searchWine,
+    }).then((data) => {
+      console.log(data);
       setTotalPage(data.totalPages);
       setTotalWine(data.totalElements);
       setOnSaleWine(data.content);
     });
-  }, []);
+  }, [searchBtn]);
 
   function prevAnimation() {
     if (currentPage !== 1) {
@@ -54,43 +60,59 @@ function OnSaleWine() {
         PrevwineContainer.classList.remove("left");
         NextwineContainer.classList.remove("left");
       }, 500);
+    } else {
+      alert("첫번째 페이지 입니다.");
     }
   }
   function nextAnimation() {
-    setCurrentPage(parseInt(currentPage, 10) + 1);
-    var wineContainer = document.querySelector(".wine_list_current");
-    var PrevwineContainer = document.querySelector(".wine_list_prev");
-    var NextwineContainer = document.querySelector(".wine_list_next");
+    if (currentPage < totalPage) {
+      setCurrentPage(parseInt(currentPage, 10) + 1);
+      var wineContainer = document.querySelector(".wine_list_current");
+      var PrevwineContainer = document.querySelector(".wine_list_prev");
+      var NextwineContainer = document.querySelector(".wine_list_next");
 
-    wineContainer.classList.remove("left");
-    PrevwineContainer.classList.remove("left");
-    NextwineContainer.classList.remove("left");
+      wineContainer.classList.remove("left");
+      PrevwineContainer.classList.remove("left");
+      NextwineContainer.classList.remove("left");
 
-    wineContainer.classList.add("slide_animation");
-    PrevwineContainer.classList.add("slide_animation");
-    NextwineContainer.classList.add("slide_animation");
+      wineContainer.classList.add("slide_animation");
+      PrevwineContainer.classList.add("slide_animation");
+      NextwineContainer.classList.add("slide_animation");
 
-    wineContainer.classList.add("right");
-    PrevwineContainer.classList.add("right");
-    NextwineContainer.classList.add("right");
+      wineContainer.classList.add("right");
+      PrevwineContainer.classList.add("right");
+      NextwineContainer.classList.add("right");
 
-    setTimeout(() => {
-      wineContainer.classList.remove("slide_animation");
-      PrevwineContainer.classList.remove("slide_animation");
-      NextwineContainer.classList.remove("slide_animation");
+      setTimeout(() => {
+        wineContainer.classList.remove("slide_animation");
+        PrevwineContainer.classList.remove("slide_animation");
+        NextwineContainer.classList.remove("slide_animation");
 
-      wineContainer.classList.remove("right");
-      PrevwineContainer.classList.remove("right");
-      NextwineContainer.classList.remove("right");
-    }, 500);
+        wineContainer.classList.remove("right");
+        PrevwineContainer.classList.remove("right");
+        NextwineContainer.classList.remove("right");
+      }, 500);
+    } else {
+      alert("마지막 페이지 입니다.");
+    }
   }
 
   return (
     <div className="container">
       <div className="tag_container">
         <div className="search">
-          <input className="search-txt" type="text" placeholder="Search..." />
-          <button className="search-btn">
+          <input
+            className="search-txt"
+            type="text"
+            placeholder="Search..."
+            onChange={(e) => {
+              setSearchWine(e.target.value);
+            }}
+          />
+          <button
+            className="search-btn"
+            onClick={() => setSearchBtn(searchBtn + 1)}
+          >
             <FontAwesomeIcon
               icon={faMagnifyingGlass}
               size="1x"
@@ -101,7 +123,7 @@ function OnSaleWine() {
       </div>
       <div className="wine_container">
         <div>
-          <div className="total_wine_count">( 0 병 )</div>
+          <div className="total_wine_count">( {totalWine} 병 )</div>
           <div className="wine_view">
             <ul className="wine_list_prev">
               {onSaleWine.map(function (wine, i) {
@@ -135,13 +157,10 @@ function OnSaleWine() {
             <ul className="wine_list_current">
               {onSaleWine != null
                 ? onSaleWine.map(function (wine, i) {
-                    console.log(wine);
                     return (
                       <li
                         key={i}
-                        onClick={() =>
-                          navigate(`/onsale/${wine.stock}/${wine.mongoId}`)
-                        }
+                        onClick={() => navigate(`/onsale/${wine.mongoId}`)}
                       >
                         <div className="wine_list_card">
                           <div className="wine_names">

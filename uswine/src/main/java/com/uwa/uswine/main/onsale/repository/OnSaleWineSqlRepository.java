@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface OnSaleWineSqlRepository extends JpaRepository<SellWineSqlEntity,Long> {
-    Page<SellWineSqlEntity> findBy(Pageable pageable);
+    Page<SellWineSqlEntity> findByWineNameContainingAndStockGreaterThan(String search,String stock,Pageable pageable);
     SellWineSqlEntity findEmailByNickname(String nickname);
+    SellWineSqlEntity findByMongoId(String id);
 }

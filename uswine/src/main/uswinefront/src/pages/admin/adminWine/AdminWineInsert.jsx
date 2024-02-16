@@ -1,5 +1,5 @@
 import { jwtDecode } from "jwt-decode";
-import "../../../css/admin/AdminWineInsert.css"
+import "../../../css/admin/admin_wine/AdminWineInsert.css"
 import { useState } from "react";
 import AwsUpload from "../../../function/AWSs3"
 import AuthApi from "../../../AuthApi";
