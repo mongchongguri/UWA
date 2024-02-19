@@ -29,6 +29,7 @@
   justify-content: end;
 }
 .sell_detail_info {
+  width: 100%;
   display: flex;
 }
 .sell_wine_count {

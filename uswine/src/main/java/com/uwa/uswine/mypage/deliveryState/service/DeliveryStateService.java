@@ -5,7 +5,6 @@ import com.uwa.uswine.main.wine.entity.WineEntity;
 import com.uwa.uswine.main.wine.repository.WineListRepository;
 import com.uwa.uswine.mypage.cart.entity.WineTransactionEntity;
 import com.uwa.uswine.mypage.cart.repository.WineTransactionRepository;
-import com.uwa.uswine.mypage.deliveryState.dto.DeliveryStateDTO;
 import com.uwa.uswine.seller.sellWine.entity.SellWineEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

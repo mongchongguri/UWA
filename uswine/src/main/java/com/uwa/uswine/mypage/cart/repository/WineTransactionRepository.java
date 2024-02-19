@@ -1,4 +1,3 @@
-@ -1,37 +1,31 @@
 package com.uwa.uswine.mypage.cart.repository;
 
 import com.uwa.uswine.mypage.cart.entity.WineTransactionEntity;
@@ -6,7 +5,6 @@ import com.uwa.uswine.mypage.cart.entity.WineTransactionEntity;
 import java.util.Date;
 import java.util.List;
 
-import com.uwa.uswine.mypage.deliveryState.dto.DeliveryStateDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -35,13 +33,16 @@ public interface WineTransactionRepository extends JpaRepository<WineTransaction
             "ON g.transactionId = w.id " +
             "WHERE w.useremail = :useremail")
     Page<Object> findGoodsStateEntityByUseremail(@Param("useremail") String useremail, Pageable pageable);
-    Page<Object> findGoodsAndWineEntitiesBySellerEmailAndDelivery(String sellerEmail, int delivery,Pageable pageable);
 
     @Query("SELECT g, w " +
             "FROM GoodsStateEntity g JOIN WineTransactionEntity w " +
             "ON g.transactionId = w.id " +
             "WHERE g.delivery = 2")
     Page<Object> findByDeliver(Pageable pageable);
-            "WHERE w.useremail = :userEmail AND g.delivery <= 3")
+
+    @Query("SELECT g, w " +
+            "FROM GoodsStateEntity g JOIN WineTransactionEntity w " +
+            "ON g.transactionId = w.id " +
+            "WHERE w.useremail = :userEmail AND g.delivery < 3")
     List<Object> findGoodsAndWineEntitiesByUserEmail(String userEmail);
 }
