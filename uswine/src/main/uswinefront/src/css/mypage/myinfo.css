@@ -299,10 +299,10 @@
 
 .userinfo_modal_input {
     position: fixed;
-    top: 25%;
-    left: 38%;
-    width: 500px;
-    height: 500px;
+    top: 38%;
+    left: 41%;
+    width: 360px;
+    height: 225px;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -311,8 +311,8 @@
 .userinfo_new_nickname_box{
     display: flex;
     flex-direction: column;
-    margin-top: 170px;
-    margin-bottom: 100px;
+    margin-top: 42px;
+    margin-bottom: 38px;
 }
 .userinfo_new_nickname_input{
     display: flex;
@@ -330,8 +330,8 @@
 .userinfo_new_password_box{
     display: flex;
     flex-direction: column;
-    margin-top: 170px;
-    margin-bottom: 100px;
+    margin-top: 42px;
+    margin-bottom: 38px;
 }
 .userinfo_update_nickname_button{
     margin-right: 50px;
