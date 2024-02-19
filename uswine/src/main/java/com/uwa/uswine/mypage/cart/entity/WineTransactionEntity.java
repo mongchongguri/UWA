@@ -1,5 +1,6 @@
 package com.uwa.uswine.mypage.cart.entity;
 
+import com.uwa.uswine.seller.goods.entity.GoodsStateEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

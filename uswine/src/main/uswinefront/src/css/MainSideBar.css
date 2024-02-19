@@ -9,6 +9,7 @@
   box-shadow: -10px 0 10px -5px rgba(0, 0, 0, 0.1);
   transform: translateX(300px);
   transition: transform 0.5s;
+  overflow-y: scroll;
 }
 
 .side_bar_animation {

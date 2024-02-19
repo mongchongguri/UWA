@@ -7,3 +7,54 @@
   background-color: white;
   border-radius: 10px;
 }
+
+.delivery_wine_wrap {
+  display: flex;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.delivery_wine_image_container {
+  flex: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delivery_wine_image_container img {
+  width: 50%;
+}
+
+.delivery_wine_info_container {
+  flex: 70%;
+  display: flex;
+  align-items: center;
+}
+
+.delivery_wine_info_container ul {
+  padding-left: 0px;
+}
+
+.delivery_wine_info_list li {
+  margin-bottom: 0px !important;
+}
+.delivery_wine_info_container ul li {
+  margin-bottom: 20px;
+}
+
+.delivery_wine_info_container .delivery_wine_info_list {
+  display: flex;
+}
+
+.delivery_wine_info_container .delivery_wine_info_list li {
+  margin-right: 20px;
+}
+
+.delviery_wine_state {
+  display: flex;
+}
+
+.delviery_wine_state li {
+  margin-right: 10px;
+}
