@@ -146,8 +146,6 @@
   height: 15%;
   border-bottom: 1px solid #8888887c;
 }
-.userinfo_board_info_container:hover {
-}
 
 .userinfo_board_info_container li {
   display: flex;

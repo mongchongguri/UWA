@@ -58,3 +58,9 @@
 .delviery_wine_state li {
   margin-right: 10px;
 }
+
+.delviery_wine_state li:last-child {
+  color: #897a69;
+  font-weight: 900;
+  border-bottom: 1px solid #888;
+}
