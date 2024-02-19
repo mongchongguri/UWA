@@ -1,0 +1,45 @@
+.favorite_container {
+    display: flex;
+    justify-content: center;
+}
+
+.favorite_wine_container {
+    width: 70%;
+    display: flex;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.favorite_wine_container div {
+    white-space: nowrap;
+}
+
+.favorite_wine_container ul li {
+    flex-basis: calc(25% - 10px);
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: white;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    min-width: calc(25% - 10px);
+    white-space: normal;
+}
+
+.favorite_wine_button {
+    background-color: #897a69;
+    color: white;
+    margin-right: 10px;
+    font-size: 16px;
+    padding: 5px 10px;
+    border: none;
+}
+
+.favorite_wine_button_null {
+    background-color: #ddd;
+    color: #000000;
+    margin-right: 10px;
+    font-size: 16px;
+    padding: 5px 10px;
+    border: none;
+}

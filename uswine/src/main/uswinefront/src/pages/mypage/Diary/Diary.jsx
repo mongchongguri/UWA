@@ -23,13 +23,9 @@ export default function Diary() {
     // let email = 'abc@example.com';
     // let nickname = 'nickname';
     let [modalShow, setModalShow] = useState(false);
-    let [title, setTitle] = useState('');
-    let [content, setContent] = useState('');
-    let [id, setId] = useState('');
     let now = new Date();
     const formateDate = DateFormat(now);
     let [diaryList, setDiaryList] = useState([]);
-    console.log('diaryList first' + diaryList + 'end');
     let [diaryOne, setDiaryOne] = useState('');
     let [today, setToday] = useState(formateDate);
     const [events, setEvents] = useState([]);
@@ -153,7 +149,7 @@ export default function Diary() {
                             </Col>
                             <Col>
                                 <h2 className="diary_title">Diary</h2>
-                                {diaryList !== undefined ? (
+                                {diaryList.length !== 0 ? (
                                     diaryList.map((diary, index) => {
                                         return (
                                             <div className="diary_button" key={index}>
@@ -295,23 +291,6 @@ function EmotionBar(props) {
     );
 }
 
-function WineCard({ wine }, { i }) {
-    return (
-        <Card style={{ width: '25%', display: 'flex', flex: 'wrap' }}>
-            <Card.Img height={50} variant="top" src={wine.wine_image} />
-            <Card.Body>
-                <Card.Title>{wine.wine_name}</Card.Title>
-                <Card.Title>{wine.wine_name_en}</Card.Title>
-                <Card.Text>
-                    {' '}
-                    <b>{wine.wine_info[0]}</b> | {wine.wine_info[1]} | {wine.wine_info[2]}
-                </Card.Text>
-                {/* <Button variant="secondary">상세보기</Button> */}
-            </Card.Body>
-        </Card>
-    );
-}
-
 function Loding() {
     return (
         <div className="loading-spinner">
@@ -319,36 +298,3 @@ function Loding() {
         </div>
     );
 }
-
-// {/* <div className="wine_view">
-// <ul className="wine_list_current">
-//     {wineList.map(function (wine, i) {
-//         console.log(wine);
-//         return (
-//             <li
-//                 key={i}
-//                 onClick={() => {
-//                     wineDetailsNav(wine.id);
-//                 }}
-//             >
-//                 <div className="wine_list_card">
-//                     <div className="wine_names">
-//                         <span className="wine_name">{wine.wine_name}</span>
-//                         <hr></hr>
-//                         <span className="wine_name_en">{wine.wine_name_en}</span>
-//                     </div>
-
-//                     <img src={wine.wine_image} alt="" />
-
-//                     <div className="wine_info">
-//                         <span>
-//                             <b>{wine.wine_info[0]}</b> | {wine.wine_info[1]} |{' '}
-//                             {wine.wine_info[2]}
-//                         </span>
-//                     </div>
-//                 </div>
-//             </li>
-//         );
-//     })}
-// </ul>
-// </div> */}

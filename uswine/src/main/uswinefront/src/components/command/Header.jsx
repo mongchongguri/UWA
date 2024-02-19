@@ -151,7 +151,11 @@ const Header = () => {
           <li>
             <Link
               to="/"
-              className={currentPath == "/" || currentPath.startsWith("/wine") ? "header_selectMenu" : null}
+              className={
+                currentPath == "/" || currentPath.startsWith("/wine")
+                  ? "header_selectMenu"
+                  : null
+              }
             >
               전체 와인
             </Link>
@@ -180,14 +184,14 @@ const Header = () => {
             <Link>이벤트</Link>
           </li>
           <li>
-             <Link 
+            <Link
               to="/notice/1"
               className={
                 currentPath.startsWith("/notice") ? "header_selectMenu" : null
               }
             >
               공지사항
-              </Link>
+            </Link>
           </li>
         </ul>
       </div>
@@ -220,10 +224,19 @@ function SideBar({ boxRef, token, currentPath }) {
           <li>
             <hr></hr>
           </li>
-          <li className="side_bar_menu_list">
-            <FontAwesomeIcon icon={faStar} className="side_bar_menu_icon" />
-            즐겨찾기
-          </li>
+          <Link
+            to="mypage/Favorite"
+            className={
+              currentPath.startsWith("/mypage/Favorite")
+                ? "side_menu_list_select"
+                : null
+            }
+          >
+            <li className="side_bar_menu_list">
+              <FontAwesomeIcon icon={faStar} className="side_bar_menu_icon" />
+              즐겨찾기
+            </li>
+          </Link>
           <Link
             to="mypage/myinfo/1"
             className={
@@ -232,10 +245,10 @@ function SideBar({ boxRef, token, currentPath }) {
                 : null
             }
           >
-          <li className="side_bar_menu_list">
-            <FontAwesomeIcon icon={faUser} className="side_bar_menu_icon" />내
-            정보
-          </li>
+            <li className="side_bar_menu_list">
+              <FontAwesomeIcon icon={faUser} className="side_bar_menu_icon" />내
+              정보
+            </li>
           </Link>
           <Link
             to="mypage/cart"
@@ -266,19 +279,19 @@ function SideBar({ boxRef, token, currentPath }) {
               배송 현황
             </li>
           </Link>
-          
+
           <Link
-              to="mypage/diary"
-              className={
-                currentPath.startsWith("/mypage/diary")
-                    ? "side_menu_list_select"
-                    : null
-              }
+            to="mypage/diary"
+            className={
+              currentPath.startsWith("/mypage/diary")
+                ? "side_menu_list_select"
+                : null
+            }
           >
-          <li className="side_bar_menu_list">
-            <FontAwesomeIcon icon={faBook} className="side_bar_menu_icon" />
-            다이어리
-          </li>
+            <li className="side_bar_menu_list">
+              <FontAwesomeIcon icon={faBook} className="side_bar_menu_icon" />
+              다이어리
+            </li>
           </Link>
           <Link
             to="mypage/chat"

@@ -1,20 +1,14 @@
 package com.uwa.uswine.mypage.favorite.service;
 
-import com.uwa.uswine.main.onsale.repository.OnSaleWineSqlRepository;
 import com.uwa.uswine.main.wine.entity.WineEntity;
-import com.uwa.uswine.main.wine.repository.WineDetailRepository;
 import com.uwa.uswine.main.wine.repository.WineListRepository;
 import com.uwa.uswine.mypage.favorite.entity.FavoriteEntity;
 import com.uwa.uswine.mypage.favorite.repository.FavoriteRepository;
-import com.uwa.uswine.seller.InfoWine.repository.InfoWineRepository;
-import com.uwa.uswine.seller.sellWine.entity.SellWineEntity;
-import com.uwa.uswine.seller.sellWine.repository.SellWineRepository;
+import com.uwa.uswine.seller.sellWine.entity.SellWineSqlEntity;
 import com.uwa.uswine.seller.sellWine.repository.SellWineSQLRepository;
 import lombok.RequiredArgsConstructor;
-import org.reactivestreams.Publisher;
-import org.springframework.http.ResponseEntity;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Flux;
 
 import java.util.HashMap;
 import java.util.List;
@@ -25,7 +19,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class FavoriteService {
     private final FavoriteRepository favoriteRepository;
-    private final SellWineRepository sellWineRepository;
+    private final SellWineSQLRepository sellWineSQLRepository;
     private final WineListRepository wineListRepository;
 
     public int addFavorite(FavoriteEntity favorite){
@@ -33,63 +27,64 @@ public class FavoriteService {
             favoriteRepository.save(favorite);
             return 1;
         }catch (Exception e){
-            return -1;
+            return 0;
         }
     }
 
-    public int delFavorite(FavoriteEntity favorite){
-        try {
+    public int delFavorite(String email, String mongoId){
+        FavoriteEntity favorite = favoriteRepository.findByEmailAndMongoId(email,mongoId);
+        if (favorite != null) {
             favoriteRepository.delete(favorite);
             return 1;
-        }catch (Exception e){
+        } else {
             return -1;
         }
     }
+    public Boolean getFavorite(String email, String mongoId){
+        try{
+            FavoriteEntity byEmailAndMongoId = favoriteRepository.findByEmailAndMongoId(email, mongoId);
+            if(byEmailAndMongoId != null){
 
-    public Map<String,List<String>> getMongoId (String email){
-        Map<String, List<String>> map = new HashMap<>();
+            return true;
+            }else {
+                return false;
+            }
+        }catch (Exception e){
+            return false;
+        }
+    }
 
-        // uwa에서 동록한 와인
-        int document = 0;
+    public Map<String, Object> getMongoIdListCount (String email, int document){
+        Map<String, Object> map = new HashMap<>();
 
-        // 즐겨찾기 된 uwa와인 리스트 불러오기
-        List<FavoriteEntity> favoriteEntities1 = favoriteRepository.findAllByEmailAndDocument(email, document);
+        // 즐겨찾기 된 와인 리스트 불러오기
+        List<FavoriteEntity> favoriteEntities = favoriteRepository.findAllByEmailAndDocument(email, document);
 
         // 즐겨찾기에 저장된 wineListMongoId 가져오기
-        List<String> wineListMongoId = favoriteEntities1.stream()
+        List<String> mongoId = favoriteEntities.stream()
                 .map(FavoriteEntity::getMongoId)
                 .collect(Collectors.toList());
 
-        map.put("wineListMongoId", wineListMongoId);
+        // 즐겨찾기 된 와인 개수
+        long count = favoriteRepository.countByEmailAndDocument(email, document);
 
-        // 판매자 와인
-        document = 1;
-
-        // 즐겨찾기 된 uwa 와인 리스트 불러오기
-        List<FavoriteEntity> favoriteEntities2 = favoriteRepository.findAllByEmailAndDocument(email,document);
-
-        // 즐겨찾기에 저장된 sellWineListMongoId 가져오기
-        List<String> sellWineListMongoId = favoriteEntities2.stream()
-                .map(FavoriteEntity::getMongoId)
-                .collect(Collectors.toList());
-
-        map.put("sellWineListMongoId", sellWineListMongoId);
+        map.put("mongoId", mongoId);
+        map.put("count", count);
 
         return map;
     }
 
-    public List<WineEntity> getMongoWineList(List<String> mongoId){
+    public List<WineEntity> getMongoWineList(List<String> mongoId, int page){
 
-        List<WineEntity> wineEntities = wineListRepository.findById(mongoId).collectList().block();
+        Map<String, Object> map = new HashMap<>();
+        List<WineEntity> wineEntities = wineListRepository.findById(mongoId, PageRequest.of(page,8)).collectList().block();
 
         return wineEntities;
     }
 
-    public List<SellWineEntity> getMongoSellWineList(List<String> mongoId){
-        List<SellWineEntity> sellWineEntities = sellWineRepository.findAllById(mongoId).collectList().block();
-
-        return sellWineEntities;
+    public List<SellWineSqlEntity> getMongoSellWineList(List<String> mongoId, int page){
+        List<SellWineSqlEntity> sellWineSqlEntities = sellWineSQLRepository.findByMongoIdIn(mongoId, PageRequest.of(page,8));
+        return sellWineSqlEntities;
     }
-
 
 }

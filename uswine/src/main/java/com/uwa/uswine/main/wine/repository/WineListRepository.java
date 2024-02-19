@@ -58,5 +58,5 @@ public interface WineListRepository extends ReactiveMongoRepository<WineEntity,O
     Flux<WineEntity> findByWineAroma(List<String> aromaList);
 
     @Query("{'$or': [{'_id': {$in: ?0}}, {'_id': {$exists: false}}]}")
-    Flux<WineEntity> findById(List<String> mongoId);
+    Flux<WineEntity> findById(List<String> mongoId, Pageable pageable);
 }

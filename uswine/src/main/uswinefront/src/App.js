@@ -73,9 +73,10 @@ function App() {
           <Route path="mypage/chat" element={<Chatting />} />
           <Route path="mypage/chat/room/:id?" element={<Chatting />} />
           <Route path="mypage/diary" element={<Diary />} />
+          <Route path="mypage/favorite" element={<Favorite />} />
           <Route path="mypage/myinfo/:page" element={<MyInfo />} />
-          <Route path="mypage/myboard/:page" element={<MyBoardList /> } />
-          <Route path="mypage/mycomment/:page" element={<MyCommentList /> } />
+          <Route path="mypage/myboard/:page" element={<MyBoardList />} />
+          <Route path="mypage/mycomment/:page" element={<MyCommentList />} />
           {/* 판매자 페이지 */}
           <Route path="seller/wine" element={<SellerWine />} />
           <Route path="seller/management" element={<SalesManagement />} />
@@ -119,7 +120,7 @@ function App() {
           />
           <Route path="management/sellerwine" element={<AdminSellerWine />} />
         </Route>
-        <Route path="/delivery/:page" element={<Delivery />}/>
+        <Route path="/delivery/:page" element={<Delivery />} />
       </Routes>
     </div>
   );

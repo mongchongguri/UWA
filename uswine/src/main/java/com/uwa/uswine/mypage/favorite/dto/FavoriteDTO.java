@@ -15,6 +15,7 @@ public class FavoriteDTO {
     private int document;
     private String mongoId;
     private String favoriteDate;
+    private int page;
 
     public FavoriteEntity toEntity(){
         FavoriteEntity favoriteEntity = new FavoriteEntity();

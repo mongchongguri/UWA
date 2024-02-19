@@ -10,9 +10,9 @@ import {
   faL,
   faPhone,
   faTruckFast,
-  faStar as solidStar,
+  faHeart as solidHeart,
 } from "@fortawesome/free-solid-svg-icons";
-import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
+import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PhoneNumberFormant from "../../../function/PhoneNumberFormat";
 
@@ -53,6 +53,69 @@ function WineDetailsPage() {
 
 function WineDetailComponent({ wineDetail, userinfo }) {
   let navigate = useNavigate();
+  let [favorite, setFavorite] = useState(false);
+  console.log(favorite + "확인");
+  let now = new Date();
+  const formateDate = DateFormat(now);
+
+  const addFavorite = () => {
+    console.log("Adding Favorite");
+    AuthApi("/api/mypage/favorite/add", {
+      favoriteDate: formateDate,
+      mongoId: wineDetail.id,
+      nickname: userinfo.nickname,
+      email: userinfo.username,
+      document: 0,
+    }).then((data) => {
+      if (data === 1) {
+        setFavorite(true);
+        const cart = window.confirm(
+          "즐겨찾기 등록 되었습니다. 마이페이지 즐겨찾기로 이동하시겠습니까?"
+        );
+        if (cart) {
+          navigate("/mypage/favorite");
+        } else {
+          redirect(`/wine/${wineDetail.Id}`);
+        }
+      } else {
+        alert("즐겨찾기 등록이 실패하였습니다.");
+      }
+    });
+  };
+
+  const delFavorite = () => {
+    console.log("Deleting Favorite");
+    AuthApi("/api/mypage/favorite/delete", {
+      mongoId: wineDetail.id,
+      email: userinfo.username,
+    }).then((data) => {
+      if (data === 1) {
+        setFavorite(false);
+        const cart = window.confirm(
+          "즐겨찾기 해제 되었습니다. 마이페이지 즐겨찾기로 이동하시겠습니까?"
+        );
+        if (cart) {
+          navigate("/mypage/favorite");
+        } else {
+          redirect(`/wine/${wineDetail.Id}`);
+        }
+      } else {
+        alert("즐겨찾기 해제가 실패하였습니다.");
+      }
+    });
+  };
+
+  useEffect(() => {
+    if (userinfo !== null) {
+      AuthApi("/api/mypage/favorite/getOne", {
+        mongoId: wineDetail.id,
+        email: userinfo.username,
+      }).then((data) => {
+        console.log("지금" + data);
+        setFavorite(data);
+      });
+    }
+  });
 
   return (
     <>
@@ -68,7 +131,33 @@ function WineDetailComponent({ wineDetail, userinfo }) {
               <li style={{ color: "#888" }}>|</li>
               <li>{wineDetail.wine_info[2]}</li>
               <li>
-                <FontAwesomeIcon icon={regularStar} size="xl" />
+                {userinfo !== null ? (
+                  !favorite ? (
+                    <div
+                      onClick={() => {
+                        addFavorite();
+                      }}
+                    >
+                      <FontAwesomeIcon
+                        icon={regularHeart}
+                        size="xl"
+                        color="#ff8888"
+                      />
+                    </div>
+                  ) : (
+                    <div
+                      onClick={() => {
+                        delFavorite();
+                      }}
+                    >
+                      <FontAwesomeIcon
+                        icon={solidHeart}
+                        size="xl"
+                        color="#ff8888"
+                      />
+                    </div>
+                  )
+                ) : null}
               </li>
             </ul>
           </li>
