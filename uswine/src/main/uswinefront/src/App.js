@@ -29,6 +29,7 @@ import NoticeWrite from "./pages/admin/notice/NoticeWrite";
 import AdminNoticeDetail from "./pages/admin/notice/AdminNoticeDetail";
 import UserList from "./pages/admin/userList/UserList";
 import Diary from "./pages/mypage/Diary/Diary";
+import Favorite from "./pages/mypage/Favorite/Favorite";
 import AdminFreeBoardDetail from "./pages/admin/admin_freeboard/AdminFreeBoardDetail";
 import AdminEventBoard from "./pages/admin/admin_event/AdminEventBoard";
 import AdminEventCreate from "./pages/admin/admin_event/AdminEventCreate";
