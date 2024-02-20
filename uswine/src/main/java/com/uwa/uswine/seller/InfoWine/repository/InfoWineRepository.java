@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -17,4 +18,6 @@ public interface InfoWineRepository extends JpaRepository<InfoWineSellEntity,Lon
 
     Page<InfoWineSellEntity> findByEmailAndSellStockGreaterThan(String email, String stock, Pageable pageable);
     Page<InfoWineSellEntity> findByEmailAndSellStock(String email,String stock, Pageable pageable);
+
+    List<InfoWineSellEntity> findByEmailAndSellDateBetween(String email, Date startDate,Date endDate);
 }
