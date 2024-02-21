@@ -57,7 +57,7 @@ public class SalesManagementService {
     }
 
     public Page<WineTransactionEntity> findByTransaction(String email,int page) {
-        return this.wineTransactionRepository.findBySelleremail(email,PageRequest.of(page,10));
+        return this.wineTransactionRepository.findBySelleremailOrderByTimestampDesc(email,PageRequest.of(page,10));
     }
 
     public int updateStock(ReSaleStockDTO reSaleStockDTO) {

@@ -41,6 +41,7 @@ function SalesManagementComponent({ userinfo }) {
   let [soldOutWineMdList, setSoldOutWineMDList] = useState([]);
   let [soldOutWineMDNameList, setSoldOutWineMdNameList] = useState([]);
   let [transactionList, setTransactionList] = useState([]);
+  let [withdrawList, setWithdrawList] = useState([]);
 
   let [wineCount, setWineCount] = useState(0);
   let [soldOutCount, setSoldOutCount] = useState(0);
@@ -60,6 +61,8 @@ function SalesManagementComponent({ userinfo }) {
   let [soldWineTotalPage, setSoldWineTotalPage] = useState(1);
   let [transactionCurrentPage, setTransactionCurrentPage] = useState(1);
   let [transactionTotalPage, setTransactionTotalPage] = useState(1);
+  let [withdrawCurrentPage, setWithdrawCurrentPage] = useState(1);
+  let [withdrawTotalPage, setWithdrawTotalPage] = useState(1);
 
   useEffect(() => {
     if (viewListState == 1) {
@@ -68,7 +71,6 @@ function SalesManagementComponent({ userinfo }) {
         sellingpage: sellingWineCurrentPage - 1,
         soldpage: soldWineCurrentPage - 1,
       }).then((data) => {
-        console.log(data);
         setInfo(data.info);
         setWineList(data.wine.content);
         setWineCount(data.wine.totalElements);
@@ -88,7 +90,6 @@ function SalesManagementComponent({ userinfo }) {
         sellingpage: sellingWineCurrentPage - 1,
         soldpage: soldWineCurrentPage - 1,
       }).then((data) => {
-        console.log(data);
         setInfo(data.info);
         setWineMDList(data.wine.content);
         setWineMDName(data.wineName);
@@ -113,7 +114,6 @@ function SalesManagementComponent({ userinfo }) {
       email: userinfo.username,
       page: transactionCurrentPage - 1,
     }).then((data) => {
-      console.log(data);
       setTransactionList(data.content);
       setTransactionCount(data.totalElements);
       if (data.totalPages != 0) {
@@ -121,6 +121,18 @@ function SalesManagementComponent({ userinfo }) {
       }
     });
   }, [transactionCurrentPage]);
+
+  useEffect(() => {
+    AuthApi("/api/seller/management/withdrawlist", {
+      email: userinfo.username,
+      page: withdrawCurrentPage,
+    }).then((data) => {
+      setWithdrawList(data.content);
+      if (data.totalPages != 0) {
+        setWithdrawTotalPage(data.totalPages);
+      }
+    });
+  }, [withdrawCurrentPage]);
 
   function reSale(id) {
     setReSaleState(true);
@@ -169,12 +181,14 @@ function SalesManagementComponent({ userinfo }) {
     if (parseInt(withdrawMoney, 10) > parseInt(info.money, 10)) {
       alert("출금 가능 금액 이하로 입력해주세요.");
     } else {
+      const date = new Date();
       AuthApi("/api/seller/management/withdraw", {
         email: userinfo.username,
         nickname: userinfo.nickname,
         bank: info.bank,
         account: info.account,
         withdraw: withdrawMoney,
+        timestamp: date,
       }).then((data) => {
         if (data == 1) {
           alert("출금이 완료되었습니다.");
@@ -231,10 +245,6 @@ function SalesManagementComponent({ userinfo }) {
 
         <div className="seller_info_card">
           <div className="seller_detail_info">
-            <p>{info.email}</p>
-            <p>
-              {userinfo.nickname} <span>{PhoneNumberFormant(info.phone)}</span>
-            </p>
             <p className="sell_total_income">총 수익 : {info.totalMoney} 원</p>
             <div className="sell_detail_info">
               <div className="sell_wine_count">
@@ -543,6 +553,73 @@ function SalesManagementComponent({ userinfo }) {
                   setTransactionCurrentPage(
                     parseInt(transactionCurrentPage, 10) + 1
                   );
+                }
+              }}
+            >
+              <FontAwesomeIcon icon={faChevronRight} />
+            </button>
+          </div>
+        </div>
+        <div className="wine_info_list_container">
+          <p className="wine_info_title">출금 내역</p>
+          <ul>
+            <li>
+              <ul className="sell_wine_list sell_list_title">
+                <li>출금 번호</li>
+                <li>출금 계좌</li>
+                <li>계좌 은행</li>
+                <li>출금 시각</li>
+                <li>신청 금액</li>
+                <li>수수료</li>
+                <li>출금 금액</li>
+              </ul>
+            </li>
+            <li>
+              {withdrawList != null
+                ? withdrawList.map(function (withdraw, i) {
+                    return (
+                      <ul className="sell_wine_list" key={i}>
+                        <li>{withdraw.id}</li>
+                        <li>{withdraw.account}</li>
+                        <li>{withdraw.bank}</li>
+                        <li>{DateFormat(withdraw.timestamp)}</li>
+                        <li>
+                          {parseInt(withdraw.wihtdraw, 10) +
+                            parseInt(withdraw.revenue, 10)}{" "}
+                          원
+                        </li>
+                        <li>{withdraw.revenue} 원</li>
+                        <li>{withdraw.wihtdraw} 원</li>
+                      </ul>
+                    );
+                  })
+                : null}
+            </li>
+          </ul>
+        </div>
+        <div className="management_page_controller">
+          <div>
+            <button
+              onClick={() => {
+                if (withdrawCurrentPage > 1) {
+                  setWithdrawCurrentPage(withdrawCurrentPage - 1);
+                }
+              }}
+            >
+              <FontAwesomeIcon icon={faChevronLeft} />
+            </button>
+            <input
+              type="number"
+              value={withdrawCurrentPage}
+              onChange={(e) => {
+                setWithdrawCurrentPage(e.target.value);
+              }}
+            />
+            /<span>{withdrawTotalPage}</span>
+            <button
+              onClick={() => {
+                if (withdrawCurrentPage < withdrawTotalPage) {
+                  setWithdrawCurrentPage(parseInt(withdrawCurrentPage, 10) + 1);
                 }
               }}
             >

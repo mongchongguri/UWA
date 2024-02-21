@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.Date;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,6 +18,8 @@ public class SellerManagementWithdrawDTO {
     private String bank;
     private String account;
     private String withdraw;
+    private Date timestamp;
+    private String revenue;
 
     public SellerWithdrawEntity toEntity() {
         SellerWithdrawEntity sellerWithdrawEntity = new SellerWithdrawEntity();
@@ -24,6 +28,8 @@ public class SellerManagementWithdrawDTO {
         sellerWithdrawEntity.setBank(this.bank);
         sellerWithdrawEntity.setAccount(this.account);
         sellerWithdrawEntity.setWihtdraw(this.withdraw);
+        sellerWithdrawEntity.setTimestamp(this.timestamp);
+        sellerWithdrawEntity.setRevenue(this.revenue);
         return sellerWithdrawEntity;
     }
 }

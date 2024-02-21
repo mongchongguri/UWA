@@ -20,13 +20,13 @@ import {
   faBasketShopping,
   faComment,
   faCreditCard,
-  faTruck,
   faTruckFast,
+  faTruck,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { BsCart4 } from "react-icons/bs";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
-import { BsCart4 } from "react-icons/bs";
 
 const Header = () => {
   let navigate = useNavigate();
@@ -279,7 +279,6 @@ function SideBar({ boxRef, token, currentPath }) {
               배송 현황
             </li>
           </Link>
-
           <Link
             to="mypage/diary"
             className={
@@ -383,13 +382,22 @@ function SideBar({ boxRef, token, currentPath }) {
                   배송 관리
                 </li>
               </Link>
-              <li className="side_bar_menu_list">
-                <FontAwesomeIcon
-                  icon={faChartSimple}
-                  className="side_bar_menu_icon"
-                />
-                판매 분석
-              </li>
+              <Link
+                to="seller/chart"
+                className={
+                  currentPath.startsWith("/seller/chart")
+                    ? "side_menu_list_select"
+                    : null
+                }
+              >
+                <li className="side_bar_menu_list">
+                  <FontAwesomeIcon
+                    icon={faChartSimple}
+                    className="side_bar_menu_icon"
+                  />
+                  판매 분석
+                </li>
+              </Link>
             </>
           ) : null}
         </ul>

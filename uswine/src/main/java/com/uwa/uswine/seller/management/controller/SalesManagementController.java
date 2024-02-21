@@ -6,6 +6,7 @@ import com.uwa.uswine.seller.InfoWine.entity.InfoWineSellEntity;
 import com.uwa.uswine.seller.management.dto.ReSaleStockDTO;
 import com.uwa.uswine.seller.management.dto.SalesManagementDTO;
 import com.uwa.uswine.seller.management.dto.SellerManagementWithdrawDTO;
+import com.uwa.uswine.seller.management.entity.SellerWithdrawEntity;
 import com.uwa.uswine.seller.management.service.SalesManagementService;
 import com.uwa.uswine.seller.management.service.WithdrawService;
 import lombok.AllArgsConstructor;
@@ -73,5 +74,10 @@ public class SalesManagementController {
     @PostMapping("/withdraw")
     public int withdraw(@RequestBody SellerManagementWithdrawDTO sellerManagementWithdrawDTO) {
         return this.withdrawService.withdraw(sellerManagementWithdrawDTO);
+    }
+
+    @PostMapping("/withdrawlist")
+    public Page<SellerWithdrawEntity> withdrawlist(@RequestBody Map<String,Object> seller) {
+        return this.withdrawService.withdrawlist((String) seller.get("email"), (int) seller.get("page"));
     }
 }

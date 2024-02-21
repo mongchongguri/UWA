@@ -45,12 +45,16 @@ import Delivery from "./pages/Delivery";
 import UserWineCart from "./pages/mypage/Cart/UserWineCart";
 import UserDeliveryState from "./pages/mypage/Delivery/UserDeliveryState";
 import GoodsDelivery from "./pages/Seller/GoodsDelivery";
+import UserDeliveryState from "./pages/mypage/Delivery/UserDeliveryState";
+import SalesAnalysisChart from "./pages/Seller/SalesAnalysisChart";
+
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<User />}>
           <Route index element={<Home />} />
+          {/* 헤더 */}
           <Route path="login" element={<LoginPage />} />
           <Route path="join" element={<JoinPage />} />
           <Route path="notice/:page/" element={<UserNotice />} />
@@ -82,6 +86,7 @@ function App() {
           <Route path="seller/wine" element={<SellerWine />} />
           <Route path="seller/management" element={<SalesManagement />} />
           <Route path="seller/delivery" element={<GoodsDelivery />} />
+          <Route path="seller/chart" element={<SalesAnalysisChart />} />
         </Route>
         <Route path="/admin" element={<Admin />}>
           <Route
