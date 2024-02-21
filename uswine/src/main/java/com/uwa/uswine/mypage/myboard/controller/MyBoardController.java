@@ -27,10 +27,11 @@ public class MyBoardController {
 	
 	@PostMapping("myboardList")
 	public Map<String, Object> myBoardList(@RequestBody Map<String,String> map){
+		System.out.println(map);
 		String nickname = map.get("nickname");
 		int page = Integer.parseInt(map.get("page"));
 		int size = 10;
-		Page<BoardEntity> board =  myBoardService.getMyBoardList(nickname,size,page);
+		Page<BoardEntity> board =  myBoardService.getMyBoardList(nickname,size,page-1);
 		Map<String, Long> comment_map = new HashMap<String,Long>();
 		Map<String, Long> recommend_map = new HashMap<String,Long>();
 		Map<String, Long> recomment_map = new HashMap<String,Long>();
