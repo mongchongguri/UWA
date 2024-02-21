@@ -89,20 +89,15 @@
 
 
   .deleteNotice_button{
-    width: 70px;
-    height: 30px;
-    border: 1px solid black;
-    border-radius: 5px;
+    width: 50px;
+    height: 20px;
     font-size: 14px;
   }
   #notice_writeButton{
-    width: 70px;
+    width: 50px;
     height: 30px;
-    border: 1px solid black;
-    border-radius: 5px;
     font-size: 14px;
-    margin-top: 10px;
-    margin-right: 76px;
+    margin-bottom: 10px;
   }
 
   .admin_notice_comment_count {

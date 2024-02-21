@@ -3,7 +3,7 @@
     position:absolute;
     top:80px;
     left:300px;
-    width: calc(100% - 300px);
+    width: calc(100% - 400px);
     background-color: #ffffff;
     border-radius: 10px;
     padding: 30px;
@@ -24,6 +24,9 @@
         font-size: 13px;
         display: flex;
         margin-left: auto;
+    }
+    #admin_wine_info_insert input{
+        height: 30px;
     }
     .admin_wine_info{
         margin-bottom: 20px;
@@ -56,7 +59,16 @@
         flex-direction: column;
     }
     #admin_wine_aroma_insert span{
-        margin-right: 107px;
+        margin-right: 86px;
+        margin-bottom: 3px;
+    }
+    #admin_wine_aroma_insert input{
+        height: 35px;
+        margin-bottom: 3px;
+        margin-right: 3px;
+    }
+    .admin_wine_aroma_info_label{
+        margin-bottom: 3px;
     }
     
 

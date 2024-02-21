@@ -1,12 +1,13 @@
 import AdminReCommentComponent from "./AdminNoticeRecommentList";
+import { Button } from "react-bootstrap";
 export default function CommentList({ comments,handleCommentCheck,recommentList,handleRecommentCheck
 ,DateFormat, deleteNoticeComment }) {
     return (
       <>
         <div id="buttonArea_notice_detail">
-            <button id="deletebutton_notice_detail" onClick={deleteNoticeComment}>
+            <Button variant="light" id="deletebutton_notice_detail" onClick={deleteNoticeComment}>
                 선택 삭제
-            </button>
+            </Button>
         </div>
         <div className="admin_comment_container">
           <div id="NoticeCommentListHead">

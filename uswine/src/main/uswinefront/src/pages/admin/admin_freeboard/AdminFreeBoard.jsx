@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../../css/admin/admin_freeboard/freeboard_admin.css";
-import { Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import AuthApi from "../../../AuthApi";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -119,7 +119,7 @@ const FreeBoard = () => {
       </div>
       <div id="freeboard_search_block">
         <div id="freeboard_board_deleteBtn">
-          <button onClick={updateFreeboard}>선택삭제</button>
+          <Button variant="light" onClick={updateFreeboard}>선택삭제</Button>
         </div>
         <div id="freeboard_search">
           <div id="freeboard_search_select">
@@ -137,9 +137,9 @@ const FreeBoard = () => {
             onChange={handleSearchKeyword}
             defaultValue={keyword}
           />
-          <button id="freeboard_search_btn" onClick={inputSearchKeyword}>
+          <Button variant="light" id="freeboard_search_btn" onClick={inputSearchKeyword}>
             검색
-          </button>
+          </Button>
         </div>
       </div>
       <Table id="freeboard_table" variant="dark" size="m">
@@ -173,7 +173,7 @@ const FreeBoard = () => {
                     <td>{board.nickname}</td>
                     <td>{DateFormat(board.writedate)}</td>
                     <td>
-                      <button>내용보기</button>
+                      <Button variant="light">내용보기</Button>
                     </td>
                   </tr>
                 );

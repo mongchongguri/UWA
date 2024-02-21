@@ -4,6 +4,7 @@ import { useState } from "react";
 import AwsUpload from "../../../function/AWSs3"
 import AuthApi from "../../../AuthApi";
 import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
 export default function WineInsert(){
     const token = localStorage.getItem("token") || "";
     if (token === "") {
@@ -248,9 +249,9 @@ function WineInsertComponent(){
                 value={wineImporter} onChange={(e)=>setWineImporter(e.target.value)} placeholder="수입사"/>
             </div>
             <div id="admin_wine_aroma_insert">
-                <div>
+                <div className="admin_wine_aroma_info_label">
                     <span>아로마 정보</span>
-                    <button id="add_aroma_input" onClick={handleAddInput}>+</button>
+                    <Button variant="light" id="add_aroma_input" onClick={handleAddInput}>+</Button>
                 </div>
                 <input
                     type="text"
@@ -264,7 +265,7 @@ function WineInsertComponent(){
                             value={aroma}
                             onChange={(e) => handleInputChange(index, e.target.value)}
                         />
-                        <button id="add_aroma_input" onClick={()=>handleRemoveInput(index)}>-</button>
+                        <Button variant="light" id="add_aroma_input" onClick={()=>handleRemoveInput(index)}>-</Button>
                     </div>
                 ))}
                 
@@ -274,12 +275,13 @@ function WineInsertComponent(){
                 value={wineNote} onChange={(e)=>setWineNote(e.target.value)} placeholder="와인 설명"/> 
             </div>
             <div id="admin_wine_insert_submit">
-                <button 
+                <Button 
+                    variant="light"
                     id="wine_insert_submit"
                     onClick={wineInsertSubmit}
                 >
                     와인 등록
-                </button>
+                </Button>
             </div>
         </div>
     )

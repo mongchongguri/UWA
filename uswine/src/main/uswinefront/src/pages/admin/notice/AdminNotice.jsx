@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom"
 import { jwtDecode } from "jwt-decode";
 import AuthApi from "../../../AuthApi";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button } from "react-bootstrap";
 import {
     faAngleLeft,
     faAngleRight,
@@ -97,6 +98,11 @@ function AdminNoticeComponent (){
                 <div id="noticeTitle">
                     <h1>공지사항</h1>
                 </div>
+                <div id="buttonArea_notice">
+                    <Button variant="light" id="notice_writeButton" onClick={gotoWrite}>
+                            글쓰기
+                    </Button>
+                </div>
                 <div id="noticeListHead">
                     <div id="headColumn_notice" className="headTitle">
                         공지제목
@@ -121,18 +127,14 @@ function AdminNoticeComponent (){
                                 justifyContent:'center',marginRight:'5%'}}>
                                     {DateFormat(notice.writedate)}
                                 </div>
-                                <button id={`deleteNotice_${notice.id}`} className="deleteNotice_button"
+                                <Button variant="light" id={`deleteNotice_${notice.id}`} className="deleteNotice_button"
                                 onClick={(e)=>deleteNotice(e.target.id)}>
                                     삭제
-                                </button>
+                                </Button>
                             </div>
                         ))}
                 </div>
-                <div id="buttonArea_notice">
-                    <button id="notice_writeButton" onClick={gotoWrite}>
-                            글쓰기
-                    </button>
-                </div>
+                
                 <div id="noticeListFoot">
                     <div className="notice_page_controller">
                         <div className="prev_page" onClick={handlePrevPage}>

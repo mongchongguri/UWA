@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import AuthApi from "../../../AuthApi";
 import { useNavigate } from "react-router-dom";
 export default function UserListBody({userList,handleUserCheck,searchType,searchGroup,searchDate,searchWord
@@ -101,11 +101,11 @@ userNickValue,setUserNickValue}){
                 whiteSpace:'nowrap',textOverflow:'ellipsis',overflow:'hidden',marginRight:'1%'}}>
                     {user.joindate}
                 </div>
-                <button style={{whiteSpace:'nowrap',width:'70px',justifyContent:'center',
-                height:'30px',border:'1px solid black', borderRadius:'5px', fontSize:'14px'}}
+                <Button variant="light" style={{whiteSpace:'nowrap',width:'70px',justifyContent:'center',
+                height:'25px', fontSize:'14px'}}
                 onClick={()=>updateUser(user)}>
                     정보수정
-                </button>
+                </Button>
             </div>
         ))}
         </>

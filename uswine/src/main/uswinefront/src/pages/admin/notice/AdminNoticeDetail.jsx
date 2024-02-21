@@ -5,6 +5,7 @@ import MarkUp from "../../../function/MarkUp"
 import AuthApi from "../../../AuthApi"
 import "../../../css/admin/admin_notice/NoticeDetail.css"
 import AdminCommentList from "./AdminNoticeCommentList";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faAngleLeft,

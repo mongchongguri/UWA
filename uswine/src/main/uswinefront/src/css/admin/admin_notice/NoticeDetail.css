@@ -133,10 +133,8 @@
     }
 
     #deletebutton_notice_detail{
-        width: 70px;
-        height: 30px;
-        border: 1px solid black;
-        border-radius: 5px;
+        width: 60px;
+        height: 20px;
         margin-bottom: 10px;
         font-size: 14px;
       }

@@ -3,6 +3,7 @@ import "../../css/admin/SellerRequest.css"
 import AuthApi from "../../AuthApi"
 import { useNavigate, useParams } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button } from "react-bootstrap";
 import {
     faAngleLeft,
     faAngleRight,
@@ -135,14 +136,14 @@ function SellerRequestComponent(){
                         </div>
                         <div id="buttonArea_seller">
                             <div id="confirm" className={`confirm_div_${request.email}`}>
-                                <button id={`confirm_button_${request.email}`}  onClick={(e)=>confirmClick(e.target.id)}>
+                                <Button variant="light" id={`confirm_button_${request.email}`}  onClick={(e)=>confirmClick(e.target.id)}>
                                     수락
-                                </button>
+                                </Button>
                             </div>
                             <div id="denied" className={`denied_div_${request.email}`}>
-                                <button id={`denied_button_${request.email}`}  onClick={(e)=>deniedClick(e.target.id)}>
+                                <Button variant="light" id={`denied_button_${request.email}`}  onClick={(e)=>deniedClick(e.target.id)}>
                                     거절
-                                </button>
+                                </Button>
                             </div>
                         </div>
                     </div>

@@ -2,6 +2,7 @@ import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import AuthApi from "../../../AuthApi";
+import { Button } from "react-bootstrap";
 import {
   faMagnifyingGlass,
   faAngleLeft,
@@ -174,14 +175,15 @@ function AdminWineListComponent() {
               className="search-icon"
             />
           </button>
-          <button
+          <Button
+            variant="light"
             id="admin_wineInsert"
             onClick={() => {
               navigate("/admin/wineInsert");
             }}
           >
             와인 추가
-          </button>
+          </Button>
         </div>
         <div className="admin_tag_wine_container">
           <span>와인 종류</span>
