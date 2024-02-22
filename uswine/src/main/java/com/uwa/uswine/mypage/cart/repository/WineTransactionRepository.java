@@ -1,11 +1,11 @@
 package com.uwa.uswine.mypage.cart.repository;
 
 import com.uwa.uswine.mypage.cart.entity.WineTransactionEntity;
-import com.uwa.uswine.mypage.deliveryState.dto.DeliveryStateDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
@@ -14,6 +14,8 @@ import java.util.Map;
 
 @Repository
 public interface WineTransactionRepository extends JpaRepository<WineTransactionEntity,Long> {
+
+    WineTransactionEntity findByTimestamp(Date timestamp);
     Page<WineTransactionEntity> findBySelleremail(String email, Pageable pageable);
     Page<WineTransactionEntity> findByUseremail(String email, Pageable pageable);
     List<WineTransactionEntity> findByUseremail(String email);
@@ -35,7 +37,7 @@ public interface WineTransactionRepository extends JpaRepository<WineTransaction
             "FROM GoodsStateEntity g JOIN WineTransactionEntity w " +
             "ON g.transactionId = w.id " +
             "WHERE g.delivery = 2")
-    Page<Object> findByDeliver(Pageable pageable);]
+    Page<Object> findByDeliver(Pageable pageable);
     
     @Query("SELECT g, w " +
             "FROM GoodsStateEntity g JOIN WineTransactionEntity w " +

@@ -45,7 +45,6 @@ import Delivery from "./pages/Delivery";
 import UserWineCart from "./pages/mypage/Cart/UserWineCart";
 import UserDeliveryState from "./pages/mypage/Delivery/UserDeliveryState";
 import GoodsDelivery from "./pages/Seller/GoodsDelivery";
-import UserDeliveryState from "./pages/mypage/Delivery/UserDeliveryState";
 import SalesAnalysisChart from "./pages/Seller/SalesAnalysisChart";
 
 function App() {
