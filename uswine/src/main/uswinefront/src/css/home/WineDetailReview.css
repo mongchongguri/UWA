@@ -1,0 +1,126 @@
+.wine_Review {
+    background-color: white;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 50px;
+}
+.wine_Review div {
+    /* margin-right: 10px; */
+    font-size: 15px;
+    color: #777;
+}
+.wine_review {
+    margin-top: 10px;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+.wine_review_container {
+    background-color: white;
+    padding: 10px;
+    /* border: 1px solid #ccc; */
+    display: flex;
+    flex-direction: column;
+}
+.wine_review_writer {
+    /* padding: 20px; */
+    border: 1px solid #ccc;
+    margin-bottom: 30px;
+}
+.content_area {
+    width: 100%;
+    height: 100px;
+    resize: none;
+    border: none;
+    outline: none;
+}
+.content_info_save {
+    display: flex;
+    justify-content: right;
+    background-color: white;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+.content_info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content_info_title {
+    display: flex;
+    margin-bottom: 10px;
+}
+.content_info_nickname {
+    color: black !important;
+    font-size: 15px;
+}
+.content_info_writedate {
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    font-size: 13px !important;
+    margin-left: 10px;
+    color: #888;
+}
+
+.content_info_description {
+    display: flex;
+}
+
+.content_info_content {
+    margin-top: 5px;
+    font-size: 14px;
+    color: black !important;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.board_delete_content {
+    font-size: 14px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.board_delete_content:hover {
+    color: #ff8080;
+}
+.content_info_recommend {
+    margin-left: 8px;
+}
+
+.content_info_container {
+    margin-left: auto;
+}
+.content_container ul {
+    padding-left: 8px;
+    padding-right: 10px;
+}
+.contents_list li {
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+.content_max_length {
+    margin-right: 10px;
+    font-size: 13px;
+    color: #aaa;
+}
+.save_content {
+    padding: 5px 15px;
+    font-size: 15px;
+    background-color: #897a69;
+    color: white;
+    border: none;
+}
+.content_update {
+    background-color: white;
+    padding: 10px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+}
+.content_update_area {
+    width: 100%;
+    height: 80px;
+    resize: none;
+    border: none;
+    outline: none;
+}
