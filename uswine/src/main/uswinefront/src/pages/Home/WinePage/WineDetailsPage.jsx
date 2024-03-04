@@ -1,19 +1,21 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { redirect, useNavigate, useParams } from "react-router-dom";
 import DateFormat from "../../../function/DateFormat";
 import "../../../css/home/WineDetailsPage.css";
 import "../../../css/home/WineDetailSellInfo.css";
+import "../../../css/home/WineDetailReview.css";
 import AuthApi from "../../../AuthApi";
 import { jwtDecode } from "jwt-decode";
 import {
   faBox,
   faDollarSign,
-  faL,
   faPhone,
-  faTruckFast,
   faHeart as solidHeart,
 } from "@fortawesome/free-solid-svg-icons";
-import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
+import {
+  faHeart as regularHeart,
+  faThumbsUp,
+} from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PhoneNumberFormant from "../../../function/PhoneNumberFormat";
 
@@ -48,6 +50,7 @@ function WineDetailsPage() {
       {wineDetail.length === 0 || token == "" ? null : (
         <WineSellInfoComponent wineDetail={wineDetail} userinfo={userinfo} />
       )}
+      <WineReview wineDetail={wineDetail} userinfo={userinfo} />
     </div>
   );
 }
@@ -55,12 +58,10 @@ function WineDetailsPage() {
 function WineDetailComponent({ wineDetail, userinfo }) {
   let navigate = useNavigate();
   let [favorite, setFavorite] = useState(false);
-  console.log(favorite + "확인");
   let now = new Date();
   const formateDate = DateFormat(now);
 
   const addFavorite = () => {
-    console.log("Adding Favorite");
     AuthApi("/api/mypage/favorite/add", {
       favoriteDate: formateDate,
       mongoId: wineDetail.id,
@@ -85,7 +86,6 @@ function WineDetailComponent({ wineDetail, userinfo }) {
   };
 
   const delFavorite = () => {
-    console.log("Deleting Favorite");
     AuthApi("/api/mypage/favorite/delete", {
       mongoId: wineDetail.id,
       email: userinfo.username,
@@ -112,7 +112,6 @@ function WineDetailComponent({ wineDetail, userinfo }) {
         mongoId: wineDetail.id,
         email: userinfo.username,
       }).then((data) => {
-        console.log("지금" + data);
         setFavorite(data);
       });
     }
@@ -454,6 +453,353 @@ function WineSellInfoComponent({ wineDetail, userinfo }) {
                 })
               : null}
           </ul>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function WineReview({ wineDetail, userinfo }) {
+  let [reviewList, setReviewList] = useState([]);
+  let [check, setCheck] = useState(0);
+  let [content, setContent] = useState("");
+  let [reviewRecommendCount, setReviewRecommendCount] = useState([]);
+  let [reviewRecommend, setReviewRecommend] = useState([]);
+  let now = new Date();
+  const formateDate = DateFormat(now);
+  let [reviewUpdate, setReviewUpdate] = useState(false);
+  let [reviewId, setReviewId] = useState("");
+  let [reviewUpdateContent, setReviewUpdateContent] = useState("");
+
+  useEffect(() => {
+    async function fetchData() {
+      const reviews = await AuthApi("/api/wine/getWineReview", {
+        mongoId: wineDetail.id,
+      });
+
+      // 각 리뷰에 대한 추천 여부를 비동기적으로 가져오는 Promise 배열
+      const recommendPromises = reviews.map(async (review) => {
+        const recommend = await findWineReviewRecommend(review.id);
+        return recommend;
+      });
+
+      // 리뷰 개수 가져오기
+      const reviewRecommendCount = reviews.map(async (review) => {
+        const recommendCount = await wineReviewRecommend(review.id);
+        return recommendCount;
+      });
+
+      // Promise 배열이 모두 완료될 때까지 기다린 후 결과를 설정
+      Promise.all([...recommendPromises, ...reviewRecommendCount]).then(
+        (results) => {
+          // 결과 배열을 추천 여부와 리뷰 개수로 나누어 저장
+          const recommendations = results.slice(0, reviews.length);
+          const reviewRecommendCounts = results.slice(reviews.length);
+
+          setReviewList(reviews);
+          setReviewRecommend(recommendations);
+          setReviewRecommendCount(reviewRecommendCounts);
+          console.log("Length: " + reviews.length);
+        }
+      );
+    }
+
+    fetchData();
+  }, [wineDetail, check]);
+
+  const saveReview = () => {
+    const userConfirmed = window.confirm(
+      "Are you sure you want to save this review?"
+    );
+    if (userConfirmed) {
+      AuthApi("/api/wine/saveWineReview", {
+        mongoId: wineDetail.id,
+        email: userinfo.username,
+        nickname: userinfo.nickname,
+        content: content,
+        wineReviewDate: formateDate,
+      }).then((data) => {
+        if (data === 1) {
+          setContent("");
+          alert("리뷰가 등록 되었습니다!");
+          if (check === 0) {
+            setCheck(1);
+          } else {
+            setCheck(0);
+          }
+        } else {
+          alert("리뷰 등록에 실패하였습니다.");
+          if (check === 0) {
+            setCheck(1);
+          } else {
+            setCheck(0);
+          }
+        }
+      });
+    }
+  };
+  const updateReview = (props) => {
+    const userConfirmed = window.confirm(
+      "Are you sure you want to update this review?"
+    );
+    if (userConfirmed) {
+      AuthApi("/api/wine/saveWineReview", {
+        id: props,
+        mongoId: wineDetail.id,
+        email: userinfo.username,
+        nickname: userinfo.nickname,
+        content: reviewUpdateContent,
+        wineReviewDate: formateDate,
+      }).then((data) => {
+        if (data === 1) {
+          setReviewUpdate(false);
+          setReviewId("");
+          alert("리뷰가 수정 되었습니다!");
+          if (check === 0) {
+            setCheck(1);
+          } else {
+            setCheck(0);
+          }
+        } else {
+          alert("리뷰 수정에 실패하였습니다.");
+          if (check === 0) {
+            setCheck(1);
+          } else {
+            setCheck(0);
+          }
+        }
+      });
+    }
+  };
+  const deleteReview = (props) => {
+    const userConfirmed = window.confirm("Are you sure you want to delete");
+    if (userConfirmed) {
+      AuthApi("/api/wine/deleteWineReview", {
+        id: props,
+      }).then((data) => {
+        if (data === 1) {
+          setContent("");
+          alert("리뷰가 삭제 되었습니다!");
+          if (check === 0) {
+            setCheck(1);
+          } else {
+            setCheck(0);
+          }
+        } else {
+          alert("리뷰 삭제가 실패하였습니다.");
+          if (check === 0) {
+            setCheck(1);
+          } else {
+            setCheck(0);
+          }
+        }
+      });
+    }
+  };
+
+  async function wineReviewRecommend(props) {
+    let c = 0;
+    await AuthApi("/api/wine/countWineReviewRecommend", {
+      wineReviewIdx: props,
+    }).then((data) => {
+      c = data;
+    });
+    return c;
+  }
+
+  function saveWineReviewRecommend(props) {
+    AuthApi("/api/wine/saveWineReviewRecommend", {
+      wineReviewIdx: props,
+      email: userinfo.username,
+      wineReviewRecommendDate: formateDate,
+    }).then((data) => {
+      if (data === 1) {
+        if (check === 0) {
+          setCheck(1);
+        } else {
+          setCheck(0);
+        }
+      } else {
+        if (check === 0) {
+          setCheck(1);
+        } else {
+          setCheck(0);
+        }
+      }
+    });
+  }
+
+  function deleteWineReviewRecommend(props) {
+    AuthApi("/api/wine/deleteWineReviewRecommend", {
+      wineReviewIdx: props,
+      email: userinfo.username,
+    }).then((data) => {
+      if (data === 1) {
+        if (check === 0) {
+          setCheck(1);
+        } else {
+          setCheck(0);
+        }
+      } else {
+        if (check === 0) {
+          setCheck(1);
+        } else {
+          setCheck(0);
+        }
+      }
+    });
+  }
+
+  async function findWineReviewRecommend(props) {
+    let b = 0;
+    await AuthApi("/api/wine/findWineReviewRecommend", {
+      wineReviewIdx: props,
+      email: userinfo.username,
+    }).then((data) => {
+      b = data;
+    });
+
+    return b;
+  }
+
+  return (
+    <div className="wine_Review">
+      <p style={{ fontSize: "20px", fontWeight: "900" }}>테이스팅 리뷰</p>
+      <p style={{ color: "#888" }}>이 와인에 대한 감상을 남겨보세요!</p>
+      <hr />
+      <div className="board_content_container">
+        <div className="wine_review">
+          <div className="wine_review_writer">
+            <div className="wine_review_container">
+              <textarea
+                className="content_area"
+                placeholder="댓글을 입력해주세요."
+                value={content}
+                maxLength={600}
+                onChange={(e) => {
+                  setContent(e.target.value);
+                }}
+              />
+            </div>
+            <div className="content_info_save">
+              <span className="content_max_length">
+                <b>{content.length}</b> / 600
+              </span>
+              <button className="save_content" onClick={() => saveReview()}>
+                등록
+              </button>
+            </div>
+          </div>
+          <div className="content_container">
+            <ul className="contents_list">
+              {reviewList.map(function (review, i) {
+                return (
+                  <li key={i}>
+                    <div className="content_info">
+                      <div className="content_info_title">
+                        <div className="content_info_nickname">
+                          {review.nickname}
+                        </div>
+                        <div className="content_info_writedate">
+                          {review.wineReviewDate}
+                        </div>
+                      </div>
+                      <div className="content_info_description">
+                        <div className="content_info_recommend">
+                          {reviewRecommendCount[i]}
+                        </div>
+                        {reviewRecommend[i] === 1 ? (
+                          <div
+                            className="board_delete_content"
+                            onClick={() => {
+                              deleteWineReviewRecommend(review.id);
+                            }}
+                          >
+                            <FontAwesomeIcon icon={faThumbsUp} />
+                          </div>
+                        ) : (
+                          <>
+                            <div
+                              className="board_delete_content"
+                              onClick={() => {
+                                saveWineReviewRecommend(review.id);
+                              }}
+                            >
+                              <FontAwesomeIcon icon={faThumbsUp} />
+                            </div>
+                          </>
+                        )}
+                        {review.email == userinfo.username ? (
+                          <>
+                            {reviewId == review.id ? (
+                              <div
+                                className="board_delete_content"
+                                onClick={() => {
+                                  setReviewUpdate(false);
+                                  setReviewId("");
+                                }}
+                              >
+                                수정 취소
+                              </div>
+                            ) : (
+                              <div
+                                className="board_delete_content"
+                                onClick={() => {
+                                  setReviewUpdate(true);
+                                  setReviewId(review.id);
+                                  setReviewUpdateContent(review.content);
+                                }}
+                              >
+                                수정
+                              </div>
+                            )}
+                            <div
+                              className="board_delete_content"
+                              onClick={() => {
+                                deleteReview(review.id);
+                              }}
+                            >
+                              {/* <FontAwesomeIcon icon={faTrash} /> */}
+                              삭제
+                            </div>
+                          </>
+                        ) : null}
+                      </div>
+                    </div>
+                    {reviewUpdate && reviewId == review.id ? (
+                      <div className="wine_review_writer">
+                        <div className="content_update">
+                          <textarea
+                            className="content_update_area"
+                            value={reviewUpdateContent}
+                            onChange={(e) => {
+                              setReviewUpdateContent(e.target.value);
+                            }}
+                          />
+                        </div>
+
+                        <div className="content_info_save">
+                          <span className="content_max_length">
+                            <b>{reviewUpdateContent.length}</b> / 600
+                          </span>
+                          <button
+                            className="save_content"
+                            onClick={() => updateReview(review.id)}
+                          >
+                            등록
+                          </button>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="content_info_content">
+                        {review.content}
+                      </div>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
       </div>
     </div>
