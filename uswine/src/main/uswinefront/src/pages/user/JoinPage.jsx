@@ -59,9 +59,10 @@ export default function JoinPage(){
         }
     }
     function checkNumber(num){
-        if(num === emailCheck){
-            setOpenEmailCheck('false')
+        if(num == emailCheck){
+            setOpenEmailCheck(false)
             setIsEmailCheck('true')
+            alert("인증되었습니다.")
         }else{
             alert('인증번호가 틀렸습니다 다시입력해주세요')
             sendEmail()
@@ -88,10 +89,10 @@ export default function JoinPage(){
     }
     async function handleSubmit() {
         const textAddress = postcode+" "+address+" "+detailAddress
-        // if(isEmailCheck === 'true'){
-        //     if(residentCheck ==='true'){
-        //         if(password === passwordCheck){
-        //             if(isNickNameCheck === 'true'){
+        if(isEmailCheck === 'true'){
+            if(residentCheck ==='true'){
+                if(password === passwordCheck){
+                    if(isNickNameCheck === 'true'){
                         AuthApi('/api/user/join',{
                             email: email,
                             password: password,
@@ -106,22 +107,22 @@ export default function JoinPage(){
                                 window.location.href='/join';
                             }
                         })
-        //             }else{
-        //                 alert("닉네임 중복확인을 해주세요.")
-        //                 document.getElementById('inputJoinNickName').focus()
-        //             }
-        //         }else{
-        //             alert("비밀번호가 일치하지 않습니다.")
-        //             document.getElementById('passwordCheck').focus();
-        //         }
-        //     }else{
-        //         alert('주민등록번호 인증을 해주세요')
-        //         document.getElementById('frontResident').focus();
-        //     }
-        // }else{
-        //     alert('이메일 인증을 해주세요.')
-        //     document.getElementById('email').focus();
-        // }
+                    }else{
+                        alert("닉네임 중복확인을 해주세요.")
+                        document.getElementById('inputJoinNickName').focus()
+                    }
+                }else{
+                    alert("비밀번호가 일치하지 않습니다.")
+                    document.getElementById('passwordCheck').focus();
+                }
+            }else{
+                alert('주민등록번호 인증을 해주세요')
+                document.getElementById('frontResident').focus();
+            }
+        }else{
+            alert('이메일 인증을 해주세요.')
+            document.getElementById('email').focus();
+        }
     }
     return(
         <div id="joinBlock">

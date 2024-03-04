@@ -29,7 +29,7 @@
     }
 
     .admin_join_chat_room {
-        background-color: #897a69;
+        background-color: #5e5e5e;
         color: white;
     }
     .admin_join_chat_room button {
@@ -38,7 +38,7 @@
 
     .admin_chat_room_list_ul li {
         display: flex;
-        width: 90%;
+        width: 80%;
         padding: 10px;
     }
 
@@ -48,6 +48,7 @@
         margin-right: 15px;
         font-size: 15px;
         display: flex;
+        align-items: center;
     }
 
     .admin_chatting_remove {
@@ -116,7 +117,7 @@
     }
 
     .admin_chat_submit:hover {
-        background-color: #897a69;
+        background-color: #5e5e5e;
     }
 
     .admin_me_chat_container,
@@ -153,7 +154,7 @@
     }
 
     .admin_you_chat_container li:nth-child(2) {
-        background-color: #897a69;
+        background-color: #5e5e5e;
         color: white;
     }
 
@@ -178,4 +179,5 @@
         padding: 0px 10px;
         display: flex;
         align-items: center;
+        margin-right: 5px;
       }
