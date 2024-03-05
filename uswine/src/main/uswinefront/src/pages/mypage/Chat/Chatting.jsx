@@ -205,7 +205,7 @@ function ChattingRoom({ room, userinfo, sellerinfo }) {
     setMessages([]);
 
     if (room != null) {
-      const socket = new SockJS("http://localhost:8080/ws");
+      const socket = new SockJS("http://192.168.0.20:8080/ws");
       const client = Stomp.over(socket);
       const headers = {
         Authorization: localStorage.getItem("token"),

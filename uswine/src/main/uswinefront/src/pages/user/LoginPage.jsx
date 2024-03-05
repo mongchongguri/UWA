@@ -25,7 +25,7 @@ const LoginPage = () => {
 
   const authenticate = () => {
     axios
-      .post("http://localhost:8080/login", data)
+      .post("http://192.168.0.20:8080/login", data)
       .then((res) => {
         const token = res.headers["authorization"];
         localStorage.setItem("token", token);

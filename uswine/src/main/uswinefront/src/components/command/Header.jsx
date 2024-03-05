@@ -46,7 +46,7 @@ const Header = () => {
       token = null;
   
       axios
-        .post("http://localhost:8080/api/user/logout")
+        .post("http://192.168.0.20:8080/api/user/logout")
         .then((res) => {
           localStorage.removeItem("token");
           navigate("/");
