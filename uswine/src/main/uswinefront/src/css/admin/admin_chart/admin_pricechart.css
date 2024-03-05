@@ -12,6 +12,7 @@
   padding: 30px;
   background-color: #efefef;
   align-items: center;
+  margin-top: 30px;
 }
 
 #priceChart > div {
@@ -20,10 +21,6 @@
   display: flex;
   gap: 40px;
   justify-content: center;
-}
-
-#priceChart > div:first-child{
-  margin-top: 45px;
 }
 
 #priceChart > div > span {

@@ -26,18 +26,22 @@ const AdminHeaderComponent = () => {
   console.log(token);
 
   const logout = () => {
-    alert("로그아웃 하시겠습니까?");
-    token = null;
-
-    axios
-      .post("http://localhost:8080/api/user/logout")
-      .then((res) => {
-        localStorage.removeItem("token");
-        navigate("/");
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    const logoutCheck = window.confirm("로그아웃 하시겠습니까?");
+    if (logoutCheck) {
+      token = null;
+  
+      axios
+        .post("http://localhost:8080/api/user/logout")
+        .then((res) => {
+          console.log("logouted")
+          localStorage.removeItem("token");
+          navigate("/");
+        })
+        .catch((error) => {
+          console.error(error);
+          navigate("/");
+        });
+    }
   };
 
   return (

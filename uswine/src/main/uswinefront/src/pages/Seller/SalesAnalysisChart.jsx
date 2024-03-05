@@ -22,7 +22,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import EventDateFormat from '../../function/EventDateFormat';
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, PointElement, BarElement, LineElement, Title, Tooltip, Legend);
 
 function SalesAnalysisChart() {
     const token = localStorage.getItem('token') || '';
@@ -604,7 +604,7 @@ const WineRegist = ({ userinfo }) => {
             <div className="price">
                 <p style={{ fontSize: '18px' }}>수익</p>
                 <hr />
-                <div id="priceChart">
+                <div id="user_priceChart">
                     <div id="word">
                         <div id="allPrice">
                             <span>총 금액</span>

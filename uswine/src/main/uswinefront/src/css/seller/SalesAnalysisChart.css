@@ -25,7 +25,8 @@
 .price {
     width: 30%;
 }
-#priceChart {
+
+#user_priceChart {
     display: flex;
     flex-direction: column;
     background-color: #fdefdb;

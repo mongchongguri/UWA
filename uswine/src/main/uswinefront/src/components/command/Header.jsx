@@ -40,20 +40,22 @@ const Header = () => {
   const boxRef = useRef();
 
   const logout = () => {
-    alert("로그아웃 하시겠습니까?");
-    localStorage.removeItem("token");
-    token = null;
-
-    axios
-      .post("http://localhost:8080/api/user/logout")
-      .then((res) => {
-        localStorage.removeItem("token");
-        navigate("/");
-      })
-      .catch((error) => {
-        console.error(error);
-        navigate("/");
-      });
+    const logoutCheck =window.confirm("로그아웃 하시겠습니까?");
+    if(logoutCheck) {
+      localStorage.removeItem("token");
+      token = null;
+  
+      axios
+        .post("http://localhost:8080/api/user/logout")
+        .then((res) => {
+          localStorage.removeItem("token");
+          navigate("/");
+        })
+        .catch((error) => {
+          console.error(error);
+          navigate("/");
+        });
+    }
   };
 
   useEffect(() => {

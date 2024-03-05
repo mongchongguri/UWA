@@ -25,8 +25,6 @@ const PriceChart = () => {
           style={{
             width: "30%",
             whiteSpace: "nowrap",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
           }}
         >
           &#8361; {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
