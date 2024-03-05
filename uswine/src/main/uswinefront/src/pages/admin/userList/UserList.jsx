@@ -44,7 +44,7 @@ function UserListComponent(){
     
     // 리턴받은 유저리스트
     const [userList,setUserList] = useState([])
-    const [totalPage,setTotalPage] = useState('')
+    const [totalPage,setTotalPage] = useState(1)
 
 
     // 조회버튼 클릭시
@@ -84,7 +84,9 @@ function UserListComponent(){
             if(data !== ""){
                 if(data !== 0){
                     setUserList(data.content)
-                    setTotalPage(data.totalPages)
+                    if(data.totalPages != 0){
+                        setTotalPage(data.totalPages)
+                    }
                 }
             }else{
                 alert('날짜를 다시 지정해주세요')

@@ -35,7 +35,7 @@ const LoginPage = () => {
         console.log(role);
 
         if (role === "ROLE_ADMIN") {
-          navigate("/admin");
+          navigate("/admin/chart");
         } else {
           navigate("/");
         }
