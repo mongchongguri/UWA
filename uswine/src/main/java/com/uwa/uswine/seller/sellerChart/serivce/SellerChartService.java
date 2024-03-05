@@ -5,6 +5,8 @@ import com.uwa.uswine.mypage.cart.entity.WineTransactionEntity;
 import com.uwa.uswine.mypage.cart.repository.WineTransactionRepository;
 import com.uwa.uswine.seller.InfoWine.entity.InfoWineSellEntity;
 import com.uwa.uswine.seller.InfoWine.repository.InfoWineRepository;
+import com.uwa.uswine.seller.management.repository.SalesManagementSellerRepository;
+import com.uwa.uswine.seller.management.repository.SellerWithdrawRepository;
 import com.uwa.uswine.seller.sellWine.entity.SellWineEntity;
 import com.uwa.uswine.seller.sellWine.entity.SellWineSqlEntity;
 import com.uwa.uswine.seller.sellerChart.dto.SellerChartDTO;
@@ -20,6 +22,8 @@ public class SellerChartService {
     private final WineTransactionRepository wineTransactionRepository;
     private final OnSaleWineSqlRepository onSaleWineSqlRepository;
     private final InfoWineRepository infoWineRepository;
+    private final SellerWithdrawRepository sellerWithdrawRepository;
+    private final SalesManagementSellerRepository salesManagementSellerRepository;
 
     public Map<String,Object> price(SellerChartDTO sellerChartDTO) {
         Map<String,Object> pricelist = new HashMap<>();
@@ -241,5 +245,56 @@ public class SellerChartService {
             }
         }
         return transactionlist;
+    }
+
+
+    // 와인 등록 수
+    public Map<String, Object> countWineRegist (SellerChartDTO sellerChartDTO){
+
+        Map<String, Object> map = new HashMap<>();
+
+        // 등록 와인 수(개인)
+        map.put("individual",onSaleWineSqlRepository.countAllByEmail(sellerChartDTO.getUseremail()));
+        // 등록 와인 수 (MD)
+        map.put("MD",infoWineRepository.countAllByEmail(sellerChartDTO.getUseremail()));
+        // 등록 와인 재고 수(개인)
+        map.put("individualStock", onSaleWineSqlRepository.getStockSum(sellerChartDTO.getUseremail()));
+        // 등록 와인 재고 수(MD)
+        map.put("MDStock",infoWineRepository.getSellStockSum(sellerChartDTO.getUseremail()));
+
+        return map;
+    }
+
+
+    // 거래 수량
+    public Map<String, Object> countWineTransaction(SellerChartDTO sellerChartDTO){
+        Map<String, Object> map = new HashMap<>();
+
+        // 개인 거래 수량
+        int document = 0;
+        map.put("individualTransaction", wineTransactionRepository.countAllBySelleremailAndDocument(sellerChartDTO.getUseremail(), document));
+        System.out.println("individualTransaction : "+ map.get("individualTransaction"));
+
+        // MD 거래 수량
+        document = 1;
+        map.put("MDTransaction", wineTransactionRepository.countAllBySelleremailAndDocument(sellerChartDTO.getUseremail(), document));
+        System.out.println("MDTransaction : "+ map.get("MDTransaction"));
+
+        return map;
+    }
+
+    public Map<String, Object> getRateOfReturn(SellerChartDTO sellerChartDTO){
+        Map<String, Object> map = new HashMap<>();
+
+        // 총금액
+        map.put("total", salesManagementSellerRepository.sumTotalMoneyByEmail(sellerChartDTO.getUseremail()));
+
+        // 현재 잔액
+        map.put("money", salesManagementSellerRepository.sumMoneyByEmail(sellerChartDTO.getUseremail()));
+
+        // 출금 금액
+        map.put("withdraw",sellerWithdrawRepository.sumWihtdrawByEmail(sellerChartDTO.getUseremail()));
+
+        return map;
     }
 }

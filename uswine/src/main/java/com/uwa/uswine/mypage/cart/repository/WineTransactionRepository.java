@@ -54,4 +54,6 @@ public interface WineTransactionRepository extends JpaRepository<WineTransaction
 
         List<WineTransactionEntity> findBySelleremailAndTimestampBetween(String email, Date startDate, Date endDate);
 
+        Long countAllBySelleremailAndDocument(String email, int document);
+
 }

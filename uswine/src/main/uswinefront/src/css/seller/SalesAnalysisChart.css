@@ -1,127 +1,179 @@
 .seller_sales_analysis_container {
-  padding: 30px 10%;
+    padding: 30px 10%;
 }
 
 .sales_analysis_container {
-  padding: 50px;
-  background-color: white;
-  border-radius: 10px;
-  margin-bottom: 20px;
+    padding: 50px;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* sell wine stick chart */
+.sales_analysis_stick_graph {
+    display: flex;
+    justify-content: space-between;
+}
+#WineRegistrationsChart {
+    width: 30%;
+}
+#WineTransactionsChart {
+    width: 30%;
+}
+
+/* sell wine price */
+.price {
+    width: 30%;
+}
+#priceChart {
+    display: flex;
+    flex-direction: column;
+    background-color: #fdefdb;
+    /* width: 350%; */
+    height: 85%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+#word {
+    margin-left: 15px;
+    width: 70%;
+}
+#word div {
+    margin-bottom: 20px;
+}
+#priceChart span {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+#allPrice {
+    justify-content: space-between;
+    display: flex;
+    /* margin-bottom: 50px; */
+}
+#allmoney {
+    justify-content: space-between;
+    display: flex;
+}
+#allwithdraw {
+    justify-content: space-between;
+    display: flex;
 }
 
 /* sell wine line chart*/
 .sales_analysis_sell_line_graph {
-  display: flex;
+    display: flex;
 }
 
 .sales_analysis_info_wine_graph,
 .sales_analysis_sell_wine_graph {
-  flex: 1;
+    flex: 1;
 }
 
 .sales_analysis_sell_line_graph hr {
-  width: 90%;
+    width: 90%;
 }
 
 .sales_analysis_line_sub_chart {
-  width: 90% !important;
+    width: 90% !important;
 }
 
 .wine_graph_setting_btn_container {
-  width: 90%;
-  display: flex;
+    width: 90%;
+    display: flex;
 }
 
 .wine_graph_setting_btn {
-  margin-left: auto;
+    margin-left: auto;
 }
 /* line chart */
 .sales_analysis_line_graph_container {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
 }
 .sales_analysis_line_chart {
-  width: 100%;
+    width: 100%;
 }
 
 .sales_analysis_line_graph {
-  width: 100% !important;
+    width: 100% !important;
 }
 
 .sales_analysis_setting_info_title {
-  display: flex;
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 20px;
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
 }
 .sales_analysis_line_setting {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .sales_analysis_line_setting div:first-child {
-  color: #888;
-  font-size: 14px;
+    color: #888;
+    font-size: 14px;
 }
 .sales_analysis_line_detail_setting {
-  display: flex;
+    display: flex;
 }
 
 .sales_analysis_line_detail_setting div {
-  margin-left: auto;
+    margin-left: auto;
 }
 
 .sales_analysis_line_detail_setting div {
-  display: flex;
-  margin-top: 5px;
+    display: flex;
+    margin-top: 5px;
 }
 
 .sales_analysis_line_detail_setting div div {
-  margin-left: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  width: 150px;
-  padding: 5px 10px;
-  display: flex;
+    margin-left: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 150px;
+    padding: 5px 10px;
+    display: flex;
 }
 
 .sales_analysis_line_detail_setting div div span {
-  margin-left: auto;
+    margin-left: auto;
 }
 
 .wine_graph_setting_btn_container button:first-child,
 .sales_analysis_line_setting button:first-child {
-  border-left: 1px solid #ddd;
+    border-left: 1px solid #ddd;
 }
 .wine_graph_setting_btn_container button,
 .sales_analysis_line_setting button {
-  background-color: white;
-  padding: 3px 6px;
-  font-size: 13px;
-  border: 1px solid #ddd;
-  border-left: none;
+    background-color: white;
+    padding: 3px 6px;
+    font-size: 13px;
+    border: 1px solid #ddd;
+    border-left: none;
 }
 
 .chartbtnClick {
-  background-color: #897a69 !important;
-  color: white;
+    background-color: #897a69 !important;
+    color: white;
 }
 
 .calander_container {
-  position: absolute;
-  top: 1070px;
-  right: 15%;
-  z-index: 100;
+    position: absolute;
+    top: 1070px;
+    right: 15%;
+    z-index: 100;
 }
 
 .sales_analysis_line_chart {
-  width: 100% !important;
+    width: 100% !important;
 }
 
 .calander_start_container_toggle,
 .calander_end_container_toggle {
-  font-size: 14px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

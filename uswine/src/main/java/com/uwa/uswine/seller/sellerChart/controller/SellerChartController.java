@@ -33,4 +33,20 @@ public class SellerChartController {
     public Map<String,Object> transaction(@RequestBody SellerChartDTO sellerChartDTO) {
         return this.sellerChartService.transaction(sellerChartDTO);
     }
+
+    @PostMapping("countWineReg")
+    public Map<String, Object> countWineReg(@RequestBody SellerChartDTO sellerChartDTO) {
+        return this.sellerChartService.countWineRegist(sellerChartDTO);
+    }
+
+    @PostMapping("countTransaction")
+    public Map<String, Object> countTransaction(@RequestBody SellerChartDTO sellerChartDTO){
+        return this.sellerChartService.countWineTransaction(sellerChartDTO);
+    }
+
+    @PostMapping("revenue")
+    public Map<String, Object> getRateOfReturn(@RequestBody SellerChartDTO sellerChartDTO){
+        return this.sellerChartService.getRateOfReturn(sellerChartDTO);
+    }
+
 }
