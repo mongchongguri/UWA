@@ -106,6 +106,7 @@ function Favorite() {
                             className={type == 'mongo' ? 'favorite_wine_button' : 'favorite_wine_button_null'}
                             onClick={() => {
                                 setCheck(0);
+                                setCurrentPage(1);
                             }}
                         >
                             전체 와인 선택
@@ -114,6 +115,7 @@ function Favorite() {
                             className={type == 'sell' ? 'favorite_wine_button' : 'favorite_wine_button_null'}
                             onClick={() => {
                                 setCheck(1);
+                                setCurrentPage(1);
                             }}
                         >
                             판매자 와인 선택

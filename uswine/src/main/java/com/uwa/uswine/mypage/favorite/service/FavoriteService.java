@@ -77,13 +77,13 @@ public class FavoriteService {
     public List<WineEntity> getMongoWineList(List<String> mongoId, int page){
 
         Map<String, Object> map = new HashMap<>();
-        List<WineEntity> wineEntities = wineListRepository.findById(mongoId, PageRequest.of(page,8)).collectList().block();
+        List<WineEntity> wineEntities = wineListRepository.findById(mongoId, PageRequest.of(page,12)).collectList().block();
 
         return wineEntities;
     }
 
     public List<SellWineSqlEntity> getMongoSellWineList(List<String> mongoId, int page){
-        List<SellWineSqlEntity> sellWineSqlEntities = sellWineSQLRepository.findByMongoIdIn(mongoId, PageRequest.of(page,8));
+        List<SellWineSqlEntity> sellWineSqlEntities = sellWineSQLRepository.findByMongoIdIn(mongoId, PageRequest.of(page,12));
         return sellWineSqlEntities;
     }
 
