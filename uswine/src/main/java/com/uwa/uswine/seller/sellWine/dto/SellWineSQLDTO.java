@@ -11,6 +11,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SellWineSQLDTO {
+    private Long id;
     private String nickname;
     private String email;
     private String wineName;

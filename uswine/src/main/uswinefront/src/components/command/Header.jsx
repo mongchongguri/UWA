@@ -181,7 +181,14 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link>이벤트</Link>
+            <Link
+              to={"/event/1"}
+              className={
+                currentPath.startsWith("/event") ? "header_selectMenu" : null
+              }
+            >
+              이벤트
+            </Link>
           </li>
           <li>
             <Link

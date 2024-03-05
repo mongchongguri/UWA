@@ -110,10 +110,8 @@ const AdminEventCreate = () => {
       endDate: enddate,
     })
       .then((res) => {
-        if (res == 1) {
-          alert("이벤트 생성이 완료되었습니다.");
-          navigate("/admin/event");
-        }
+        alert("이벤트 생성이 완료되었습니다.");
+        navigate("/admin/event");
       })
       .catch();
   };

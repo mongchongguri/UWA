@@ -1,0 +1,72 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#tradeChart {
+  width: 100%;
+  margin-top: 50px;
+}
+
+#tradeChart > h5{
+  margin-bottom: 20px;
+}
+
+#tradeChart > ul > li > ul {
+  padding: 0;
+}
+
+#tradeTable {
+  width: 100%;
+  padding: 0;
+}
+
+#tableHeader > li {
+  background-color: black;
+  color: white;
+}
+
+#tradeTable > li > ul {
+  display: flex;
+}
+
+#tradeTable > li > ul > li{
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+#tradeTable > li > ul > li:first-child{
+  width: 5%;
+  text-align: center;
+}
+
+#tradeTable > li > ul > li:nth-child(2){
+  width: 30%;
+}
+#tradeTable > li > ul > li:nth-child(3){
+  width: 10%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+#tradeTable > li > ul > li:nth-child(4){
+  width: 15%;
+}
+#tradeTable > li > ul > li:nth-child(5){
+  width: 10%;
+}
+#tradeTable > li > ul > li:nth-child(6){
+  width: 10%;
+}
+#tradeTable > li > ul > li:nth-child(7){
+  width: 10%;
+}
+#tradeTable > li > ul > li:nth-child(8){
+  width: 10%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

@@ -19,11 +19,11 @@ public class EventService {
 
     private final EventRepository eventRepository;
 
-    public EventService(EventRepository eventRepository){
+    public EventService(EventRepository eventRepository) {
         this.eventRepository = eventRepository;
     }
 
-    public void createEvent(EventDTO event){
+    public void createEvent(EventDTO event) {
 
         EventEntity entity = new EventEntity();
         entity.setTitle(event.getTitle());
@@ -37,7 +37,7 @@ public class EventService {
     public Page<EventEntity> getEventList(int currentPage) {
 
         List<Sort.Order> sorts = new ArrayList<>();
-        sorts.add(Sort.Order.desc("writeDate"));
+        sorts.add(Sort.Order.desc("endDate"));
 
         int size = 10;
         Pageable pageable = PageRequest.of(currentPage, size, Sort.by(sorts));

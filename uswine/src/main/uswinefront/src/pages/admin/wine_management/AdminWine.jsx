@@ -16,12 +16,9 @@ const AdminWine = () => {
   let [mysqlWineList, setMysqlWineList] = useState([]);
 
   let [searchWine, setSearchWine] = useState("");
-  let [tagWine, setTagWine] = useState([]);
-  let [tagWineAroma, setTagWineAroma] = useState([]);
 
   let [totalPage, setTotalPage] = useState("");
   let [currentPage, setCurrentPage] = useState(1);
-  let [totalWine, setTotalWine] = useState("");
 
   let [searchBtn, setSearchBtn] = useState(0);
 
@@ -39,9 +36,6 @@ const AdminWine = () => {
       alert("마지막 페이지 입니다.");
     }
   }
-  function wineDetailsNav(id) {
-    navigate(`/admin/management/wineDetail/${id}`);
-  }
 
   useEffect(() => {
     AuthApi("/api/admin/management/wine/", {
@@ -49,6 +43,7 @@ const AdminWine = () => {
       searchWine: searchWine,
     })
       .then((res) => {
+        console.log(res.mysql);
         setMongoWineList(res.mongo);
         setMysqlWineList(res.mysql);
         setTotalPage(res.totalpage + 1);
@@ -135,7 +130,7 @@ const AdminWine = () => {
                   return (
                     <li key={i}>
                       <Link
-                        to={`/admin/management/wineDetail/${mysqlWineList[i].id}`}
+                        to={`/admin/management/MDwineDetail/${mysqlWineList[i].id}`}
                         id="admin_wine_link"
                       >
                         <div className="admin_wine_list_card">
@@ -159,7 +154,10 @@ const AdminWine = () => {
                           <div className="wine_seller_info">
                             <div>{mysqlWineList[i].nickname}</div>
                             <div>
-                              {mysqlWineList[i].sellMoney.toLocaleString()}원
+                              {mysqlWineList[i].sellStock === "0"
+                                ? "품절"
+                                : mysqlWineList[i].sellMoney.toLocaleString() +
+                                  "원"}
                             </div>
                           </div>
                         </div>

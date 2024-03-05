@@ -30,7 +30,9 @@ public class MNWInfoWineService {
     private final MNWSellWineSqlRepository sellWineSqlRepository;
     private final MNWSellWineSqlMongoRepository sellWineSqlMongoRepository;
 
-    public MNWInfoWineService(MNWInfoWineJPARepository infoWineJPARepository, MNWInfoWineMongoRepository infoWineMongoRepository, MNWSellWineSqlRepository sellWineSqlRepository, MNWSellWineSqlMongoRepository sellWineSqlMongoRepository){
+    public MNWInfoWineService(MNWInfoWineJPARepository infoWineJPARepository,
+            MNWInfoWineMongoRepository infoWineMongoRepository, MNWSellWineSqlRepository sellWineSqlRepository,
+            MNWSellWineSqlMongoRepository sellWineSqlMongoRepository) {
         this.infoWineJPARepository = infoWineJPARepository;
         this.infoWineMongoRepository = infoWineMongoRepository;
         this.sellWineSqlRepository = sellWineSqlRepository;
@@ -38,13 +40,11 @@ public class MNWInfoWineService {
     }
 
     public List<MNWWineDTO> getWineList(List<String> itemIdList) {
-        System.out.println(itemIdList);
 
         List<MNWWineDTO> wineList = new ArrayList<>();
 
-        for(String itemId : itemIdList){
+        for (String itemId : itemIdList) {
             WineEntity entity = infoWineMongoRepository.findById(itemId).block();
-            System.out.println("Entity: "+entity);
             MNWWineDTO dto = new MNWWineDTO();
             dto.setWine_idx(entity.getWine_idx());
             dto.setWine_info(entity.getWine_info());
@@ -58,8 +58,6 @@ public class MNWInfoWineService {
             dto.setWine_aroma(entity.getWine_aroma());
             wineList.add(dto);
         }
-
-        System.out.println("Service: "+wineList);
 
         return wineList;
     }
@@ -76,9 +74,9 @@ public class MNWInfoWineService {
 
         Page<InfoWineSellEntity> data = infoWineJPARepository.findAll(pageable);
 
-        for(InfoWineSellEntity entity : data){
+        for (InfoWineSellEntity entity : data) {
             MNWInfoWineSellDTO dto = new MNWInfoWineSellDTO();
-            System.out.println("Entity: "+entity);
+            System.out.println("Entity: " + entity);
             dto.setId(entity.getId());
             dto.setAddress(entity.getAddress());
             dto.setDetailAddress(entity.getDetailAddress());
@@ -92,11 +90,10 @@ public class MNWInfoWineService {
             dataList.add(dto);
         }
 
-        System.out.println("Service: " + dataList);
         return dataList;
     }
 
-    public MNWInfoWineSellDTO getWineInfo(MNWInfoWineSellDTO dto){
+    public MNWInfoWineSellDTO getWineInfo(MNWInfoWineSellDTO dto) {
 
         Long id = dto.getId();
 
@@ -132,7 +129,6 @@ public class MNWInfoWineService {
         dto.setWine_note(entity.getWine_note());
         dto.setWine_aroma(entity.getWine_aroma());
 
-
         return dto;
     }
 
@@ -148,8 +144,9 @@ public class MNWInfoWineService {
 
         Page<SellWineSqlEntity> data = sellWineSqlRepository.findAll(pageable);
 
-        for(SellWineSqlEntity entity : data){
+        for (SellWineSqlEntity entity : data) {
             SellWineSQLDTO dto = new SellWineSQLDTO();
+            dto.setId(entity.getId());
             dto.setEmail(entity.getEmail());
             dto.setMongoId(entity.getMongoId());
             dto.setNickname(entity.getNickname());
@@ -160,17 +157,18 @@ public class MNWInfoWineService {
             dto.setWineNameEn(entity.getWineNameEn());
             dto.setWineRegion(entity.getWineRegion());
             dto.setWineType(entity.getWineType());
+            dto.setStock(entity.getStock());
             dataList.add(dto);
         }
 
         return dataList;
     }
 
-    public List<SellWineDTO> getSellerWineList(List<String> mongoId){
+    public List<SellWineDTO> getSellerWineList(List<String> mongoId) {
 
         List<SellWineDTO> mongo = new ArrayList<>();
 
-        for(String id : mongoId){
+        for (String id : mongoId) {
             SellWineEntity entity = sellWineSqlMongoRepository.findById(id).block();
             SellWineDTO dto = new SellWineDTO();
             dto.setNickName(entity.getNickName());
@@ -200,5 +198,95 @@ public class MNWInfoWineService {
         }
 
         return mongo;
+    }
+
+    public int deleteMDWine(Long id) {
+        Optional<InfoWineSellEntity> entity = infoWineJPARepository.findById(id);
+
+        InfoWineSellEntity saveEntity = new InfoWineSellEntity();
+        saveEntity.setId(entity.get().getId());
+        saveEntity.setAddress(entity.get().getAddress());
+        saveEntity.setDetailAddress(entity.get().getDetailAddress());
+        saveEntity.setEmail(entity.get().getEmail());
+        saveEntity.setItemId(entity.get().getItemId());
+        saveEntity.setNickname(entity.get().getNickname());
+        saveEntity.setPhone(entity.get().getPhone());
+        saveEntity.setSellDate(entity.get().getSellDate());
+        saveEntity.setSellMoney(entity.get().getSellMoney());
+        saveEntity.setSellStock("0");
+
+        infoWineJPARepository.save(saveEntity);
+
+        return 1;
+    }
+
+    public SellWineSQLDTO getSellerWineInfo(SellWineSQLDTO dto) {
+
+        Optional<SellWineSqlEntity> entity = sellWineSqlRepository.findById(dto.getId());
+
+        SellWineSQLDTO rdto = new SellWineSQLDTO();
+        rdto.setId(entity.get().getId());
+        rdto.setEmail(entity.get().getEmail());
+        rdto.setMongoId(entity.get().getMongoId());
+        rdto.setNickname(entity.get().getNickname());
+        rdto.setSellMoney(entity.get().getSellMoney());
+        rdto.setSelldate(entity.get().getSelldate());
+        rdto.setWineImageURL(entity.get().getWineImageURL());
+        rdto.setWineName(entity.get().getWineName());
+        rdto.setWineNameEn(entity.get().getWineNameEn());
+        rdto.setWineRegion(entity.get().getWineRegion());
+        rdto.setWineType(entity.get().getWineType());
+
+        return rdto;
+    }
+
+    public SellWineDTO getSellerWineMongo(String mongoId) {
+
+        SellWineEntity entity = sellWineSqlMongoRepository.findById(mongoId).block();
+
+        SellWineDTO dto = new SellWineDTO();
+        dto.setNickName(entity.getNickName());
+        dto.setPhone(entity.getPhone());
+        dto.setSellerInfo(entity.getSellerInfo());
+        dto.setSellMoney(entity.getSellMoney());
+        dto.setPostCode(entity.getPostCode());
+        dto.setAddress(entity.getAddress());
+        dto.setWineImageURL(entity.getWineImageURL());
+        dto.setWineType(entity.getWineType());
+        dto.setWineName(entity.getWineName());
+        dto.setWineNameEn(entity.getWineNameEn());
+        dto.setWineInfo(entity.getWineInfo());
+        dto.setAddInfo(entity.getAddInfo());
+        dto.setWineTaste(entity.getWineTaste());
+        dto.setWineAroma(entity.getWineAroma());
+        dto.setWineRegion(entity.getWineRegion());
+        dto.setAlcohol(entity.getAlcohol());
+        dto.setWineMaker(entity.getWineMaker());
+        dto.setWineBrewing(entity.getWineBrewing());
+        dto.setWineTemp(entity.getWineTemp());
+        dto.setWineIncome(entity.getWineIncome());
+
+        return dto;
+    }
+
+    public void deleteSellerSqlWine(Long id) {
+        Optional<SellWineSqlEntity> entity = sellWineSqlRepository.findById(id);
+
+        SellWineSqlEntity saveEntity = new SellWineSqlEntity();
+        saveEntity.setId(entity.get().getId());
+        saveEntity.setEmail(entity.get().getEmail());
+        saveEntity.setMongoId(entity.get().getMongoId());
+        saveEntity.setNickname(entity.get().getNickname());
+        saveEntity.setSellMoney(entity.get().getSellMoney());
+        saveEntity.setSelldate(entity.get().getSelldate());
+        saveEntity.setWineImageURL(entity.get().getWineImageURL());
+        saveEntity.setWineName(entity.get().getWineName());
+        saveEntity.setWineNameEn(entity.get().getWineNameEn());
+        saveEntity.setWineRegion(entity.get().getWineRegion());
+        saveEntity.setWineType(entity.get().getWineType());
+        saveEntity.setSellState(entity.get().getSellState());
+        saveEntity.setStock("0");
+
+        sellWineSqlRepository.save(saveEntity);
     }
 }

@@ -36,9 +36,6 @@ const AdminSellerWine = () => {
       alert("마지막 페이지 입니다.");
     }
   }
-  function wineDetailsNav(id) {
-    navigate(`/admin/management/wineDetail/${id}`);
-  }
 
   useEffect(() => {
     AuthApi("/api/admin/management/wine/sellerwine", {
@@ -57,7 +54,7 @@ const AdminSellerWine = () => {
     <div id="management_wine_container">
       <div id="management_wine_content">
         <h1>Seller판매 와인관리</h1>
-        {/* <div id="switch_seller_btn">
+        <div id="switch_seller_btn">
           <button
             onClick={() => {
               navigate("/admin/management/wine");
@@ -98,65 +95,59 @@ const AdminSellerWine = () => {
         </div>
         <div className="admin_wineList_container">
           <div>
-            <div className="wine_view">
-              <ul className="wine_list_prev">
-                {mongoWineList.map(function (wine, i) {
-                  return (
-                    <li key={i}>
-                      <div className="admin_wine_list_card">
-                        <div className="wine_names">
-                          <span className="wine_name">{wine.wine_name}</span>
-                          <hr></hr>
-                          <span className="wine_name_en">
-                            {wine.wine_name_en}
-                          </span>
-                        </div>
-
-                        <img src={wine.wine_image} alt="wine_img" />
-
-                        <div className="wine_info">
-                          <span>
-                            <b>{wine.wine_info[0]}</b> | {wine.wine_info[1]} |{" "}
-                            {wine.wine_info[2]}
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-            <div className="wine_view">
-              <ul className="wine_list_next">
+            <div id="wine_view">
+              <ul
+                id="wine_list_next"
+                style={{
+                  display: "flex",
+                }}
+              >
                 {mongoWineList.map(function (wine, i) {
                   return (
                     <li key={i}>
                       <Link
-                        to={`/admin/management/wineDetail/${mysqlWineList[i].id}`}
+                        to={`/admin/management/sellerwinedetail/${mysqlWineList[i].id}`}
                         id="admin_wine_link"
                       >
-                        <div className="admin_wine_list_card">
+                        <div
+                          className="admin_wine_list_card"
+                          style={{
+                            width: "230px",
+                            height: "289px",
+                          }}
+                        >
                           <div className="wine_names">
-                            <span className="wine_name">{wine.wine_name}</span>
+                            <span className="wine_name">{wine.wineName}</span>
                             <hr></hr>
                             <span className="wine_name_en">
-                              {wine.wine_name_en}
+                              {wine.wineNameEn}
                             </span>
                           </div>
 
-                          <img src={wine.wine_image} alt="" />
+                          <img
+                            src={wine.wineImageURL}
+                            alt=""
+                            style={{
+                              width: "80px",
+                              height: "120px",
+                              margin: "0",
+                            }}
+                          />
 
                           <div className="wine_info">
                             <span>
-                              <b>{wine.wine_info[0]}</b> | {wine.wine_info[1]} |{" "}
-                              {wine.wine_info[2]}
+                              <b>{wine.wineType}</b>&nbsp;|&nbsp;
+                              {wine.wineRegion}
                             </span>
                           </div>
 
                           <div className="wine_seller_info">
                             <div>{mysqlWineList[i].nickname}</div>
                             <div>
-                              {mysqlWineList[i].sellMoney.toLocaleString()}원
+                              {mysqlWineList[i].stock == "0"
+                                ? "품절"
+                                : mysqlWineList[i].sellMoney.toLocaleString() +
+                                  "원"}
                             </div>
                           </div>
                         </div>
@@ -167,7 +158,7 @@ const AdminSellerWine = () => {
               </ul>
             </div>
           </div>
-        </div> */}
+        </div>
         <div id="admin_wine_detail_Foot">
           <div className="admin_wine_page_controller">
             <div className="prev_page" onClick={handlePrevPage}>

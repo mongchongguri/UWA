@@ -38,6 +38,11 @@ import AdminEventUpdate from "./pages/admin/admin_event/AdminEventUpdate";
 import AdminFreeBoard from "./pages/admin/admin_freeboard/AdminFreeBoard";
 import AdminWine from "./pages/admin/wine_management/AdminWine";
 import AdminSellerWine from "./pages/admin/wine_management/AdminSellerWine";
+import AdminWineMDetail from "./pages/admin/wine_management/AdminWineMDetail";
+import AdminSellerWineDetail from "./pages/admin/wine_management/AdminSellerWineDetail";
+import EventBoard from "./pages/Home/eventBoard/EventBoard";
+import EventDetail from "./pages/Home/eventBoard/EventDetail";
+import AdminMain from "./pages/admin/AdminMain";
 import MyBoardList from "./pages/mypage/MyBoard/MyBoardList";
 import MyCommentList from "./pages/mypage/MyBoard/MyCommentList";
 import MyInfo from "./pages/mypage/MyInfo/MyInfo";
@@ -86,6 +91,10 @@ function App() {
           <Route path="seller/management" element={<SalesManagement />} />
           <Route path="seller/delivery" element={<GoodsDelivery />} />
           <Route path="seller/chart" element={<SalesAnalysisChart />} />
+
+          {/* 이벤트 페이지 */}
+          <Route path="event/:page" element={<EventBoard />} />
+          <Route path="event/eventDetail/:id" element={<EventDetail />} />
         </Route>
         <Route path="/admin" element={<Admin />}>
           <Route
@@ -124,6 +133,16 @@ function App() {
             element={<AdminWineDetail />}
           />
           <Route path="management/sellerwine" element={<AdminSellerWine />} />
+          <Route
+            path="management/MDwineDetail/:id"
+            element={<AdminWineMDetail />}
+          />
+          <Route
+            path="management/sellerwinedetail/:id"
+            element={<AdminSellerWineDetail />}
+          />
+
+          <Route path="chart" element={<AdminMain />} />
         </Route>
         <Route path="/delivery/:page" element={<Delivery />} />
       </Routes>

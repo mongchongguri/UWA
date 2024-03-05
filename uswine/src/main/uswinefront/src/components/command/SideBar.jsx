@@ -68,6 +68,11 @@ const SideBarComponent = () => {
           </li>
           <li>
             <span>통계</span>
+            <ul className="adminMenuSubmenu">
+              <li>
+                <Link to={"/admin/chart"}>차트</Link>
+              </li>
+            </ul>
           </li>
         </ul>
       </div>
