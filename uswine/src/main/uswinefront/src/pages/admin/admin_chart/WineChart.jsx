@@ -49,8 +49,8 @@ const WineChart = () => {
       {
         label: "수량",
         data: [wineCount, sellingWine, doneWine, breakWine, tradeCount],
-        backgroundColor: "#aaa",
-        borderColor: "black",
+        backgroundColor: "#ABCDCB",
+        borderColor: "##ABCDCB",
       },
     ],
   };

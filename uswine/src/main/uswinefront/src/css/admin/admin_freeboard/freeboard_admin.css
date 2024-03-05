@@ -26,8 +26,8 @@
 }
 
 #freeboard_board_deleteBtn > button {
-  width: 65px;
-  height: 21px;
+  width: 75px;
+  height: 30px;
   font-size: 14px;
 }
 
@@ -64,8 +64,8 @@
 }
 
 #freeboard_search_btn{
-  width: 45px;
-  height: 21px;
+  width: 75px;
+  height: 30px;
   font-size: 14px;
 }
 
@@ -116,13 +116,14 @@
 #freeboard_table tbody tr td {
   background-color: white;
   color: black;
+  line-height: 35px;
 }
+
 
 #freeboard_table tbody tr td:nth-child(5) button {
   width: 60px;
   font-size: 14px;
   padding: 1px;
-  height: 25px;
 }
 
 #freeboard_table tbody tr td:nth-child(2) a {

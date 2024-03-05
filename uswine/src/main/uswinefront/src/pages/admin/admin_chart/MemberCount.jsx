@@ -45,8 +45,8 @@ const MemberCount = () => {
       {
         label: "회원수",
         data: [sellerCount, adminCount, userCount],
-        backgroundColor: "#aaa",
-        borderColor: "black",
+        backgroundColor: "#E78775",
+        borderColor: "#E78775",
       },
     ],
   };

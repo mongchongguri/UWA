@@ -119,7 +119,9 @@ const FreeBoard = () => {
       </div>
       <div id="freeboard_search_block">
         <div id="freeboard_board_deleteBtn">
-          <Button variant="light" onClick={updateFreeboard}>선택삭제</Button>
+          <Button variant="light" onClick={updateFreeboard}>
+            선택삭제
+          </Button>
         </div>
         <div id="freeboard_search">
           <div id="freeboard_search_select">
@@ -137,7 +139,11 @@ const FreeBoard = () => {
             onChange={handleSearchKeyword}
             defaultValue={keyword}
           />
-          <Button variant="light" id="freeboard_search_btn" onClick={inputSearchKeyword}>
+          <Button
+            variant="light"
+            id="freeboard_search_btn"
+            onClick={inputSearchKeyword}
+          >
             검색
           </Button>
         </div>
@@ -173,7 +179,12 @@ const FreeBoard = () => {
                     <td>{board.nickname}</td>
                     <td>{DateFormat(board.writedate)}</td>
                     <td>
-                      <Button variant="light">내용보기</Button>
+                      <Button
+                        variant="light"
+                        href={`/admin/freeboard/Detail/${board.id}`}
+                      >
+                        내용보기
+                      </Button>
                     </td>
                   </tr>
                 );
