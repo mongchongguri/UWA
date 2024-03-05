@@ -131,6 +131,7 @@ function GoodsDeliveryComponent({ userinfo }) {
         alert("배송 상태가 업데이트 되었습니다.");
         setChangeState(changeState + 1);
         setDeliverybtn(false);
+        window.location.reload();
       }
     });
   }

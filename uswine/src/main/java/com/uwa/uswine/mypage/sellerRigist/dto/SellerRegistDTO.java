@@ -3,11 +3,13 @@ package com.uwa.uswine.mypage.sellerRigist.dto;
 import com.uwa.uswine.mypage.sellerRigist.entity.SellerRegistEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class SellerRegistDTO {
     private String email;
     private String phone;

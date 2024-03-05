@@ -34,7 +34,6 @@ function InfoWineSellComponent({ userinfo }) {
   let [postcode, setPostCode] = useState("");
   let [address, setAddress] = useState("");
   let [detailAddress, setDetailAddress] = useState("");
-  let [delivery, setDelivery] = useState(null);
 
   useEffect(() => {
     AuthApi("/api/wine/idx", {
@@ -50,8 +49,7 @@ function InfoWineSellComponent({ userinfo }) {
       sellMoney != "" &&
       sellStock != "" &&
       postcode != "" &&
-      address != "" &&
-      delivery != null
+      address != ""
     ) {
       const date = new Date();
       AuthApi("/api/seller/info/sell", {
@@ -63,7 +61,6 @@ function InfoWineSellComponent({ userinfo }) {
         sellStock: sellStock,
         address: postcode + address,
         detailAddress: detailAddress,
-        delivery: delivery,
         sellDate: date,
       }).then((data) => {
         if (data == 1) {
@@ -212,38 +209,6 @@ function InfoWineSellComponent({ userinfo }) {
                       setDetailAddress(e.target.value);
                     }}
                   />
-                </div>
-              </div>
-            </div>
-          </li>
-          <li className="sell_infos_container">
-            <div className="sell_info_container">
-              <p className="sell_info">
-                배달 가능 여부
-                <span className="sell_essential">
-                  (<span className="sell_essential_star">*</span>)
-                </span>
-              </p>
-              <div className="sell_info_input">
-                <div className="delivery_select_container">
-                  <label>
-                    <input
-                      type="radio"
-                      value="true"
-                      checked={delivery == true}
-                      onChange={() => setDelivery(true)}
-                    />
-                    가능
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      value="true"
-                      checked={delivery == false}
-                      onChange={() => setDelivery(false)}
-                    />
-                    불가능
-                  </label>
                 </div>
               </div>
             </div>

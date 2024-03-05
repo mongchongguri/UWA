@@ -102,7 +102,7 @@ userNickValue,setUserNickValue}){
                     {user.joindate}
                 </div>
                 <Button variant="light" style={{whiteSpace:'nowrap',width:'70px',justifyContent:'center',
-                height:'25px', fontSize:'14px'}}
+                height:'25px', fontSize:'14px', display:'flex', alignItems : 'center'}}
                 onClick={()=>updateUser(user)}>
                     정보수정
                 </Button>

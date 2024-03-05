@@ -156,12 +156,14 @@
   width: 60%;
   font-size: 15px;
   color: #454545;
+  white-space: nowrap;
 }
 
 .userinfo_board_info_container li:nth-child(2) {
   width: 30%;
   font-size: 15px;
   color: #454545;
+  white-space: nowrap;
 }
 
 .userinfo_board_comment_count {

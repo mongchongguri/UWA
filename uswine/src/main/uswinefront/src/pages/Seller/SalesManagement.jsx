@@ -131,6 +131,7 @@ function SalesManagementComponent({ userinfo }) {
       if (data.totalPages != 0) {
         setWithdrawTotalPage(data.totalPages);
       }
+      
     });
   }, [withdrawCurrentPage]);
 
@@ -194,6 +195,7 @@ function SalesManagementComponent({ userinfo }) {
           alert("출금이 완료되었습니다.");
         }
         setWithdrawState(false);
+        window.location.reload();
       });
     }
   }

@@ -37,7 +37,7 @@ public interface WineTransactionRepository extends JpaRepository<WineTransaction
                         "FROM GoodsStateEntity g JOIN WineTransactionEntity w " +
                         "ON g.transactionId = w.id " +
                         "WHERE w.selleremail = :sellerEmail AND g.delivery = :delivery")
-        Page<Object> findGoodsAndWineEntitiesBySellerEmailAndDelivery(String sellerEmail, int delivery,
+        Page<Object> findGoodsAndWineEntitiesBySellerEmailAndDelivery(@Param("sellerEmail")String sellerEmail, @Param("delivery") int delivery,
                         Pageable pageable);
 
         @Query("SELECT g, w " +
@@ -50,7 +50,7 @@ public interface WineTransactionRepository extends JpaRepository<WineTransaction
                         "FROM GoodsStateEntity g JOIN WineTransactionEntity w " +
                         "ON g.transactionId = w.id " +
                         "WHERE w.useremail = :userEmail AND g.delivery < 3")
-        List<Object> findGoodsAndWineEntitiesByUserEmail(String userEmail);
+        List<Object> findGoodsAndWineEntitiesByUserEmail(@Param("userEmail") String userEmail);
 
         List<WineTransactionEntity> findBySelleremailAndTimestampBetween(String email, Date startDate, Date endDate);
 

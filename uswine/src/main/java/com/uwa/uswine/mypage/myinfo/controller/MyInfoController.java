@@ -90,7 +90,8 @@ public class MyInfoController {
 	@PostMapping("buywine")
 	public Page<WineTransactionEntity> buywine(@RequestBody Map<String,Object> map) {
 		Map<String,String> userinfo = (Map<String,String>)map.get("userinfo");
-		int page = Integer.parseInt((String)map.get("currentPage"));
+		int page = Integer.parseInt(map.get("currentPage") + "");
+		System.out.println(map);
 		return myInfoService.buywine(userinfo,page-1);
 	}
 	
@@ -98,7 +99,7 @@ public class MyInfoController {
 	@PostMapping("getState")
 	public Page<Object> getState(@RequestBody Map<String,Object> map) {
 		Map<String,String> userinfo = (Map<String,String>)map.get("userinfo");
-		int page = Integer.parseInt((String)map.get("currentPage"));
+		int page = Integer.parseInt(map.get("currentPage") + "");
 		return myInfoService.getState(userinfo,page-1);
 		
 	}
