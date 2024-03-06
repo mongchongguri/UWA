@@ -89,8 +89,8 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests((auth)-> {
                     auth.requestMatchers("/ws/**").permitAll();
-                    auth.requestMatchers("/login","/join","/logout","/api/main/**","/api/wine/**","/api/onsale/list").permitAll();
-                    auth.requestMatchers("/api/mypage/**","/api/comment/**","/api/board/**","/api/onsale/**","/api/chatting/**").hasAnyRole("USER","SELLER","ADMIN");
+                    auth.requestMatchers("/login","/join","/logout","/api/main/**","/api/wine/**","/api/onsale/list","/api/user/**").permitAll();
+                    auth.requestMatchers("/api/mypage/**","/api/comment/**","/api/board/**","/api/onsale/**","/api/chatting/**", "/api/event/**").hasAnyRole("USER","SELLER","ADMIN");
                     auth.requestMatchers("/api/seller/**").hasRole("SELLER");
                     auth.requestMatchers("/api/admin/**").hasRole("ADMIN");
                     auth.anyRequest().authenticated();

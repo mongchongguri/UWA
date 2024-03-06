@@ -41,6 +41,7 @@ public class EventService {
 
         int size = 10;
         Pageable pageable = PageRequest.of(currentPage, size, Sort.by(sorts));
+      
 
         return eventRepository.findAll(pageable);
     }

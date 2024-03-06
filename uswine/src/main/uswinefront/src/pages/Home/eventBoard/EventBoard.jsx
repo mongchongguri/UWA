@@ -20,7 +20,7 @@ const EventBoard = () => {
   let [eventList, setEventList] = useState([]);
 
   useEffect(() => {
-    AuthApi("/api/admin/event/getEventList", {
+    AuthApi("/api/event/getEventList", {
       page: currentPage - 1,
     }).then((data) => {
       setEventList(data.content);
@@ -85,7 +85,7 @@ const EventBoard = () => {
               ? eventList.map(function (board, i) {
                   // enddate가 writedate보다 큰지 확인하여 조건에 따라 스타일 및 텍스트 변경
                   const isEventOver =
-                    new Date(board.endDate) > new Date(board.writeDate);
+                    new Date(board.endDate).getTime() > new Date().getTime();
                   return (
                     <ul
                       className={`board_info_container board_list ${

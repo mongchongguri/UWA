@@ -74,7 +74,7 @@ const AdminEventBoard = () => {
               {eventList !== undefined
                 ? eventList.map(function (board, i) {
                     const isClosedEvent =
-                      new Date(board.writeDate) > new Date(board.endDate);
+                      new Date(board.endDate).getTime() < new Date().getTime();
                     return (
                       <tr key={i}>
                         {isClosedEvent ? (
