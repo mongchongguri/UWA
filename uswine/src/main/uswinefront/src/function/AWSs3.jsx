@@ -4,13 +4,13 @@ function AwsUpload(dir, file) {
   const name = Date.now();
   AWS.config.update({
     region: "ap-northeast-2",
-    accessKeyId: "AKIAZNVISYDYJEQ3FE46",
-    secretAccessKey: "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",
+    accessKeyId: "",
+    secretAccessKey: "",
   });
 
   const upload = new AWS.S3.ManagedUpload({
     params: {
-      Bucket: "mongchongguriforum",
+      Bucket: "",
       Key: `${dir}/${name}`,
       Body: file,
     },
